@@ -9,7 +9,7 @@ div.block-container.css-18e3th9.egzxvld2 {
 
 img {
     display: block;
-    margin-top: 1.5em;
+    margin-top: 2.5em;
 }
 
 
@@ -20,6 +20,19 @@ div.css-1ht1j8u.e16fv1kl0 {
 }
 
 
+/*
+ 
+  _______                          __    
+ |_   __ \                        /  |   
+   | |__) |   .--.   _   _   __   `| |   
+   |  __ /  / .'`\ \[ \ [ \ [  ]   | |   
+  _| |  \ \_| \__. | \ \/\ \/ /   _| |_  
+ |____| |___|'.__.'   \__/\__/   |_____| 
+                                         
+ 
+*/
+
+
 /* Third line of Row */
 
 div.css-wnm74r.e16fv1kl3 {
@@ -28,38 +41,55 @@ div.css-wnm74r.e16fv1kl3 {
 }
 
 
-/* Row 1 Right Side */
+/* Row 1 Left Side */
 
-div.css-1r6slb0.e1tzin5v2 {
+div.css-krofan.e1tzin5v0 {
     background-color: #8030cc;
     padding: 3% 3% 3% 3%;
     border-radius: 10px;
+    width: 450px !important;
 }
 
 
 /* Css for image */
 
 div.css-1v0mbdj.etr89bj1 {
-    margin-left: 200px;
+    margin-left: 175px;
     margin-bottom: 100px;
 }
 
 
-/* Row 1 Left Side*/
+/* Row 1 Right Side*/
 
-div.css-115gedg.e1tzin5v2 {
+div.css-ml2xh6.e1tzin5v2 {
     background-color: #EEEEEE;
     padding: 3% 3% 3% 3%;
     border-radius: 10px;
+    width: calc(50% - 1rem);
+    flex-basis: calc(50% - 1rem);
 }
 
-
-/* Row 2 */
-
-div.css-12w0qpk.e1tzin5v2 {
-    background-color: #DCDCDC;
+div.css-thv974.e16nr0p34 {
+    font-family: 'Inter', Bold;
+    font-size: xx-large;
+    color: #EEEEEE;
     padding: 3% 3% 3% 3%;
     border-radius: 10px;
+    position: relative;
+    left: 30px;
+    top: -75px;
+}
+
+div.css-183lzff.eyqtai90 {
+    font-family: 'Inter', Light;
+    font-size: large;
+    color: #EEEEEE;
+    padding: 3% 3% 3% 3%;
+    border-radius: 10px;
+    position: relative;
+    max-width: 450px !important;
+    left: 20px;
+    top: -140px;
 }
 
 
@@ -68,6 +98,25 @@ div.css-12w0qpk.e1tzin5v2 {
 div.css-1svlcvt.e1tzin5v0 {
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+
+/*
+ 
+  _______                          _____   
+ |_   __ \                        / ___ `. 
+   | |__) |   .--.   _   _   __  |_/___) | 
+   |  __ /  / .'`\ \[ \ [ \ [  ]  .'____.' 
+  _| |  \ \_| \__. | \ \/\ \/ /  / /_____  
+ |____| |___|'.__.'   \__/\__/   |_______| 
+                                           
+ 
+*/
+
+div.css-1l269bu.e1tzin5v2 {
+    background-color: #DCDCDC;
+    padding: 3% 3% 3% 3%;
+    border-radius: 10px;
 }
 
 
