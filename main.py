@@ -18,7 +18,7 @@ with open('style.css') as f:
 a1, a2 = st.columns([1,3])
 # a1, a2,a3,a4= st.columns([3,1,1,1])
 a1.image(Image.open('screenshot.png'))
-a1.caption(f"Congratulations Joshua,")
+a1.caption(f"Welcome Joshua")
 a1.text(f'Patients are seeing a 52.6% increase in mental health')
 a2.header(f'Week Overview')
 a3,a4,a5 = a2.columns(3
@@ -30,9 +30,9 @@ with a4:
 with a5:
     st.metric(f"Costs", "850.97", "+92.4", "inverse")
 
-# Row B
-b1, b2, b3, b4 = st.columns(4)
-b1.metric("Temperature", "70 °F", "1.2 °F")
-b2.metric("Wind", "9 mph", "-8%")
-b3.metric("Humidity", "86%", "4%")
-b4.metric("Humidity", "86%", "4%")
+# # Row B
+# b1, b2, b3, b4 = st.columns([1,1,1,1])
+# b1.metric("Temperature", "70 °F", "1.2 °F")
+# b2.metric("Wind", "9 mph", "-8%")
+# b3.metric("Humidity", "86%", "4%")
+# b4.metric("Humidity", "86%", "4%")

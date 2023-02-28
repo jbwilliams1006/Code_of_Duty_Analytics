@@ -13,6 +13,13 @@ img {
 }
 
 
+/* Image height */
+
+div.css-1kyxreq.etr89bj2 {
+    height: 100px;
+}
+
+
 /* Centering text in each gray box */
 
 div.css-1ht1j8u.e16fv1kl0 {
@@ -51,6 +58,33 @@ div.css-12w0qpk.e1tzin5v2 {
 }
 
 
+/* Row 1 text */
+
+div.css-thv974.e16nr0p34 {
+    font-family: 'Inter', Bold;
+    font-size: xx-large;
+    color: #EEEEEE;
+    padding: 3% 3% 3% 20%;
+    border-radius: 10px;
+    height: 35px;
+}
+
+
+/* Row 1 text */
+
+div.css-183lzff.eyqtai90 {
+    font-family: 'Inter', Light;
+    font-size: large;
+    color: #EEEEEE;
+    padding: 3% 3% 3% 3%;
+    border-radius: 10px;
+    position: relative;
+    max-width: 450px !important;
+    /* left: 20px;
+    top: -140px; */
+}
+
+
 /* Css for image */
 
 div.css-1v0mbdj.etr89bj1 {
@@ -69,29 +103,6 @@ div.css-ml2xh6.e1tzin5v2 {
     flex-basis: calc(50% - 1rem);
 }
 
-div.css-thv974.e16nr0p34 {
-    font-family: 'Inter', Bold;
-    font-size: xx-large;
-    color: #EEEEEE;
-    padding: 3% 3% 3% 3%;
-    border-radius: 10px;
-    position: relative;
-    left: 30px;
-    top: -75px;
-}
-
-div.css-183lzff.eyqtai90 {
-    font-family: 'Inter', Light;
-    font-size: large;
-    color: #EEEEEE;
-    padding: 3% 3% 3% 3%;
-    border-radius: 10px;
-    position: relative;
-    max-width: 450px !important;
-    left: 20px;
-    top: -140px;
-}
-
 
 /*
  
@@ -105,11 +116,12 @@ div.css-183lzff.eyqtai90 {
  
 */
 
-div.css-12w0qpk.e1tzin5v2 {
+
+/* div.css-12w0qpk.e1tzin5v2 {
     background-color: #DCDCDC;
     padding: 3% 3% 3% 3%;
     border-radius: 10px;
-}
+} */
 
 
 /* Hide hamburger menu and footer */
