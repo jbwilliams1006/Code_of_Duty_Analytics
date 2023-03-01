@@ -12,6 +12,12 @@ with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 # Data
+MentalData = np.random.randn(10, 1)
+PhysicalData = np.random.randn(10, 1)
+SpiritualData = np.random.randn(10, 1)
+CrimeData = np.random.randn(10, 1)
+# seattle_weather = pd.read_csv('weather.csv', parse_dates=['date'])
+# stocks = pd.read_csv('stocks.csv')
 
 
 # Row A
@@ -30,9 +36,20 @@ with a4:
 with a5:
     st.metric(f"Costs", "850.97", "+92.4", "inverse")
 
-# # Row B
-# b1, b2, b3, b4 = st.columns([1,1,1,1])
-# b1.metric("Temperature", "70 °F", "1.2 °F")
-# b2.metric("Wind", "9 mph", "-8%")
-# b3.metric("Humidity", "86%", "4%")
-# b4.metric("Humidity", "86%", "4%")
+# """
+b1, b2, b3, b4 = st.columns([2,2,2,2])
+with b1:
+    # st.image(Image.open('mind.png'))
+    st.subheader("Mental Health",)
+    st.line_chart(MentalData)
+with b2:
+    st.subheader("Physical Health")
+    st.line_chart(PhysicalData)
+with b3:
+    st.subheader("Spiritual Health")
+    st.line_chart(SpiritualData)
+with b4:
+    st.subheader("Crime")
+    st.line_chart(CrimeData)
+
+
