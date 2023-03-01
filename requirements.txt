@@ -3,3 +3,7 @@ pandas
 numpy
 PIL
 google-cloud-firestore
+google-auth-oauthlib
+firebase_admin
+firestore
+json
