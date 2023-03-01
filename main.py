@@ -4,7 +4,16 @@ import pandas as pd
 import numpy as np
 import plost
 from PIL import Image
+from google.cloud import firestore
+import firebase_admin
+from firebase_admin import credentials
+import json
+from google.oauth2 import service_account
 
+# secure database access
+key_dict = json.loads(st.secrets["textkey"])
+creds = service_account.Credentials.from_service_account_info(key_dict)
+db = firestore.Client(credentials=creds, project="Care of Duty Analytics")
 
 # Page setting
 st.set_page_config(layout="wide")
