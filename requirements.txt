@@ -1,5 +1,6 @@
 streamlit
 pandas
+plost
 numpy
 PIL
 google-cloud-firestore
