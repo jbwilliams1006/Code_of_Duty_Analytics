@@ -10,6 +10,9 @@ div.block-container.css-18e3th9.egzxvld2 {
 img {
     display: block;
     margin-top: 2.5em;
+    height: 55px !important;
+    width: auto;
+    max-width: 70px !important;
 }
 
 
@@ -50,20 +53,13 @@ div.css-wnm74r.e16fv1kl3 {
 
 /* Row 1 Left Side */
 
-div.css-12w0qpk.e1tzin5v2 {
-    background-color: #8030cc;
-    padding: 3% 3% 3% 3%;
-    border-radius: 10px;
-    width: 450px !important;
-}
-
 
 /* Row 1 text */
 
 div.css-thv974.e16nr0p34 {
     font-family: 'Inter', Bold;
     font-size: xx-large;
-    color: #EEEEEE;
+    color: #000000;
     padding: 3% 3% 3% 20%;
     border-radius: 10px;
     height: 35px;
@@ -75,7 +71,7 @@ div.css-thv974.e16nr0p34 {
 div.css-183lzff.eyqtai90 {
     font-family: 'Inter', Light;
     font-size: large;
-    color: #EEEEEE;
+    color: #000000;
     padding: 3% 3% 3% 3%;
     border-radius: 10px;
     position: relative;
@@ -116,12 +112,41 @@ div.css-ml2xh6.e1tzin5v2 {
  
 */
 
-
-/* div.css-12w0qpk.e1tzin5v2 {
-    background-color: #DCDCDC;
+div.css-12w0qpk.e1tzin5v2 {
+    background-color: #eeeeee;
     padding: 3% 3% 3% 3%;
     border-radius: 10px;
-} */
+}
+
+
+/* Image */
+
+div[data-testid="stImage"]>div:first-of-type {}
+
+
+/*
+ 
+  _______                          ______   
+ |_   __ \                        / ____ `. 
+   | |__) |   .--.   _   _   __   `'  __) | 
+   |  __ /  / .'`\ \[ \ [ \ [  ]  _  |__ '. 
+  _| |  \ \_| \__. | \ \/\ \/ /  | \____) | 
+ |____| |___|'.__.'   \__/\__/    \______.' 
+                                            
+ 
+*/
+
+div.css-1bcsrn5.e1tzin5v2 {
+    background-color: #eeeeee;
+    padding: 3% 3% 3% 3%;
+    border-radius: 10px;
+}
+
+div.css-1bzkvni.e1tzin5v2 {
+    background-color: #eeeeee;
+    padding: 3% 3% 3% 3%;
+    border-radius: 10px;
+}
 
 
 /* Hide hamburger menu and footer */
