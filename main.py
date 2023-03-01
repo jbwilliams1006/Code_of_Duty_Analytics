@@ -3,7 +3,11 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from PIL import Image
+import firebase_admin
+from firebase_admin import credentials
 
+cred = credentials.Certificate("firestore-key.json")
+firebase_admin.initialize_app(cred)
 
 # Page setting
 st.set_page_config(layout="wide")
