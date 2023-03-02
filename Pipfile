@@ -8,6 +8,7 @@ numpy = "*"
 pandas = "*"
 streamlit = "*"
 plost = "*"
+streamlit_authenticator = "*"
 [dev-packages]
 
 [requires]
