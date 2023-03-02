@@ -8,16 +8,19 @@ import pandas as pd
 import numpy as np
 import plost
 from PIL import Image
-# from google.cloud import firestore
+from google.cloud import firestore
 # import firebase_admin
-# from firebase_admin import credentials
+from firebase_admin import credentials
 import json
-# from google.oauth2 import service_account
+from google.oauth2 import service_account
 
-# secure database access
-# key_dict = json.loads(st.secrets["textkey"])
-# creds = service_account.Credentials.from_service_account_info(key_dict)
-# db = firestore.Client(credentials=creds, project="Care of Duty Analytics")
+#secure database access
+key_dict = json.loads(st.secrets["textkey"])
+creds = service_account.Credentials.from_service_account_info(key_dict)
+db = firestore.Client(credentials=creds, project="care-of-duty-analytics")
+
+## reference to the users collection ID
+users_ref = db.collection("users")
 
 
 # """
@@ -47,25 +50,23 @@ st.set_page_config(initial_sidebar_state="collapsed",layout="wide")
  
 # """
 
-names = ["Joshua Williams", "Noah Orta"]
-usernames = ["joshw", "norta"]
+# DATA BASE CREDS
 
-#Load Hashed Passwords
-file_path = Path(__file__).parent/"hashed_pw.pk1"
-with file_path.open("rb") as file:
-    hashed_passwords = pickle.load(file)
+# #Creation of credentials dictionary
+creds = {"usernames":{}}
 
-#Creation of credentials dictionary
-credentials = {"usernames":{}}
+# get data from database into lists
+usernames = [user.id for user in users_ref.stream()]
+passwords = [user.to_dict()['hash_password'] for user in users_ref.stream()]
+names = [user.to_dict()['name'] for user in users_ref.stream()]
 
-#Creates final credentials dictionary dynamically based on any number
-#of credentials in the users, names, and passwords lists
-for un, name, pw in zip(usernames, names, hashed_passwords):
-    user_dict = {"name":name,"password":pw}
-    credentials["usernames"].update({un:user_dict})
+# turn lists into database
+for username, password, name in zip(usernames, passwords, names):
+    user_dict = {"name":name,"password":password}
+    creds["usernames"].update({username:user_dict})
 
 #Creation of authentication object
-authenticator = stauth.Authenticate(credentials,
+authenticator = stauth.Authenticate(creds,
        "analytics_dashboard", "abcdef", cookie_expiry_days = 0)
 
 #Returns the specified variables from streamlits' built in login authenticator form
