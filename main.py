@@ -36,8 +36,8 @@ MentalData = np.random.randn(10, 1)
 PhysicalData = np.random.randn(10, 1)
 SpiritualData = np.random.randn(10, 1)
 CrimeData = np.random.randn(10, 1)
-seattle_weather = pd.read_csv('weather.csv', parse_dates=['date'])
-stocks = pd.read_csv('stocks.csv')
+seattle_weather = pd.read_csv('Data/weather.csv', parse_dates=['date'])
+stocks = pd.read_csv('Data/stocks.csv')
 
 
 # """
@@ -79,19 +79,19 @@ with a5:
 # """
 b1, b2, b3, b4 = st.columns([2,2,2,2])
 with b1:
-    st.image(Image.open('mind.png'))
+    st.image(Image.open('Icons/mind.png'))
     st.subheader("Mental Health",)
     st.line_chart(MentalData)
 with b2:
-    st.image(Image.open('muscle.png'))
+    st.image(Image.open('Icons/muscle.png'))
     st.subheader("Physical Health")
     st.line_chart(PhysicalData)
 with b3:
-    st.image(Image.open('spiritual.png'))
+    st.image(Image.open('Icons/spiritual.png'))
     st.subheader("Spiritual Health")
     st.line_chart(SpiritualData)
 with b4:
-    st.image(Image.open('crime.png'))
+    st.image(Image.open('Icons/crime.png'))
     st.subheader("Crime")
     st.line_chart(CrimeData)
 
