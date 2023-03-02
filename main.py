@@ -53,7 +53,7 @@ stocks = pd.read_csv('stocks.csv')
 # """
 a1, a2 = st.columns([1,3])
 # a1, a2,a3,a4= st.columns([3,1,1,1])
-a1.image(Image.open('screenshot.png'))
+a1.image('https://jbwilliams1006-code-of-duty-analytics-main-qzjazg.streamlit.app/~/+/media/70ee5b6c64edc2e42347205128108c36202b4c131c8e7c81139551f0.png')
 a1.caption(f"Welcome Joshua")
 a1.text(f'Patients are seeing a 52.6% increase in mental health')
 a2.header(f'Week Overview')
