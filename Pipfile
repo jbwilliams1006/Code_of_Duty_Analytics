@@ -11,6 +11,7 @@ plost = "*"
 streamlit_authenticator = "*"
 google = "*"
 firebase = "*"
+firestore = "*"
 [dev-packages]
 
 [requires]
