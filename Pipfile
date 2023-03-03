@@ -9,6 +9,7 @@ pandas = "*"
 streamlit = "*"
 plost = "*"
 streamlit_authenticator = "*"
+google.cloud = "*"
 [dev-packages]
 
 [requires]
