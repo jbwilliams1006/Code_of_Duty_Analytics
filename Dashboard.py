@@ -188,19 +188,19 @@ if authentication_status:
     with b1:
         st.image(Image.open('Icons/mind.png'))
         st.subheader("Mental Health",)
-        st.line_chart(MentalData,x ='Weeks',y ='Patients')
+        st.line_chart(MentalData,x= "Weeks",y= "Patients")
     with b2:
         st.image(Image.open('Icons/muscle.png'))
         st.subheader("Physical Health")
-        st.line_chart(PhysicalData,x ='Weeks',y ='Patients')
+        st.line_chart(PhysicalData,x= "Weeks",y= "Patients")
     with b3:
         st.image(Image.open('Icons/spiritual.png'))
         st.subheader("Spiritual Health")
-        st.line_chart(SpiritualData,x ='Weeks',y ='Patients')
+        st.line_chart(SpiritualData,x= "Weeks",y= "Patients")
     with b4:
         st.image(Image.open('Icons/crime.png'))
         st.subheader("Crime")
-        st.line_chart(CrimeData,x ='Weeks',y ='Patients')
+        st.line_chart(CrimeData,x= "Weeks",y= "Patients")
 
 
     # """
