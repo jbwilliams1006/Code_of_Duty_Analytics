@@ -67,7 +67,7 @@ for username, password, name in zip(usernames, passwords, names):
 
 #Creation of authentication object
 authenticator = stauth.Authenticate(creds,
-       "analytics_dashboard", "abcdef", cookie_expiry_days = 0)
+       "analytics_dashboard", "abcdef", cookie_expiry_days = 1)
 
 #Returns the specified variables from streamlits' built in login authenticator form
 name, authentication_status, username = authenticator.login("Login", "main")
@@ -188,19 +188,19 @@ if authentication_status:
     with b1:
         st.image(Image.open('Icons/mind.png'))
         st.subheader("Mental Health",)
-        st.line_chart(MentalData)
+        st.line_chart(MentalData,"Weeks","Patients")
     with b2:
         st.image(Image.open('Icons/muscle.png'))
         st.subheader("Physical Health")
-        st.line_chart(PhysicalData)
+        st.line_chart(PhysicalData,"Weeks","Patients")
     with b3:
         st.image(Image.open('Icons/spiritual.png'))
         st.subheader("Spiritual Health")
-        st.line_chart(SpiritualData)
+        st.line_chart(SpiritualData,"Weeks","Patients")
     with b4:
         st.image(Image.open('Icons/crime.png'))
         st.subheader("Crime")
-        st.line_chart(CrimeData)
+        st.line_chart(CrimeData,"Weeks","Patients")
 
 
     # """
@@ -228,7 +228,7 @@ if authentication_status:
         aggregate='median',
         legend=None)
     with c2:
-        st.markdown('### Bar chart')
+        st.markdown('### Pie chart')
         plost.donut_chart(
             data=stocks,
             theta='q2',
