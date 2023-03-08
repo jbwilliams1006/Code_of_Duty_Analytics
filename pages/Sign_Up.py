@@ -29,9 +29,7 @@ db = firestore.Client(credentials=creds, project="care-of-duty-analytics")
 users_ref = db.collection("users")
 preauth_users_ref = db.collection("preauthorized").document("emails")
 preauth_users = preauth_users_ref.get()
-
 preauth_user_emails = preauth_users.to_dict()["email"]
-
 
 
 # #Creation of credentials dictionary

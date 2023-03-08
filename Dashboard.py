@@ -21,7 +21,9 @@ creds = service_account.Credentials.from_service_account_info(key_dict)
 db = firestore.Client(credentials=creds, project="care-of-duty-analytics")
 
 ## reference to the users collection ID
-users_ref = db.collection("users")
+users_ref = db.collection("credentials").document("usernames")
+users = users_ref.get()
+
 
 
 # """
@@ -53,18 +55,23 @@ st.set_page_config(initial_sidebar_state="collapsed",layout="wide")
 
 # DATA BASE CREDS
 
-# #Creation of credentials dictionary
-creds = {"usernames":{}}
+# Creation of credentials dictionary from database
+creds = {"usernames":users.to_dict()}
 
-# get data from database into lists
-usernames = [user.id for user in users_ref.stream()]
-passwords = [user.to_dict()['hash_password'] for user in users_ref.stream()]
-names = [user.to_dict()['name'] for user in users_ref.stream()]
 
-# turn lists into database
-for username, password, name in zip(usernames, passwords, names):
-    user_dict = {"name":name,"password":password}
-    creds["usernames"].update({username:user_dict})
+# creds = {"usernames":{}}
+
+# # get data from database into lists
+# usernames = [user.id for user in users_ref.stream()]
+# passwords = [user.to_dict()['hash_password'] for user in users_ref.stream()]
+# names = [user.to_dict()['name'] for user in users_ref.stream()]
+
+# # turn lists into database
+# for username, password, name in zip(usernames, passwords, names):
+#     user_dict = {"name":name,"password":password}
+#     creds["usernames"].update({username:user_dict})
+
+# print(creds)
 
 #Creation of authentication object
 authenticator = stauth.Authenticate(creds,
