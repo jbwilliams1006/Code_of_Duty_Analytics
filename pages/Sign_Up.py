@@ -18,8 +18,6 @@ st.markdown(
         unsafe_allow_html=True,
     )
 
-st.title("Sign Up")
-
 ########################### GET ACCESS TO THE DATA BASE ###############################
 
 #secure database access
