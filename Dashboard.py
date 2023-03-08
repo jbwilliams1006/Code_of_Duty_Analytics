@@ -71,9 +71,12 @@ authenticator = stauth.Authenticate(creds,
 
 #Returns the specified variables from streamlits' built in login authenticator form
 name, authentication_status, username = authenticator.login("Login", "main")
+# authenticator.register_user("main")
+
 
 if authentication_status == False:
     st.error("Username/password  is incorrect")
+    st.button('Sign Up')
         #Hides sidebar on Login Page
     st.markdown(
         """
@@ -88,6 +91,7 @@ if authentication_status == False:
     
 if authentication_status == None:
     st.warning("Please enter your username and password")
+    st.button('Sign Up')
         #Hides sidebar on Login Page
     st.markdown(
         """
@@ -184,7 +188,8 @@ if authentication_status:
                                                         
     
     # """
-    b1, b2, b3, b4 = st.columns([2,2,2,2])
+    # b1, b2, b3, b4 = st.columns([2,2,2,2])
+    b1, b2, b3, b4 = st.columns(4)
     with b1:
         st.image(Image.open('Icons/mind.png'))
         st.subheader("Mental Health",)
