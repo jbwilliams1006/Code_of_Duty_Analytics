@@ -67,7 +67,7 @@ for username, password, name in zip(usernames, passwords, names):
 
 #Creation of authentication object
 authenticator = stauth.Authenticate(creds,
-       "analytics_dashboard", "abcdef", cookie_expiry_days = 0)
+       "analytics_dashboard", "abcdef", cookie_expiry_days = 1)
 
 #Returns the specified variables from streamlits' built in login authenticator form
 name, authentication_status, username = authenticator.login("Login", "main")
@@ -233,7 +233,7 @@ if authentication_status:
         aggregate='median',
         legend=None)
     with c2:
-        st.markdown('### Bar chart')
+        st.markdown('### Pie chart')
         plost.donut_chart(
             data=stocks,
             theta='q2',
