@@ -13,6 +13,7 @@ from google.cloud import firestore
 from firebase_admin import credentials
 import json
 from google.oauth2 import service_account
+from page_navigation import nav_page
 
 #secure database access
 key_dict = json.loads(st.secrets["textkey"])
@@ -76,7 +77,8 @@ name, authentication_status, username = authenticator.login("Login", "main")
 
 if authentication_status == False:
     st.error("Username/password  is incorrect")
-    st.button('Sign Up')
+    if st.button('Sign Up'):
+        nav_page("Sign_Up")
         #Hides sidebar on Login Page
     st.markdown(
         """
@@ -91,7 +93,8 @@ if authentication_status == False:
     
 if authentication_status == None:
     st.warning("Please enter your username and password")
-    st.button('Sign Up')
+    if st.button('Sign Up'):
+        nav_page("Sign_Up")
         #Hides sidebar on Login Page
     st.markdown(
         """
