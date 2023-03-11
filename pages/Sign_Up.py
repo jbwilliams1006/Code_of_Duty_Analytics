@@ -57,7 +57,7 @@ try:
     if authenticator.register_user('Register user', preauthorization=False):
         st.success('User registered successfully')
         db.collection("credentials").document("usernames").set(
-            creds['usernames']
+            creds['usernames'], merge = True
         )
 except Exception as e:
     st.error(e)
