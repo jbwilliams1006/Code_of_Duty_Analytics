@@ -2,7 +2,7 @@ streamlit==1.19.0
 pandas
 plost
 numpy
-PIL
+pillow
 google-cloud-firestore
 google-auth-oauthlib
 firebase_admin
