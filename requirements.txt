@@ -9,3 +9,4 @@ firebase_admin
 firestore
 json
 streamlit-authenticator
+altair

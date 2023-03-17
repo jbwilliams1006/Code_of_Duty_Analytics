@@ -1,6 +1,7 @@
 #For authentication
 import pickle
 from pathlib import Path
+import altair as alt
 
 import streamlit as st
 import streamlit_authenticator as stauth
@@ -131,7 +132,7 @@ if authentication_status:
     PhysicalData = np.random.randn(10, 1)
     SpiritualData = np.random.randn(10, 1)
     CrimeData = np.random.randn(10, 1)
-    seattle_weather = pd.read_csv('Data/weather.csv', parse_dates=['date'])
+    heatmap = pd.read_csv('Data/weather.csv', parse_dates=['date'])
     stocks = pd.read_csv('Data/stocks.csv')
 
 
@@ -234,7 +235,7 @@ if authentication_status:
     with c1:
         st.markdown('### Heatmap')
         plost.time_hist(
-        data=seattle_weather,
+        data=heatmap,
         date='date',
         x_unit='week',
         y_unit='day',
