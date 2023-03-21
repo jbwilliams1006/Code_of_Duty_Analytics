@@ -27,7 +27,7 @@ def register_credentials(username: str, name: str, fname: str, lname: str, passw
         credentials['usernames'][username] = {'name': name, 'fname': fname, 'lname': lname, 'militaryid': militaryID,
             'password': Hasher([password]).generate()[0], 'email': email}
         if preauthorization:
-            preauthorized['emails'].remove(email)
+            preauthorized['emails']['email'].remove(email)
 
         return credentials, preauthorized
 
@@ -47,13 +47,13 @@ class RegisterError(Exception):
 
 def register_user(form_name: str, location: str='main', preauthorization=True, credentials: list=[], preauthorized: list=[]) -> bool:
         """
-        Creates a password reset widget.
+        Creates a sign-up widget.
         Parameters
         ----------
         form_name: str
             The rendered name of the password reset form.
         location: str
-            The location of the password reset form i.e. main or sidebar.
+            The location of the sign-up form i.e. main or sidebar.
         preauthorization: bool
             The preauthorization requirement, True: user must be preauthorized to register, 
             False: any user can register.
@@ -88,7 +88,7 @@ def register_user(form_name: str, location: str='main', preauthorization=True, c
                 if new_username not in credentials['usernames']:
                     if new_password == new_password_repeat:
                         if preauthorization:
-                            if new_email in preauthorized['emails']:
+                            if new_email in preauthorized['emails']['email']:
                                 credentials, preauthorized = register_credentials(new_username, new_name, new_fname, new_lname, new_password, 
                                                                                   new_email, new_militaryID, preauthorization, credentials, preauthorized)
                                 return True

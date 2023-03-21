@@ -39,6 +39,7 @@ pre_auth = pre_auth_ref.get()
 
 # Creation of preauthorized emails
 auth_emails = {"emails": pre_auth.to_dict()}
+print(auth_emails)
 
 # ## reference to the users collection ID
 # users_ref = db.collection("users")
@@ -66,7 +67,7 @@ auth_emails = {"emails": pre_auth.to_dict()}
 #######################################################################################
 
 try:
-    if register_user('Register user', preauthorization=False, credentials=creds, preauthorized=auth_emails):
+    if register_user('Register user', preauthorization=True, credentials=creds, preauthorized=auth_emails):
         st.success('User registered successfully')
         db.collection("credentials").document("usernames").set(
             creds['usernames'], merge = True

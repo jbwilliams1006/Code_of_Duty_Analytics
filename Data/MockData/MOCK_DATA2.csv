@@ -1,4 +1,4 @@
-employee_id,date ,age,gender,permanent_party,relationship_status,alcohol_related_offense,stress,grief,anxiety,PTSD,depression,alcohol_substance_use
+employee_id,date,age,gender,permanent_party,relationship_status,alcohol_related_offense,stress,grief,anxiety,PTSD,depression,alcohol_substance_use
 77-0554508,3/7/2022,31,M,true,false,false,Never,Yearly,Once,Never,Never,Weekly
 75-2388742,9/24/2022,31,F,true,false,true,Monthly,Daily,Often,Seldom,Often,Daily
 33-0945166,8/9/2022,28,M,false,false,false,Yearly,Often,Daily,Once,Weekly,Once
