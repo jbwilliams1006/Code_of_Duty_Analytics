@@ -1,12 +1,9 @@
 import streamlit as st
 import pandas as pd
-import csv, sys
-import rich
+import csv
 import datetime as dt
 import numpy as np
 import pandas as pd
-import csv, sys
-import rich
 import datetime
 import matplotlib.pyplot as plt
 import numpy as np
@@ -51,25 +48,30 @@ def load_data3(nrows):
 
 
 data_load_state = st.text('Loading data...')
-data1 = load_data1(1000)
-data2 = load_data2(1000)
-data3 = load_data3(1000)
+data1 = load_data1(100)
+data2 = load_data2(100)
+data3 = load_data3(100)
 
-data2.sort_values(by = 'Month', inplace = True)
-PTSD_data = data2.groupby(['Month','PTSD']).apply(len).reindex(fill_value=0).to_frame('count')
-print(PTSD_data)
-mylabels = ['Daily', 'Monthly', 'Never', 'Often', 'Once', 'Seldom', 'Weekly', 'Yearly']  ##Declare and build an array of labels
-mylabels.append(mylabels)
-print(mylabels)
-PTSD_data = PTSD_data.unstack()
-fig_, ax = plt.subplots(figsize=(14,8))
-plt.plot(PTSD_data, marker='o', markersize=4, linewidth=2 )
-ax.set_ylim(0,25)
-ax.set_xlim(0, 12)
-plt.xlabel("by Month")
-plt.ylabel("PTSD frequency")
-plt.title("PTSD frequency by Date")
-plt.legend(labels = mylabels, bbox_to_anchor=(.85, 1.0), loc='upper left')
-st.write(fig_)
+def lineGraph():
+    data2.sort_values(by = 'Month', inplace = True)
+    PTSD_data = data2.groupby(['Month','PTSD']).apply(len).reindex(fill_value=0).to_frame('count')
+    print(PTSD_data)
+    mylabels = ['Daily', 'Monthly', 'Never', 'Often', 'Once', 'Seldom', 'Weekly', 'Yearly']  ##Declare and build an array of labels
+    mylabels.append(mylabels)
+    print(mylabels)
+    PTSD_data = PTSD_data.unstack()
+    fig, ax = plt.subplots(figsize=(14,8))
+    plt.plot(PTSD_data, marker='o', markersize=4, linewidth=2 )
+    ax.set_ylim(0,25)
+    ax.set_xlim(0, 12)
+    plt.xlabel("by Month")
+    plt.ylabel("PTSD frequency")
+    plt.title("PTSD frequency by Date")
+    plt.legend(labels = mylabels, bbox_to_anchor=(.85, 1.0), loc='upper left')
+    
+    return st.write(fig)
+
+lineGraph()
+
     
 
