@@ -64,7 +64,7 @@ def lineGraph():
     plt.plot(PTSD_data, marker='o', markersize=4, linewidth=2 )
     ax.set_ylim(0,25)
     ax.set_xlim(0, 12)
-    plt.xlabel("by Month")
+    plt.xlabel("Months in 2022")
     plt.ylabel("PTSD frequency")
     plt.title("PTSD frequency by Date")
     plt.legend(labels = mylabels, bbox_to_anchor=(.85, 1.0), loc='upper left')
