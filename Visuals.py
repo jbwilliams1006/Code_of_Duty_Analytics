@@ -7,6 +7,10 @@ import pandas as pd
 import datetime
 import matplotlib.pyplot as plt
 import numpy as np
+import plotly.express as px
+import plotly.io as pio
+
+
 @st.cache_data
 def load_data1(nrows):
     data1 = pd.read_csv('Data/MockData/MOCK_DATA.csv',nrows=nrows,parse_dates=['date'])
@@ -26,7 +30,7 @@ def load_data2(nrows):
     # df = set up the data in pandas Data Frame format
     df2 = pd.DataFrame(data2)
     df2.info()
-    df2['date'] = pd.to_datetime(df2['date'], format='%Y-%m-%d')
+    df2['date'] = pd.to_datetime(df2['date'], format='YYYY-mm-dd')
     df2['Month'] = pd.to_datetime(df2['date']).dt.month
     # group by year
     df2['Year'] = pd.to_datetime(df2['date']).dt.year
@@ -44,9 +48,6 @@ def load_data3(nrows):
     df3['Year'] = pd.to_datetime(df3['date']).dt.year
     df3['Week'] = pd.to_datetime(df3['date']).dt.isocalendar().week
     return df3
-# change the path to the location of your file
-# read in the csv file and set to data
-# data = pd.read_csv('/Users/lesliecook/Desktop/CODA/mockdata/MOCK_DATA.csv')
 
 
 data_load_state = st.text('Loading data...')
@@ -54,68 +55,39 @@ data1 = load_data1(100)
 data2 = load_data2(100)
 data3 = load_data3(100)
 
-def lineGraph2021():
-    data1.sort_values(by = 'Week')
-    stress_data = data1.groupby(['Week','stress']).apply(len).reindex(fill_value=0).to_frame('count')
-    print(stress_data)
-    mylabels = ['Daily', 'Monthly', 'Never', 'Often', 'Once', 'Seldom', 'Weekly', 'Yearly'] 
-    mylabels.append(mylabels)
-    print(mylabels)
-    stress_data = stress_data.unstack()
-    fig, ax = plt.subplots(figsize=(12,6))
-    plt.plot(stress_data, marker='o', markersize=4, linewidth=2 )
-    ax.set_ylim(0,12)
-    ax.set_xlim(1, 12)
-    plt.xlabel("Weekss in 2021")
-    plt.ylabel("stress frequency")
-    plt.title("Stress frequency reported per Month in 2022")
-    plt.legend(labels = mylabels, bbox_to_anchor=(.85, 1.0), loc='upper left')
-    
-    return st.write(fig)
+st.write(data1)
 
-lineGraph2021()
+st.title("PTSD Reports")
 
+def barGraph():
+    PTSD_data = data1.groupby(['PTSD']).apply(len).to_frame('count').reset_index()
+    plot = px.bar(PTSD_data, x = 'PTSD', y = 'count', color  = 'PTSD')
+    # Remove colorbar:
+    plot.update_coloraxes(showscale=False)
+    # Update plotly style:
+    plot.update_layout(template='plotly_white')
+    return st.plotly_chart(plot)
+barGraph()
 
-def lineGraph2022():
+def Scatter():
     data2.sort_values(by = 'Month')
-    PTSD_data = data2.groupby(['Month','PTSD']).apply(len).reindex(fill_value=0).to_frame('count')
-    print(PTSD_data)
-    mylabels = ['Daily', 'Monthly', 'Never', 'Often', 'Once', 'Seldom', 'Weekly', 'Yearly']  
-    print(mylabels)
-    PTSD_data = PTSD_data.unstack()
-    fig, ax = plt.subplots(figsize=(12,6))
-    plt.plot(PTSD_data, marker='o', markersize=4, linewidth=2 )
-    ax.set_ylim(0,12)
-    ax.set_xlim(1, 12)
-    plt.xlabel("Months in 2022")
-    plt.ylabel("PTSD frequency")
-    plt.title("PTSD frequency reported per Month in 2022")
-    plt.legend(labels = mylabels, bbox_to_anchor=(.85, 1.0), loc='upper left')
-    
-    return st.write(fig)
+    PTSD_data = data2.groupby(['Month','PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+    # print(PTSD_data)
+    plot = px.scatter(PTSD_data, 'Month',  'count',
+                    color='PTSD',
+                    size='count', 
+                    hover_data=['count'])
+    return st.plotly_chart(plot)
 
-lineGraph2022()
+Scatter()
 
-def lineGraph2023():
+def lineGraph():
     data2.sort_values(by = 'Month')
-    alcohol_data = data2.groupby(['Month','alcohol_use']).apply(len).reindex(fill_value=0).to_frame('count')
-    print(alcohol_data)
-    mylabels = ['Daily', 'Monthly', 'Never', 'Often', 'Once', 'Seldom', 'Weekly', 'Yearly']  ##Declare and build an array of labels
-    mylabels.append(mylabels)
-    print(mylabels)
-    alcohol_data = alcohol_data.unstack()
-    fig, ax = plt.subplots(figsize=(12,6))
-    plt.plot(alcohol_data, marker='o', markersize=4, linewidth=2 )
-    ax.set_ylim(0,12)
-    ax.set_xlim(1, 12)
-    plt.xlabel("Months in 2023")
-    plt.ylabel("alcohol_use frequency")
-    plt.title("Acohol Use frequency reported per Month in 2023")
-    plt.legend(labels = mylabels, bbox_to_anchor=(.85, 1.0), loc='upper left')
-    
-    return st.write(fig)
+    PTSD_data = data3.groupby(['Month','PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+    plot = px.line(PTSD_data, 'Month',  'count',
+                    color='PTSD',
+                    hover_data=['count'])
+    return st.plotly_chart(plot)
 
-lineGraph2023()
-
-    
+lineGraph()   
 
