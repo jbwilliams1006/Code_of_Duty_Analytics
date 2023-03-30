@@ -36,7 +36,7 @@ def load_data3(nrows):
     data3 = pd.read_csv('Data/MockData/MOCK_DATA3.csv',nrows=nrows)
     # df = set up the data in pandas Data Frame format
     df3 = pd.DataFrame(data3)
-    df3['date'] = df3['date'].dt.strftime('%Y-%d-%m')
+    df3['date'] = df3['date'].dt.strftime('%Y-%m-%d')
     df3['Month'] = pd.to_datetime(df3['date']).dt.month
     # group by year
     df3['Year'] = pd.to_datetime(df3['date']).dt.year
