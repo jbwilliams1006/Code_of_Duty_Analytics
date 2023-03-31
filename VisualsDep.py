@@ -55,11 +55,11 @@ class VisualsDep:
         depression_data = data3.drop(data3[data3['depression'] == "Yearly"].index, inplace = True)
         depression_data = data3.drop(data3[data3['depression'] == "Seldom"].index, inplace = True)
         depression_data = data3.groupby(['Month','depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        print(depression_data)
+        # print(depression_data)
         plot = px.line(depression_data, x='Month',  y='count', color='depression', hover_data=['count'], labels='depression',title = 'High Risk Alchol Use Reported per Month in 2023')
         plot.update_traces(texttemplate="%{y}")
         
-        plot.update_layout({'width' : 900, 'height' :600,'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
+        plot.update_layout({'width' : 740, 'height' :320,'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot)
     
     def pieChart():

@@ -55,11 +55,11 @@ class VisualsGrief:
         grief_data = data3.drop(data3[data3['grief'] == "Yearly"].index, inplace = True)
         grief_data = data3.drop(data3[data3['grief'] == "Seldom"].index, inplace = True)
         grief_data = data3.groupby(['Month','grief']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        print(grief_data)
+        # print(grief_data)
         plot = px.line(grief_data, x='Month',  y='count', color='grief', hover_data=['count'], labels='grief',title = 'High Risk Alchol Use Reported per Month in 2023')
         plot.update_traces(texttemplate="%{y}")
         
-        plot.update_layout({'width' : 900, 'height' :600,'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
+        plot.update_layout({'width' : 700, 'height' :320,'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot)
     
     def pieChart():
@@ -69,7 +69,7 @@ class VisualsGrief:
         grief_data = data1.groupby(['grief']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         plot = px.pie(grief_data, values='count', names='grief', hover_data='count', labels = 'grief', title = 'Frequency of grief Reported in 2021')
         plot.update_traces(textposition='inside', textinfo='label + percent')
-        plot.update_layout({ 'width' : 320, 'height' :400,'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
+        plot.update_layout({ 'width' : 740, 'height' :400,'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot)
     def Scatter():
         data2 = VisualsGrief.load_data2(1000)

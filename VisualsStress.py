@@ -55,11 +55,11 @@ class VisualsStress:
         stress_data = data3.drop(data3[data3['stress'] == "Yearly"].index, inplace = True)
         stress_data = data3.drop(data3[data3['stress'] == "Seldom"].index, inplace = True)
         stress_data = data3.groupby(['Month','stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        print(stress_data)
+        # print(stress_data)
         plot = px.line(stress_data, x='Month',  y='count', color='stress', hover_data=['count'], labels='stress',title = 'High Risk Alchol Use Reported per Month in 2023')
         plot.update_traces(texttemplate="%{y}")
         
-        plot.update_layout({'width' : 900, 'height' :600,'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
+        plot.update_layout({'width' : 740, 'height' :320,'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot)
     
     def pieChart():

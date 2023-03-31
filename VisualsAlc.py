@@ -55,11 +55,11 @@ class VisualsAlc:
         alc_data = data3.drop(data3[data3['alcohol_use'] == "Yearly"].index, inplace = True)
         alc_data = data3.drop(data3[data3['alcohol_use'] == "Seldom"].index, inplace = True)
         alc_data = data3.groupby(['Month','alcohol_use']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        print(alc_data)
+        # print(alc_data)
         plot = px.line(alc_data, x='Month',  y='count', color='alcohol_use', hover_data=['count'], labels='alcohol_use',title = 'High Risk Alchol Use Reported per Month in 2023')
         plot.update_traces(texttemplate="%{y}")
         
-        plot.update_layout({'width' : 900, 'height' :600,'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
+        plot.update_layout({'width' : 740, 'height' :320,'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot)
     
     def pieChart():
