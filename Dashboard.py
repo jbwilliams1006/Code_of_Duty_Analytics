@@ -15,13 +15,16 @@ from firebase_admin import credentials
 import json
 from google.oauth2 import service_account
 from page_navigation import nav_page
+from dbQueries import *
 
 #secure database access
 key_dict = json.loads(st.secrets["textkey"])
 creds = service_account.Credentials.from_service_account_info(key_dict)
 db = firestore.Client(credentials=creds, project="care-of-duty-analytics")
 
-## reference to the users collection ID
+
+
+# reference to the users collection ID
 users_ref = db.collection("credentials").document("usernames")
 users = users_ref.get()
 
