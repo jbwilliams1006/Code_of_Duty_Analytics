@@ -917,6 +917,14 @@
             "index": "pypi",
             "version": "==0.2.5"
         },
+        "plotly": {
+            "hashes": [
+                "sha256:257f530ffd73754bd008454826905657b329053364597479bb9774437a396837",
+                "sha256:7c7b613af8def74f48b1298f08a49086bb9792104119feb4a137f737533021e1"
+            ],
+            "index": "pypi",
+            "version": "==4.9.0"
+        },
         "proto-plus": {
             "hashes": [
                 "sha256:0e8cda3d5a634d9895b75c573c9352c16486cb75deb0e078b5fda34db4243165",
