@@ -923,7 +923,7 @@
                 "sha256:7c7b613af8def74f48b1298f08a49086bb9792104119feb4a137f737533021e1"
             ],
             "index": "pypi",
-            "version": "==4.9.0"
+            "version": "==5.14.0"
         },
         "proto-plus": {
             "hashes": [

@@ -1,9 +1,6 @@
 import streamlit as st
 import pandas as pd
 import datetime as dt
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
 import plotly.express as px
 import plotly.io as pio
 
@@ -54,47 +51,46 @@ class VisualsPTSD:
         # data3['Month'] = dict({1:'Jan', 2:'Feb', 3:'Mar', 4:'Apr', 5:'May', 6:'Jun', 7:'Jul', 8:'Aug', 9:'Sep', 10:'Oct', 11:'Nov', 12:'Dec'})
         # df.drop(df[df['Fee'] >= 24000].index, inplace = True)
         # PTSD_data = data3.drop(data3[data3['PTSD'] != "Daily" and data3['PTSD'] != "Often" and data3['PTSD'] != "Weekly"].index, inplace=True)
-        PTSD_data = data3.drop(data3[data3['PTSD'] == "Never"].index, inplace = True)
-        # PTSD_data = data3.drop(data3[data3['PTSD'] == "Once"].index, inplace = True,)
-        PTSD_data = data3.drop(data3[data3['PTSD'] == "Yearly"].index, inplace = True)
-        PTSD_data = data3.drop(data3[data3['PTSD'] == "Seldom"].index, inplace = True)
+        # PTSD_data = data3.drop(data3[data3['PTSD'] == "Never"].index, inplace = True)
+        # # PTSD_data = data3.drop(data3[data3['PTSD'] == "Once"].index, inplace = True,)
+        # PTSD_data = data3.drop(data3[data3['PTSD'] == "Yearly"].index, inplace = True)
+        # PTSD_data = data3.drop(data3[data3['PTSD'] == "Seldom"].index, inplace = True)
         PTSD_data = data3.groupby(['Month','PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         # print(PTSD_data)
         plot = px.line(PTSD_data, x='Month',  y='count', color='PTSD', hover_data=['count'], labels='PTSD',title = 'High Risk Alchol Use Reported per Month in 2023')
         plot.update_traces(texttemplate="%{y}")
-        
-        plot.update_layout({'width' : 740, 'height' :320,'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        return st.plotly_chart(plot)
+        plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
+        return st.plotly_chart(plot, use_container_width=True)
     
     def pieChart():
-        data1 = VisualsPTSD.load_data1(1000)
-        PTSD_data = data1.drop(data1[data1['PTSD'] == "Never"].index, inplace = True)
-        PTSD_data = data1.drop(data1[data1['PTSD'] == "Yearly"].index, inplace = True)
-        PTSD_data = data1.groupby(['PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        plot = px.pie(PTSD_data, values='count', names='PTSD', hover_data='count', labels = 'PTSD', title = 'Frequency of PTSD Reported in 2021')
+        data2 = VisualsPTSD.load_data2(1000)
+        # PTSD_data = data2.drop(data2[data2['PTSD'] == "Never"].index, inplace = True)
+        # PTSD_data = data2.drop(data2[data2['PTSD'] == "Yearly"].index, inplace = True)
+        PTSD_data = data2.groupby(['PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        plot = px.pie(PTSD_data, values='count', names='PTSD', hover_data='count', labels = 'PTSD', title = 'Frequency of PTSD Reported in 2022')
         plot.update_traces(textposition='inside', textinfo='label + percent')
-        plot.update_layout({ 'width' : 320, 'height' :400,'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        return st.plotly_chart(plot)
+        plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
+        return st.plotly_chart(plot, use_container_width=True)
     def Scatter():
         data2 = VisualsPTSD.load_data2(1000)
         data2.sort_values(by = 'Month')
-        PTSD_data = data2.drop(data2[data2['PTSD'] == "Never"].index, inplace = True)
-        PTSD_data = data2.drop(data2[data2['PTSD'] == "Yearly"].index, inplace = True)
-        PTSD_data = data2.drop(data2[data2['PTSD'] == "Once"].index, inplace = True)
+        # PTSD_data = data2.drop(data2[data2['PTSD'] == "Never"].index, inplace = True)
+        # PTSD_data = data2.drop(data2[data2['PTSD'] == "Yearly"].index, inplace = True)
+        # PTSD_data = data2.drop(data2[data2['PTSD'] == "Once"].index, inplace = True)
         PTSD_data = data2.groupby(['Month','PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         #print(PTSD_data)
         plot = px.scatter(PTSD_data, 'Month',  'count', color='PTSD', size = 'count', hover_data=['count'],title = 'Frequency of PTSD Reported per Month in 2022',render_mode = "auto")
-        
-        # plot.update_traces(textposition='top center')
-        return st.plotly_chart(plot)
+        plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
+        return st.plotly_chart(plot, use_container_width=True)
 
     def barGraph():
         data1 = VisualsPTSD.load_data1(1000)
-        PTSD_data = data1.drop(data1[data1['PTSD'] == "Never"].index, inplace = True)
+        # PTSD_data = data1.drop(data1[data1['PTSD'] == "Never"].index, inplace = True)
         PTSD_data = data1.groupby(['PTSD']).apply(len).to_frame('count').reset_index()
         plot = px.bar(PTSD_data, x = 'PTSD', y = 'count', color  = 'PTSD', labels='PTSD',title = 'Frequency of PTSD Reported in 2021',text_auto=True)
         plot.update_coloraxes(showscale=True)
-        return st.plotly_chart(plot)
+        plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
+        return st.plotly_chart(plot, use_container_width=True)
     
 def getGraphs():
         VisualsPTSD.barGraph()
@@ -103,7 +99,7 @@ def getGraphs():
         VisualsPTSD.pieChart()
             
 
-if __name__=='__main__':
-    st.title("PTSD Reports")
-    data_load_state = st.text('Loading data...')
-    getGraphs()
+# if __name__=='__main__':
+#     st.title("PTSD Reports")
+#     data_load_state = st.text('Loading data...')
+#     getGraphs()

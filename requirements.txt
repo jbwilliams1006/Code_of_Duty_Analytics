@@ -10,3 +10,4 @@ firestore
 json
 streamlit-authenticator
 altair
+plotly

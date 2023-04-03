@@ -19,6 +19,10 @@ from VisualsPTSD import VisualsPTSD
 from VisualsAlc import VisualsAlc
 from VisualsDep import VisualsDep
 from VisualsStress import VisualsStress
+from VisualsGrief import VisualsGrief
+from VisualsAnx import VisualsAnx
+from VisCounsel import VisCounsel
+from VisCourses import VisCourses
 
 from dbQueries import *
 
@@ -45,8 +49,8 @@ users = users_ref.get()
 #                            ( ( __))                                            ( ( __)) 
 
 # """
-st.set_page_config(initial_sidebar_state="collapsed",layout="wide")
-
+Logo = "Icons/CODA_logo.png"
+st.set_page_config(page_title = "Care of Duty",page_icon=Logo, initial_sidebar_state="collapsed",layout="wide")
 
 
 # """
@@ -207,23 +211,32 @@ if authentication_status:
     
     # """
     # b1, b2, b3, b4 = st.columns([2,2,2,2])
-    b1, b2, b3, b4 = st.columns(4)
+    b1, b2, b3 = st.columns(3)
     with b1:
         st.image(Image.open('Icons/mind.png'))
-        st.subheader("Mental Health",)
-        st.line_chart(MentalData)
+        VisCourses.angerLine()
+        # st.subheader("Mental Health",)
+        # st.line_chart(MentalData)
+        
     with b2:
-        st.image(Image.open('Icons/muscle.png'))
-        st.subheader("Physical Health")
-        st.line_chart(PhysicalData)
-    with b3:
         st.image(Image.open('Icons/spiritual.png'))
-        st.subheader("Spiritual Health")
-        st.line_chart(SpiritualData)
-    with b4:
+        # st.subheader("Spiritual Health")
+        VisCounsel.spritualLine()
+        # st.image(Image.open('Icons/muscle.png'))
+        # st.subheader("Physical Health")
+        # st.line_chart(PhysicalData)
+    with b3:
         st.image(Image.open('Icons/crime.png'))
-        st.subheader("Crime")
-        st.line_chart(CrimeData)
+        VisualsAlc.offenseLine()
+        # st.image(Image.open('Icons/spiritual.png'))
+        # # st.subheader("Spiritual Health")
+        # VisCounsel.spritualLine()
+    # with b4:
+    #     st.image(Image.open('Icons/crime.png'))
+    #     st.subheader("Crime")
+    #     VisualsAlc.offenseLine()
+    #     # st.line_chart(CrimeData)
+        
 
 
     # """
@@ -241,7 +254,7 @@ if authentication_status:
     # Row C
     c1, c2 = st.columns((7,3))
     with c1:
-        st.markdown('### LineGraph')
+        # st.markdown('### LineGraph')
         VisualsAlc.lineGraph()
         # plost.time_hist(
         # data=heatmap,
@@ -252,9 +265,32 @@ if authentication_status:
         # aggregate='median',
         # legend=None)
     with c2:
-        st.markdown('### Pie chart')
-        VisualsPTSD.pieChart()
+        # st.markdown('### Pie chart')
+        VisualsStress.pieChart()
         # plost.donut_chart(
         #     data=stocks,
         #     theta='q2',
         #     color='company')
+        
+          # """
+    
+    #              _______                           ______  
+    #     _  _    |_   __ \                        .' ___  | 
+    #   _| || |_    | |__) |   .--.   _   _   __  / .'   \_| 
+    #  |_| || |_|   |  __ /  / .'`\ \[ \ [ \ [  ] | |        
+    #  |_| || |_|  _| |  \ \_| \__. | \ \/\ \/ /  \ `.___.'\ D
+    #    |_||_|   |____| |___|'.__.'   \__/\__/    `.____ .' 
+                                                        
+    
+    # """
+
+    # Row D
+    d1, d2 = st.columns((3,7))
+    with d1:
+        # st.markdown('### LineGraph')
+        VisualsAnx.pieChart()
+      
+    with d2:
+        # st.markdown('### ')
+        VisualsDep.Scatter()
+       

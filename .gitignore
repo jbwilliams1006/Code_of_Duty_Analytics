@@ -1,3 +1,3 @@
 .streamlit/secrets.toml
 firestore-key.json
-Visuals.cpython-311.pyc
+*.pyc

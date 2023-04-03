@@ -93,4 +93,4 @@ def date_range_query(start, end):
     return data_list
 
 
-pprint(date_range_query('2021-12-05', '2022-01-05'))
+# pprint(date_range_query('2021-12-05', '2022-01-05'))

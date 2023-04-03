@@ -1,7 +1,7 @@
 /* Move block container higher */
 
 div.block-container.css-18e3th9.egzxvld2 {
-    margin-top: -5em;
+    margin-top: 1em;
 }
 
 
@@ -9,7 +9,7 @@ div.block-container.css-18e3th9.egzxvld2 {
 
 img {
     display: block;
-    margin-top: 2.5em;
+    margin-top: 2em;
     height: 55px !important;
     width: auto;
     max-width: 70px !important;
@@ -46,8 +46,8 @@ div.css-1ht1j8u.e16fv1kl0 {
 /* Css for image */
 
 img[src="https://raw.githubusercontent.com/jbwilliams1006/Code_of_Duty_Analytics/e94586754e72914891ca847d313eab72defc092c/Icons/screenshot.png"] {
-    margin-left: 230px;
-    margin-top: 70px;
+    margin-left: 180px;
+    margin-top: 40px;
 }
 
 
@@ -58,7 +58,7 @@ div.css-thv974.e16nr0p34 {
     font-size: xx-large;
     color: #000000;
     padding: 3% 3% 3% 20%;
-    border-radius: 10px;
+    border-radius: 5px;
     height: 35px;
     margin-left: 1rem;
 }
@@ -71,10 +71,10 @@ div.css-183lzff.eyqtai90 {
     font-size: large;
     color: #000000;
     padding: 3% 3% 3% 3%;
-    border-radius: 10px;
+    border-radius: 5px;
     position: relative;
     max-width: 450px !important;
-    margin-left: 4rem;
+    margin-left: 1rem;
 }
 
 
@@ -83,7 +83,7 @@ div.css-183lzff.eyqtai90 {
 div.css-ml2xh6.e1tzin5v2 {
     background-color: #EEEEEE;
     padding: 3% 3% 3% 3%;
-    border-radius: 10px;
+    border-radius: 5px;
     width: calc(50% - 1rem);
     flex-basis: calc(50% - 1rem);
 }
@@ -105,9 +105,10 @@ div.css-ml2xh6.e1tzin5v2 {
 /* Box behind charts */
 
 div.css-12w0qpk.e1tzin5v2 {
+    display: block;
     background-color: #eeeeee;
     padding: 3% 3% 3% 3%;
-    border-radius: 10px;
+    border-radius: 1px;
 }
 
 
@@ -121,7 +122,7 @@ div.css-1v0mbdj.etr89bj1 {
 /* For spacing */
 
 div.css-pmvzy7.e1tzin5v0 {
-    bottom: 30px;
+    bottom: 1px;
 }
 
 
@@ -143,7 +144,7 @@ div.css-pmvzy7.e1tzin5v0 {
 div.css-1bcsrn5.e1tzin5v2 {
     background-color: #eeeeee;
     padding: 3% 3% 3% 3%;
-    border-radius: 10px;
+    border-radius: 1px;
 }
 
 
@@ -152,7 +153,7 @@ div.css-1bcsrn5.e1tzin5v2 {
 div.css-1bzkvni.e1tzin5v2 {
     background-color: #eeeeee;
     padding: 3% 3% 3% 3%;
-    border-radius: 10px;
+    border-radius: 1px;
 }
 
 
