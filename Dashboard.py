@@ -15,6 +15,11 @@ from firebase_admin import credentials
 import json
 from google.oauth2 import service_account
 from page_navigation import nav_page
+from VisualsPTSD import VisualsPTSD
+from VisualsAlc import VisualsAlc
+from VisualsDep import VisualsDep
+from VisualsStress import VisualsStress
+
 from dbQueries import *
 
 #secure database access
@@ -236,18 +241,20 @@ if authentication_status:
     # Row C
     c1, c2 = st.columns((7,3))
     with c1:
-        st.markdown('### Heatmap')
-        plost.time_hist(
-        data=heatmap,
-        date='date',
-        x_unit='week',
-        y_unit='day',
-        color='temp_max',
-        aggregate='median',
-        legend=None)
+        st.markdown('### LineGraph')
+        VisualsAlc.lineGraph()
+        # plost.time_hist(
+        # data=heatmap,
+        # date='date',
+        # x_unit='week',
+        # y_unit='day',
+        # color='temp_max',
+        # aggregate='median',
+        # legend=None)
     with c2:
         st.markdown('### Pie chart')
-        plost.donut_chart(
-            data=stocks,
-            theta='q2',
-            color='company')
+        VisualsPTSD.pieChart()
+        # plost.donut_chart(
+        #     data=stocks,
+        #     theta='q2',
+        #     color='company')
