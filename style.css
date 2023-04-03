@@ -9,7 +9,7 @@ div.block-container.css-18e3th9.egzxvld2 {
 
 img {
     display: block;
-    margin-top: 2em;
+    margin-top: 1em;
     height: 55px !important;
     width: auto;
     max-width: 70px !important;
@@ -46,8 +46,8 @@ div.css-1ht1j8u.e16fv1kl0 {
 /* Css for image */
 
 img[src="https://raw.githubusercontent.com/jbwilliams1006/Code_of_Duty_Analytics/e94586754e72914891ca847d313eab72defc092c/Icons/screenshot.png"] {
-    margin-left: 180px;
-    margin-top: 40px;
+    margin-left: 170px;
+    margin-top: 20px;
 }
 
 
@@ -59,8 +59,8 @@ div.css-thv974.e16nr0p34 {
     color: #000000;
     padding: 3% 3% 3% 20%;
     border-radius: 1px;
-    height: 35px;
-    margin-left: 1rem;
+    height: 40px;
+    margin-left: 0rem;
 }
 
 

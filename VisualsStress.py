@@ -96,7 +96,7 @@ def getGraphs():
         VisualsStress.pieChart()
             
 
-# if __name__=='__main__':
-#     st.title("Stress Reports")
-#     data_load_state = st.text('Loading data...')
-#     getGraphs()
+if __name__=='__main__':
+    st.title("Stress Reports")
+    data_load_state = st.text('Loading data...')
+    getGraphs()
