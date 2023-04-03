@@ -49,8 +49,9 @@ class VisCourses:
         data = data2.drop(data2[data2['anger_course'] == False].index, inplace=True)
         data = data2.groupby(['Month','anger_course']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         # print(data)
-        plot = px.line(data, x='Month',  y='count', color='anger_course', hover_data=['count'], labels='anger_course',title = 'Anger Management Courses in 2022')
+        plot = px.line(data, x='Month',  y='count', color='anger_course', hover_data=['count'],title = 'Anger Management Courses in 2022')
         plot.update_traces(texttemplate="%{y}")
+        plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
     
@@ -62,6 +63,7 @@ class VisCourses:
         # print(data)
         plot = px.bar(data, x='Month',  y='count', color='anger_course', hover_data=['count'], labels='anger_course',title = 'Anger Management Courses in 2022')
         plot.update_traces(texttemplate="%{y}")
+        plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
     
@@ -73,6 +75,7 @@ class VisCourses:
         # print(data)
         plot = px.line(data, x='Month',  y='count', color='alcohol_course', hover_data=['count'], labels='alcohol_course',title = 'Alcohol Management Courses in 2022')
         plot.update_traces(texttemplate="%{y}")
+        plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
     
@@ -84,6 +87,7 @@ class VisCourses:
         # print(data)
         plot = px.bar(data, x='Month',  y='count', color='alcohol_course', hover_data=['count'], labels='alcohol_course',title = 'Alcohol Management Courses in 2022')
         plot.update_traces(texttemplate="%{y}")
+        plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
     
@@ -95,6 +99,7 @@ class VisCourses:
         # print(data)
         plot = px.line(data, x='Month',  y='count', color='stress_course', hover_data=['count'], labels='stress_course',title = 'Stress Management Courses in 2022')
         plot.update_traces(texttemplate="%{y}")
+        plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
     
@@ -106,6 +111,7 @@ class VisCourses:
         # print(data)
         plot = px.bar(data, x='Month',  y='count', color='stress_course', hover_data=['count'], labels='stress_course',title = 'Stress Management Courses in 2022')
         plot.update_traces(texttemplate="%{y}")
+        plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
     
@@ -118,6 +124,7 @@ class VisCourses:
         # print(data)
         plot = px.line(data, x='Month',  y='count', color='SA_course', hover_data=['count'], labels='SA_course',title = 'Sexual Assault Prevenetion Courses in 2022')
         plot.update_traces(texttemplate="%{y}")
+        plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
     
@@ -129,6 +136,7 @@ class VisCourses:
         # print(data)
         plot = px.bar(data, x='Month',  y='count', color='SA_course', hover_data=['count'], labels='SA_course',title = 'Sexual Assault Prevenetion Courses in 2022')
         plot.update_traces(texttemplate="%{y}")
+        plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
     
@@ -140,6 +148,7 @@ class VisCourses:
         # print(data)
         plot = px.line(data, x='Month',  y='count', color='DV_course', hover_data=['count'], labels='DV_course',title = 'Domestic Violence Prevention Courses in 2022')
         plot.update_traces(texttemplate="%{y}")
+        plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
     
@@ -151,6 +160,7 @@ class VisCourses:
         # print(data)
         plot = px.bar(data, x='Month',  y='count', color='DV_course', hover_data=['count'], labels='DV_course',title = 'Domestic Violence Prevention Courses in 2022')
         plot.update_traces(texttemplate="%{y}")
+        plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
     

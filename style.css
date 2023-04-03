@@ -58,7 +58,7 @@ div.css-thv974.e16nr0p34 {
     font-size: xx-large;
     color: #000000;
     padding: 3% 3% 3% 20%;
-    border-radius: 5px;
+    border-radius: 1px;
     height: 35px;
     margin-left: 1rem;
 }
@@ -71,7 +71,7 @@ div.css-183lzff.eyqtai90 {
     font-size: large;
     color: #000000;
     padding: 3% 3% 3% 3%;
-    border-radius: 5px;
+    border-radius: 1px;
     position: relative;
     max-width: 450px !important;
     margin-left: 1rem;
@@ -83,7 +83,7 @@ div.css-183lzff.eyqtai90 {
 div.css-ml2xh6.e1tzin5v2 {
     background-color: #EEEEEE;
     padding: 3% 3% 3% 3%;
-    border-radius: 5px;
+    border-radius: 1px;
     width: calc(50% - 1rem);
     flex-basis: calc(50% - 1rem);
 }
@@ -122,7 +122,7 @@ div.css-1v0mbdj.etr89bj1 {
 /* For spacing */
 
 div.css-pmvzy7.e1tzin5v0 {
-    bottom: 1px;
+    bottom: 0px;
 }
 
 

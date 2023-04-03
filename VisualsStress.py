@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime as dt
 import plotly.express as px
-import plotly.io as pio
+
 
 class VisualsStress:
        
@@ -53,7 +53,7 @@ class VisualsStress:
         # stress_data = data3.drop(data3[data3['stress'] == "Seldom"].index, inplace = True)
         stress_data = data3.groupby(['Month','stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         # print(stress_data)
-        plot = px.line(stress_data, x='Month',  y='count', color='stress', hover_data=['count'], labels='stress',title = 'High Risk Alchol Use Reported per Month in 2023')
+        plot = px.line(stress_data, x='Month',  y='count', color='stress', hover_data=['count'], labels='stress',title = 'Frequency of Stress Reported per Month in 2023')
         plot.update_traces(texttemplate="%{y}")
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
@@ -63,7 +63,7 @@ class VisualsStress:
         # stress_data = data1.drop(data1[data1['stress'] == "Never"].index, inplace = True)
         # stress_data = data1.drop(data1[data1['stress'] == "Yearly"].index, inplace = True)
         stress_data = data1.groupby(['stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        plot = px.pie(stress_data, values='count', names='stress', hover_data='count', labels = 'stress', title = 'Frequency of stress Reported in 2021')
+        plot = px.pie(stress_data, values='count', names='stress', hover_data='count', labels = 'stress', title = 'Frequency of Stress Reported in 2021')
         plot.update_traces(textposition='inside', textinfo='label + percent')
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
@@ -76,7 +76,7 @@ class VisualsStress:
         # stress_data = data2.drop(data2[data2['stress'] == "Once"].index, inplace = True)
         stress_data = data2.groupby(['Month','stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         #print(stress_data)
-        plot = px.scatter(stress_data, 'Month',  'count', color='stress', size = 'count', hover_data=['count'],title = 'Frequency of stress Reported per Month in 2022',render_mode = "auto")
+        plot = px.scatter(stress_data, 'Month',  'count', color='stress', size = 'count', hover_data=['count'],title = 'Frequency of Stress Reported per Month in 2022',render_mode = "auto")
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
 
@@ -84,7 +84,7 @@ class VisualsStress:
         data1 = VisualsStress.load_data1(1000)
         stress_data = data1.drop(data1[data1['stress'] == "Never"].index, inplace = True)
         stress_data = data1.groupby(['stress']).apply(len).to_frame('count').reset_index()
-        plot = px.bar(stress_data, x = 'stress', y = 'count', color  = 'stress', labels='stress',title = 'Frequency of stress Reported in 2021',text_auto=True)
+        plot = px.bar(stress_data, x = 'stress', y = 'count', color  = 'stress', labels='stress',title = 'Frequency of Stress Reported in 2021',text_auto=True)
         plot.update_coloraxes(showscale=True)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)

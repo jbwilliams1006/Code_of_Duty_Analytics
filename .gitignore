@@ -1,3 +1,5 @@
 .streamlit/secrets.toml
 firestore-key.json
+__pycache__
+*.cpython-311
 *.pyc

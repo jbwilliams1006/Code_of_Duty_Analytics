@@ -1,9 +1,8 @@
 import streamlit as st
 import pandas as pd
 import datetime as dt
-
 import plotly.express as px
-import plotly.io as pio
+
 
 class VisualsDep:
        
@@ -54,7 +53,7 @@ class VisualsDep:
         # depression_data = data3.drop(data3[data3['depression'] == "Seldom"].index, inplace = True)
         depression_data = data3.groupby(['Month','depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         # print(depression_data)
-        plot = px.line(depression_data, x='Month',  y='count', color='depression', hover_data=['count'], labels='depression',title = 'High Risk Alchol Use Reported per Month in 2023')
+        plot = px.line(depression_data, x='Month',  y='count', color='depression', hover_data=['count'], labels='depression',title = 'Frequency of Depression Reported in 2023')
         plot.update_traces(texttemplate="%{y}")
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
@@ -64,7 +63,7 @@ class VisualsDep:
         # depression_data = data1.drop(data1[data1['depression'] == "Never"].index, inplace = True)
         # depression_data = data1.drop(data1[data1['depression'] == "Yearly"].index, inplace = True)
         depression_data = data1.groupby(['depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        plot = px.pie(depression_data, values='count', names='depression', hover_data='count', labels = 'depression', title = 'Frequency of depression Reported in 2021')
+        plot = px.pie(depression_data, values='count', names='depression', hover_data='count', labels = 'depression', title = 'Frequency of Depression Reported in 2021')
         plot.update_traces(textposition='inside', textinfo='label + percent')
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
@@ -76,15 +75,15 @@ class VisualsDep:
         # depression_data = data2.drop(data2[data2['depression'] == "Once"].index, inplace = True)
         depression_data = data2.groupby(['Month','depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         #print(depression_data)
-        plot = px.scatter(depression_data, 'Month',  'count', color='depression', size = 'count', hover_data=['count'],title = 'Frequency of depression Reported per Month in 2022',render_mode = "auto")
+        plot = px.scatter(depression_data, 'Month',  'count', color='depression', size = 'count', hover_data=['count'],title = 'Frequency of Depression Reported per Month in 2022',render_mode = "auto")
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
 
     def barGraph():
         data1 = VisualsDep.load_data1(1000)
-        depression_data = data1.drop(data1[data1['depression'] == "Never"].index, inplace = True)
+        # depression_data = data1.drop(data1[data1['depression'] == "Never"].index, inplace = True)
         depression_data = data1.groupby(['depression']).apply(len).to_frame('count').reset_index()
-        plot = px.bar(depression_data, x = 'depression', y = 'count', color  = 'depression', labels='depression',title = 'Frequency of depression Reported in 2021',text_auto=True)
+        plot = px.bar(depression_data, x = 'depression', y = 'count', color  = 'depression', labels='depression',title = 'Frequency of Depression Reported in 2021',text_auto=True)
         plot.update_coloraxes(showscale=True)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)

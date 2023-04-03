@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime as dt
 import plotly.express as px
-import plotly.io as pio
+
 
 class VisualsAlc:
        
@@ -63,7 +63,7 @@ class VisualsAlc:
         # alcohol_use_data = data1.drop(data1[data1['alcohol_use'] == "Never"].index, inplace = True)
         # alcohol_use_data = data1.drop(data1[data1['alcohol_use'] == "Yearly"].index, inplace = True)
         alcohol_use_data = data1.groupby(['alcohol_use']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        plot = px.pie(alcohol_use_data, values='count', names='alcohol_use', hover_data='count', labels = 'alcohol_use', title = 'Frequency of alcohol_use Reported in 2021')
+        plot = px.pie(alcohol_use_data, values='count', names='alcohol_use', hover_data='count', labels = 'alcohol_use', title = 'Frequency of Alcohol Use Reported in 2021')
         plot.update_traces(textposition='inside', textinfo='label + percent')
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
@@ -77,7 +77,7 @@ class VisualsAlc:
         alcohol_use_data = data2.groupby(['Month','alcohol_use']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         # print(alcohol_use_data)
         #print(alcohol_use_data)
-        plot = px.scatter(alcohol_use_data, 'Month',  'count', color='alcohol_use', size = 'count', hover_data=['count'],title = 'Frequency of alcohol_use Reported per Month in 2022',render_mode = "auto")
+        plot = px.scatter(alcohol_use_data, 'Month',  'count', color='alcohol_use', size = 'count', hover_data=['count'],title = 'Frequency of Alcohol Use Reported per Month in 2022',render_mode = "auto")
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         # plot.update_traces(textposition='top center')
         return st.plotly_chart(plot, use_container_width=True)
@@ -86,7 +86,7 @@ class VisualsAlc:
         data1 = VisualsAlc.load_data1(1000)
         # alcohol_use_data = data1.drop(data1[data1['alcohol_use'] == "Never"].index, inplace = True)
         alcohol_use_data = data1.groupby(['alcohol_use']).apply(len).to_frame('count').reset_index()
-        plot = px.bar(alcohol_use_data, x = 'alcohol_use', y = 'count', color  = 'alcohol_use', labels='alcohol_use',title = 'Frequency of alcohol_use Reported in 2021',text_auto=True)
+        plot = px.bar(alcohol_use_data, x = 'alcohol_use', y = 'count', color  = 'alcohol_use', labels='alcohol_use',title = 'Frequency of Alcohol Use Reported in 2021',text_auto=True)
         plot.update_coloraxes(showscale=True)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
@@ -99,6 +99,7 @@ class VisualsAlc:
         # print(alc_data)
         plot = px.line(alc_data, x='Month',  y='count', color='alcohol_offense', hover_data=['count'], labels='alcohol_use',title = 'Alcohol Related Incidents in 2022')
         plot.update_traces(texttemplate="%{y}")
+        plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
 

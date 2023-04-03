@@ -211,31 +211,29 @@ if authentication_status:
     
     # """
     # b1, b2, b3, b4 = st.columns([2,2,2,2])
-    b1, b2, b3 = st.columns(3)
+    b1, b2, b3, b4 = st.columns(4, gap = "small")
     with b1:
         st.image(Image.open('Icons/mind.png'))
-        VisCourses.angerLine()
+        VisCourses.stressLine()
         # st.subheader("Mental Health",)
         # st.line_chart(MentalData)
-        
     with b2:
-        st.image(Image.open('Icons/spiritual.png'))
-        # st.subheader("Spiritual Health")
-        VisCounsel.spritualLine()
-        # st.image(Image.open('Icons/muscle.png'))
+        st.image(Image.open('Icons/muscle.png'))
+        VisCourses.angerLine()
         # st.subheader("Physical Health")
         # st.line_chart(PhysicalData)
     with b3:
-        st.image(Image.open('Icons/crime.png'))
-        VisualsAlc.offenseLine()
+        st.image(Image.open('Icons/spiritual.png'))
+        # st.subheader("Spiritual Health")
+        VisCounsel.spritualLine()
         # st.image(Image.open('Icons/spiritual.png'))
         # # st.subheader("Spiritual Health")
         # VisCounsel.spritualLine()
-    # with b4:
-    #     st.image(Image.open('Icons/crime.png'))
-    #     st.subheader("Crime")
-    #     VisualsAlc.offenseLine()
-    #     # st.line_chart(CrimeData)
+    with b4:
+        st.image(Image.open('Icons/crime.png'))
+        # st.subheader("Crime")
+        VisualsAlc.offenseLine()
+        # st.line_chart(CrimeData)
         
 
 

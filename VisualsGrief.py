@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime as dt
 import plotly.express as px
-import plotly.io as pio
+
 
 class VisualsGrief:
        
@@ -50,7 +50,7 @@ class VisualsGrief:
         # grief_data = data3.drop(data3[data3['grief'] == "Never"].index, inplace = True)
         grief_data = data3.groupby(['Month','grief']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         # print(grief_data)
-        plot = px.line(grief_data, x='Month',  y='count', color='grief', hover_data=['count'], labels='grief',title = 'High Risk Alchol Use Reported per Month in 2023')
+        plot = px.line(grief_data, x='Month',  y='count', color='grief', hover_data=['count'], labels='grief',title = 'Frequency of Grief Reported per Month in 2023')
         plot.update_traces(texttemplate="%{y}")
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
@@ -60,7 +60,7 @@ class VisualsGrief:
         # grief_data = data1.drop(data1[data1['grief'] == "Never"].index, inplace = True)
         # grief_data = data1.drop(data1[data1['grief'] == "Yearly"].index, inplace = True)
         grief_data = data1.groupby(['grief']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        plot = px.pie(grief_data, values='count', names='grief', hover_data='count', labels = 'grief', title = 'Frequency of grief Reported in 2021')
+        plot = px.pie(grief_data, values='count', names='grief', hover_data='count', labels = 'grief', title = 'Frequency of Grief Reported in 2021')
         plot.update_traces(textposition='inside', textinfo='label + percent')
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
@@ -72,7 +72,7 @@ class VisualsGrief:
         # grief_data = data2.drop(data2[data2['grief'] == "Once"].index, inplace = True)
         grief_data = data2.groupby(['Month','grief']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         #print(grief_data)
-        plot = px.scatter(grief_data, 'Month',  'count', color='grief', size = 'count', hover_data=['count'],title = 'Frequency of grief Reported per Month in 2022',render_mode = "auto")
+        plot = px.scatter(grief_data, 'Month',  'count', color='grief', size = 'count', hover_data=['count'],title = 'Frequency of Grief Reported per Month in 2022',render_mode = "auto")
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
 
@@ -80,7 +80,7 @@ class VisualsGrief:
         data1 = VisualsGrief.load_data1(1000)
         # grief_data = data1.drop(data1[data1['grief'] == "Never"].index, inplace = True)
         grief_data = data1.groupby(['grief']).apply(len).to_frame('count').reset_index()
-        plot = px.bar(grief_data, x = 'grief', y = 'count', color  = 'grief', labels='grief',title = 'Frequency of grief Reported in 2021',text_auto=True)
+        plot = px.bar(grief_data, x = 'grief', y = 'count', color  = 'grief', labels='grief',title = 'Frequency of Grief Reported in 2021',text_auto=True)
         plot.update_coloraxes(showscale=True)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)

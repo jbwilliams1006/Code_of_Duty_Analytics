@@ -52,6 +52,7 @@ class VisCounsel:
         # print(data)
         plot = px.line(data, x='Month',  y='count', color='spiritual_counseling', hover_data=['count'], labels='spiritual_counseling',title = 'Spiritual Counseling in 2022')
         plot.update_traces(texttemplate="%{y}")
+        plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
     
@@ -63,6 +64,7 @@ class VisCounsel:
         # print(data)
         plot = px.line(data, x='Month',  y='count', color='relation_counseling', hover_data=['count'], labels='relation_counseling',title = 'Relationship Counseling in 2022')
         plot.update_traces(texttemplate="%{y}")
+        plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
     
@@ -74,6 +76,7 @@ class VisCounsel:
         # print(data)
         plot = px.line(data, x='Month',  y='count', color='grief_counseling', hover_data=['count'], labels='grief_counseling',title = 'Grief Counseling in 2022')
         plot.update_traces(texttemplate="%{y}")
+        plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
     
@@ -85,6 +88,7 @@ class VisCounsel:
         # print(data)
         plot = px.bar(data, x='Month',  y='count', color='grief_counseling', hover_data=['count'], labels='grief_counseling',title = 'Grief Counseling in 2022')
         plot.update_traces(texttemplate="%{y}")
+        plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
     

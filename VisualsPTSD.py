@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime as dt
 import plotly.express as px
-import plotly.io as pio
+
 
 class VisualsPTSD:
        
@@ -57,7 +57,7 @@ class VisualsPTSD:
         # PTSD_data = data3.drop(data3[data3['PTSD'] == "Seldom"].index, inplace = True)
         PTSD_data = data3.groupby(['Month','PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         # print(PTSD_data)
-        plot = px.line(PTSD_data, x='Month',  y='count', color='PTSD', hover_data=['count'], labels='PTSD',title = 'High Risk Alchol Use Reported per Month in 2023')
+        plot = px.line(PTSD_data, x='Month',  y='count', color='PTSD', hover_data=['count'], labels='PTSD',title = 'Frequency of PTSD Reported per Month in 2023')
         plot.update_traces(texttemplate="%{y}")
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
