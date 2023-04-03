@@ -1,3 +1,4 @@
+[
 {
 "-NRf8tsUi4--jG5M1pHN":{"date":"2021-03-22","id":"45-7108336","first_name":"Pauly","last_name":"Danielsen","age":31,"gender":"Male","permanent_party":true,"in_relationship":false,"alcohol_offense":false,"PTSD":"Daily","stress":"Monthly","grief":"Yearly","depression":"Seldom","anxiety":"Monthly","alcohol_use":"Never"},
 "-NRf8tsXV__wldKBGfkh":{"date":"2021-08-27","id":"74-9664266","first_name":"Josselyn","last_name":"Knewstubb","age":23,"gender":"Female","permanent_party":false,"in_relationship":true,"alcohol_offense":false,"PTSD":"Seldom","stress":"Seldom","grief":"Monthly","depression":"Seldom","anxiety":"Seldom","alcohol_use":"Never"},
@@ -1000,3 +1001,4 @@
 "-NRf8uV4B93mrYCHD_8y":{"date":"2021-02-25","id":"84-0932479","first_name":"Matthiew","last_name":"Kleinhausen","age":34,"gender":"Male","permanent_party":false,"in_relationship":true,"alcohol_offense":false,"PTSD":"Once","stress":"Never","grief":"Often","depression":"Seldom","anxiety":"Often","alcohol_use":"Daily"},
 "-NRf8uV6iU-tbWi9xZ2w":{"date":"2021-10-27","id":"05-5071227","first_name":"Mendel","last_name":"Troke","age":29,"gender":"Male","permanent_party":false,"in_relationship":true,"alcohol_offense":false,"PTSD":"Never","stress":"Once","grief":"Daily","depression":"Yearly","anxiety":"Often","alcohol_use":"Weekly"}
 }
+]
