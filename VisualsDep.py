@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime as dt
 import plotly.express as px
-
+import plotly.graph_objects as go
 
 class VisualsDep:
        
@@ -80,13 +80,58 @@ class VisualsDep:
         return st.plotly_chart(plot, use_container_width=True)
 
     def barGraph():
-        data1 = VisualsDep.load_data1(1000)
-        # depression_data = data1.drop(data1[data1['depression'] == "Never"].index, inplace = True)
-        depression_data = data1.groupby(['depression']).apply(len).to_frame('count').reset_index()
-        plot = px.bar(depression_data, x = 'depression', y = 'count', color  = 'depression', labels='depression',title = 'Frequency of Depression Reported in 2021',text_auto=True)
-        plot.update_coloraxes(showscale=True)
-        plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        return st.plotly_chart(plot, use_container_width=True)
+        df1 = VisualsDep.load_data1(1000)
+        df2 = VisualsDep.load_data2(1000)
+        df3 = VisualsDep.load_data3(1000)
+        df1 = df1.groupby(['Depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df2 = df2.groupby(['Depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df3 = df3.groupby(['Depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        fig = go.Figure()
+        for Depression, group in df1.groupby("Depression"):
+            fig.add_trace(go.Bar(x=group["Depression"], y=group["count"], name=Depression, visible = True))
+            fig.update_layout(legend_title_text = "Depression")
+            fig.update_xaxes(title_text="Depression")
+            fig.update_yaxes(title_text="Count")
+
+        for Depression, group in df2.groupby("Depression"):
+            fig.add_trace(go.Bar(x=group["Depression"], y=group["count"], name=Depression, visible =False))
+            fig.update_layout(legend_title_text = "Depression")
+            fig.update_xaxes(title_text="Depression")
+            fig.update_yaxes(title_text="Count")
+            
+        for Depression, group in df3.groupby("Depression"):
+            fig.add_trace(go.Bar(x=group["Depression"], y=group["count"], name=Depression, visible =False))
+            fig.update_layout(legend_title_text = "Depression")
+            fig.update_xaxes(title_text="Depression")
+            fig.update_yaxes(title_text="Count")
+            
+        fig.update_layout(
+            updatemenus=[
+                dict(
+                    active=0,
+                    buttons=list([
+                        dict(label="2021-2023",
+                            method="update",
+                            args=[{"visible": [True, False, False, False]},
+                                {"title": "Frequency of Depression Reported 2021-2023"}]),
+                        dict(label="2021",
+                            method="update",
+                            args=[{"visible": [True, True, False, False]},
+                                {"title": "Frequency of Depression Reported in 2021"}]),
+                        dict(label="2022",
+                            method="update",
+                            args=[{"visible": [True,False, True,False]},
+                                {"title": "Frequency of Depression Reported in 2022"}]),
+                        dict(label="2023",
+                            method="update",
+                            args=[{"visible": [True,False,False,True]},
+                                {"title": "Frequency of Depression Reported in 2023"}]),
+                    ]),
+                )
+            ])
+        fig.update_layout(title_text="Depression Reports")  
+        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})   
+        return st.plotly_chart(fig, use_container_width=True)
     
 def getGraphs():
         VisualsDep.barGraph()

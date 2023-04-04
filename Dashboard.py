@@ -290,5 +290,5 @@ if authentication_status:
       
     with d2:
         # st.markdown('### ')
-        VisualsDep.Scatter()
+        VisualsPTSD.barGraph()
        
