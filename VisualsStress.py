@@ -89,19 +89,19 @@ class VisualsStress:
         df3 = df3.groupby(['Stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         fig = go.Figure()
         for Stress, group in df1.groupby("Stress"):
-            fig.add_trace(go.Bar(x=group["Stress"], y=group["count"], name=Stress, visible=True))
+            fig.add_trace(go.Bar(x=group["Stress"], y=group["count"], name=Stress))
             fig.update_layout(legend_title_text = "Stress")
             fig.update_xaxes(title_text="Stress")
             fig.update_yaxes(title_text="Count")
 
         for Stress, group in df2.groupby("Stress"):
-            fig.add_trace(go.Bar(x=group["Stress"], y=group["count"], name=Stress, visible=False))
+            fig.add_trace(go.Bar(x=group["Stress"], y=group["count"], name=Stress))
             fig.update_layout(legend_title_text = "Stress")
             fig.update_xaxes(title_text="Stress")
             fig.update_yaxes(title_text="Count")
             
         for Stress, group in df3.groupby("Stress"):
-            fig.add_trace(go.Bar(x=group["Stress"], y=group["count"], name=Stress, visible=False))
+            fig.add_trace(go.Bar(x=group["Stress"], y=group["count"], name=Stress))
             fig.update_layout(legend_title_text = "Stress")
             fig.update_xaxes(title_text="Stress")
             fig.update_yaxes(title_text="Count")
@@ -113,19 +113,19 @@ class VisualsStress:
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
-                            args=[{"visible": [True, False, False, False]},
+                            args=[{"visible": [True, True, True]},
                                 {"title": "Frequency of Stress Reported 2021-2023"}]),
                         dict(label="2021",
                             method="update",
-                            args=[{"visible": [True, True, False, False]},
+                            args=[{"visible": [ True, False, False]},
                                 {"title": "Frequency of Stress Reported in 2021"}]),
                         dict(label="2022",
                             method="update",
-                            args=[{"visible": [True,False, True,False]},
+                            args=[{"visible": [False, True,False]},
                                 {"title": "Frequency of Stress Reported in 2022"}]),
                         dict(label="2023",
                             method="update",
-                            args=[{"visible": [True,False,False,True]},
+                            args=[{"visible": [False,False,True]},
                                 {"title": "Frequency of Stress Reported in 2023"}]),
                     ]),
                 )

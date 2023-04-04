@@ -88,19 +88,19 @@ class VisualsAnx:
         df3 = df3.groupby(['Anxiety']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         fig = go.Figure()
         for Anxiety, group in df1.groupby("Anxiety"):
-            fig.add_trace(go.Bar(x=group["Anxiety"], y=group["count"], name=Anxiety,visible =True))
+            fig.add_trace(go.Bar(x=group["Anxiety"], y=group["count"], name=Anxiety))
             fig.update_layout(legend_title_text = "Anxiety")
             fig.update_xaxes(title_text="Anxiety")
             fig.update_yaxes(title_text="Count")
 
         for Anxiety, group in df2.groupby("Anxiety"):
-            fig.add_trace(go.Bar(x=group["Anxiety"], y=group["count"], name=Anxiety, visible=False))
+            fig.add_trace(go.Bar(x=group["Anxiety"], y=group["count"], name=Anxiety))
             fig.update_layout(legend_title_text = "Anxiety")
             fig.update_xaxes(title_text="Anxiety")
             fig.update_yaxes(title_text="Count")
             
         for Anxiety, group in df3.groupby("Anxiety"):
-            fig.add_trace(go.Bar(x=group["Anxiety"], y=group["count"], name=Anxiety, visible=False))
+            fig.add_trace(go.Bar(x=group["Anxiety"], y=group["count"], name=Anxiety))
             fig.update_layout(legend_title_text = "Anxiety")
             fig.update_xaxes(title_text="Anxiety")
             fig.update_yaxes(title_text="Count")
@@ -112,19 +112,19 @@ class VisualsAnx:
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
-                            args=[{"visible": [True, False, False, False]},
+                            args=[{"visible": [True, True, True]},
                                 {"title": "Frequency of Anxiety Reported 2021-2023"}]),
                         dict(label="2021",
                             method="update",
-                            args=[{"visible": [True, True, False, False]},
+                            args=[{"visible": [ True, False, False]},
                                 {"title": "Frequency of Anxiety Reported in 2021"}]),
                         dict(label="2022",
                             method="update",
-                            args=[{"visible": [True, False, True,False]},
+                            args=[{"visible": [False, True,False]},
                                 {"title": "Frequency of Anxiety Reported in 2022"}]),
                         dict(label="2023",
                             method="update",
-                            args=[{"visible": [True,False,False,True]},
+                            args=[{"visible": [False,False,True]},
                                 {"title": "Frequency of Anxiety Reported in 2023"}]),
                     ]),
                 )
