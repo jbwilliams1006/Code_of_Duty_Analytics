@@ -186,8 +186,7 @@ if authentication_status:
     a1.caption(f"Welcome {creds['usernames'][username]['fname']}")
     a1.text(f'Patients are seeing a 52.6% increase in mental health')
     a2.header(f'Week Overview')
-    a3,a4,a5 = a2.columns(3
-                    )
+    a3,a4,a5 = a2.columns(3)
     with a3:
         st.metric(f"Patient Return", "72 out of 93", "+72%")
     with a4:
