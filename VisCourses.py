@@ -106,7 +106,7 @@ class VisCourses:
         fig.update_layout(title_text="Anger Management Courses Completed in 2021-2023",showlegend =False)  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         
-        st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
     
     def angerBar():
         data2 = VisCourses.load_data2(1000)
@@ -439,7 +439,7 @@ class VisCourses:
             ])
         fig.update_layout(title_text="Domestic Violence Prevention Courses Completed in 2021-2023",showlegend =False)  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
     
     def DVBar():
         data2 = VisCourses.load_data2(1000)
