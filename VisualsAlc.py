@@ -197,16 +197,79 @@ class VisualsAlc:
         return st.plotly_chart(fig, use_container_width=True)
     
     def offenseLine():
-        data2 = VisualsAlc.load_data2(1000)
-        data2.sort_values(by = 'Month')
-        alc_data = data2.drop(data2[data2['alcohol_offense'] == False].index, inplace=True)
-        alc_data = data2.groupby(['Month','alcohol_offense']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        # print(alc_data)
-        plot = px.line(alc_data, x='Month',  y='count', color='alcohol_offense', hover_data=['count'], labels='alcohol_use',title = 'Alcohol Related Incidents in 2022')
-        plot.update_traces(texttemplate="%{y}")
-        plot.update_layout(showlegend = False)
-        plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        return st.plotly_chart(plot, use_container_width=True)
+        df1 = VisualsAlc.load_data1(1000)
+        df2 = VisualsAlc.load_data2(1000)
+        df3 = VisualsAlc.load_data3(1000)
+        df1.drop(df1[df1['alcohol_offense'] == False].index, inplace=True)
+        df1 = df1.groupby(['date','alcohol_offense']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df2.drop(df2[df2['alcohol_offense'] == False].index, inplace=True)
+        df2 = df2.groupby(['date','alcohol_offense']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df3.drop(df3[df3['alcohol_offense'] == False].index, inplace=True)
+        df3 = df3.groupby(['date','alcohol_offense']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+
+        fig = go.Figure()
+
+        yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
+        for val in df1.values:
+            yStuff[val[0].month - 1] += val[2]
+                
+        fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.update_layout(legend_title_text = "Alcohol Related Offenses")
+        fig.update_xaxes(title_text="Alcohol Related Offenses")
+        fig.update_yaxes(title_text="Count")
+
+        yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
+        for val in df2.values:
+            yStuff[val[0].month - 1] += val[2]
+                
+        fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.update_layout(legend_title_text = "Alcohol Related Offenses")
+        fig.update_xaxes(title_text="Alcohol Related Offenses")
+        fig.update_yaxes(title_text="Count")
+
+        yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
+        for val in df3.values:
+            yStuff[val[0].month - 1] += val[2]
+                
+        fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.update_layout(legend_title_text = "Alcohol Related Offenses")
+        fig.update_xaxes(title_text="Alcohol Related Offenses")
+        fig.update_yaxes(title_text="Count")
+
+        fig.update_layout(
+            updatemenus=[
+                dict(
+                    active=0,
+                    x = .5,
+                    xanchor = "center",
+                    y = 1.05,
+                    yanchor = "middle",
+                    showactive=True,
+                    font = dict({"color":"black", "size":14}),
+                    buttons=list([
+                        dict(label="2021-2023",
+                            method="update",
+                            args=[{"visible": [True, True, True]},
+                                {"title": "Alcohol Related Offenses in 2021-2023"}]),
+                        dict(label="2021",
+                            method="update",
+                            args=[{"visible": [True, False, False]},
+                                {"title": "Alcohol Related Offenses in 2021"}]),
+                        dict(label="2022",
+                            method="update",
+                            args=[{"visible": [False,True,False]},
+                                {"title": "Alcohol Related Offenses in 2022"}]),
+                        dict(label="2023",
+                            method="update",
+                            args=[{"visible": [False,False,True]},
+                                {"title": "Alcohol Related Offenses in 2023"}]),
+                    ]),
+                )
+            ])
+        fig.update_layout(title_text="Alcohol Related Offenses in 2021-2023",showlegend =False)  
+        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
+        st.plotly_chart(fig,use_container_width=True)
+    
 
 def getGraphs():
         VisualsAlc.barGraph()

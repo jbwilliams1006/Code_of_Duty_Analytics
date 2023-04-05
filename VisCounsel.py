@@ -88,6 +88,10 @@ class VisCounsel:
             updatemenus=[
                 dict(
                     active=0,
+                    x = .5,
+                    xanchor = "center",
+                    y = 1.05,
+                    yanchor = "middle",
                     showactive=True,
                     font = dict({"color":"black", "size":14}),
                     buttons=list([
@@ -159,6 +163,10 @@ class VisCounsel:
             updatemenus=[
                 dict(
                     active=0,
+                    x = .5,
+                    xanchor = "center",
+                    y = 1.05,
+                    yanchor = "middle",
                     showactive=True,
                     font = dict({"color":"black", "size":14}),
                     buttons=list([
@@ -230,6 +238,10 @@ class VisCounsel:
             updatemenus=[
                 dict(
                     active=0,
+                    x = .5,
+                    xanchor = "center",
+                    y = 1.05,
+                    yanchor = "middle",
                     showactive=True,
                     font = dict({"color":"black", "size":14}),
                     buttons=list([
