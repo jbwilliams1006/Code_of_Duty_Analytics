@@ -89,6 +89,7 @@ class VisualsAlc:
         fig.update_layout(
             updatemenus=[
                 dict(
+                    bgcolor ='lightgray',
                     active=0,
                     buttons=list([
                         dict(label="2021-2023",

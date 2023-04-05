@@ -4,7 +4,7 @@ import datetime as dt
 import plotly.express as px
 import plotly.graph_objects as go
 
-class Visualsgrief:
+class VisualsGrief:
        
     @st.cache_data
     def load_data1(nrows):
