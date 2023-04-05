@@ -111,7 +111,7 @@ class VisualsDep:
             ])
         fig.update_layout(title_text="Depression Reports")  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
     
     def pieChart():
         data1 = VisualsDep.load_data1(1000)
@@ -120,6 +120,7 @@ class VisualsDep:
         plot.update_traces(textposition='inside', textinfo='label + percent')
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
+    
     def Scatter():
         data2 = VisualsDep.load_data2(1000)
         data2.sort_values(by = 'Month')

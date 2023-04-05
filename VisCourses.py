@@ -63,11 +63,11 @@ class VisCourses:
     
     def alcLine():
         data2 = VisCourses.load_data2(1000)
-        data2.sort_values(by = 'Month')
+        # data2.sort_values(by = 'Month')
         data = data2.drop(data2[data2['alcohol_course'] == False].index, inplace=True)
-        data = data2.groupby(['Month','alcohol_course']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        data = data2.groupby(['date','alcohol_course']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         # print(data)
-        plot = px.line(data, x='Month',  y='count', color='alcohol_course', hover_data=['count'], labels='alcohol_course',title = 'Alcohol Management Courses in 2022')
+        plot = px.line(data, x=data['date'].dt.month_name().unique(),  y='count', color='alcohol_course', hover_data=['count'], labels='alcohol_course',title = 'Alcohol Management Courses in 2022')
         plot.update_traces(texttemplate="%{y}")
         plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
