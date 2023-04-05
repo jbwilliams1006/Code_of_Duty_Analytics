@@ -91,6 +91,8 @@ class VisualsStress:
             updatemenus=[
                 dict(
                     active=0,
+                    showactive=True,
+                    font = dict({"color":"black","size":16}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
@@ -164,6 +166,8 @@ class VisualsStress:
             updatemenus=[
                 dict(
                     active=0,
+                    showactive=True,
+                    font = dict({"color":"black","size":16}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",

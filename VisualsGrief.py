@@ -14,9 +14,6 @@ class VisualsGrief:
         # df1.info()
         df1['date'] = pd.to_datetime(df1['date'], format='%Y-%m-%d')
         df1['Month'] = pd.to_datetime(df1['date']).dt.month
-        # group by year
-        df1['Year'] = pd.to_datetime(df1['date']).dt.year
-        df1['Week'] = pd.to_datetime(df1['date']).dt.isocalendar().week
         return df1
     @st.cache_data
     def load_data2(nrows):
@@ -26,9 +23,6 @@ class VisualsGrief:
         # df2.info()
         df2['date'] = pd.to_datetime(df2['date'], format='YYYY-mm-dd')
         df2['Month'] = pd.to_datetime(df2['date']).dt.month
-        # group by year
-        df2['Year'] = pd.to_datetime(df2['date']).dt.year
-        df2['Week'] = pd.to_datetime(df2['date']).dt.isocalendar().week
         return df2
     @st.cache_data
     def load_data3(nrows):
@@ -38,15 +32,12 @@ class VisualsGrief:
         # df3.info()
         df3['date'] = pd.to_datetime(df3['date'], format='%Y-%m-%d')
         df3['Month'] = pd.to_datetime(df3['date']).dt.month
-        # ({1:'Jan', 2:'Feb', 3:'Mar', 4:'Apr', 5:'May', 6:'Jun', 7:'Jul', 8:'Aug', 9:'Sep', 10:'Oct', 11:'Nov', 12:'Dec'})
-        # group by year
-        df3['Week'] = pd.to_datetime(df3['date']).dt.isocalendar().week
         return df3
 
     def lineGraph():
-        df1 = Visualsgrief.load_data1(1000)
-        df2 = Visualsgrief.load_data2(1000)
-        df3 = Visualsgrief.load_data3(1000)
+        df1 = VisualsGrief.load_data1(1000)
+        df2 = VisualsGrief.load_data2(1000)
+        df3 = VisualsGrief.load_data3(1000)
         df1 = df1.groupby(['date','grief']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2 = df2.groupby(['date','grief']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df3 = df3.groupby(['date','grief']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
@@ -59,8 +50,8 @@ class VisualsGrief:
                     yStuff[val[0].month - 1] += val[2]
                     
             fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=grief))
-            fig.update_layout(legend_title_text = "grief")
-            fig.update_xaxes(title_text="grief")
+            fig.update_layout(legend_title_text = "Grief")
+            fig.update_xaxes(title_text="Grief")
             fig.update_yaxes(title_text="Count")
 
 
@@ -71,8 +62,8 @@ class VisualsGrief:
                     yStuff[val[0].month - 1] += val[2]
                     
             fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=grief))
-            fig.update_layout(legend_title_text = "grief")
-            fig.update_xaxes(title_text="grief")
+            fig.update_layout(legend_title_text = "Grief")
+            fig.update_xaxes(title_text="=Grief")
             fig.update_yaxes(title_text="Count")
 
         for grief in df3['grief'].unique():
@@ -82,8 +73,8 @@ class VisualsGrief:
                     yStuff[val[0].month - 1] += val[2]
                     
             fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=grief))
-            fig.update_layout(legend_title_text = "grief")
-            fig.update_xaxes(title_text="grief")
+            fig.update_layout(legend_title_text = "Grief")
+            fig.update_xaxes(title_text="Grief")
             fig.update_yaxes(title_text="Count")
 
             
@@ -91,32 +82,34 @@ class VisualsGrief:
             updatemenus=[
                 dict(
                     active=0,
+                    showactive=True,
+                    font = dict({"color":"black","size":16}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
                             args=[{"visible": [True, True, True]},
-                                {"title": "Frequency of grief Reported 2021-2023"}]),
+                                {"title": "Frequency of Grief Reported 2021-2023"}]),
                         dict(label="2021",
                             method="update",
                             args=[{"visible": [True, False, False]},
-                                {"title": "Frequency of grief Reported in 2021"}]),
+                                {"title": "Frequency of Grief Reported in 2021"}]),
                         dict(label="2022",
                             method="update",
                             args=[{"visible": [False, True,False]},
-                                {"title": "Frequency of grief Reported in 2022"}]),
+                                {"title": "Frequency of Grief Reported in 2022"}]),
                         dict(label="2023",
                             method="update",
                             args=[{"visible": [False,False,True]},
-                                {"title": "Frequency of grief Reported in 2023"}]),
+                                {"title": "Frequency of Grief Reported in 2023"}]),
                     ]),
                 )
             ])
-        fig.update_layout(title_text="grief Reports")  
+        fig.update_layout(title_text="Grief Reports")  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         st.plotly_chart(fig)
     
     def pieChart():
-        data1 = Visualsgrief.load_data1(1000)
+        data1 = VisualsGrief.load_data1(1000)
         # grief_data = data1.drop(data1[data1['grief'] == "Never"].index, inplace = True)
         # grief_data = data1.drop(data1[data1['grief'] == "Yearly"].index, inplace = True)
         grief_data = data1.groupby(['grief']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
@@ -125,7 +118,7 @@ class VisualsGrief:
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
     def Scatter():
-        data2 = Visualsgrief.load_data2(1000)
+        data2 = VisualsGrief.load_data2(1000)
         data2.sort_values(by = 'Month')
         # grief_data = data2.drop(data2[data2['grief'] == "Never"].index, inplace = True)
         # grief_data = data2.drop(data2[data2['grief'] == "Yearly"].index, inplace = True)
@@ -137,9 +130,9 @@ class VisualsGrief:
         return st.plotly_chart(plot, use_container_width=True)
 
     def barGraph():
-        df1 = Visualsgrief.load_data1(1000)
-        df2 = Visualsgrief.load_data2(1000)
-        df3 = Visualsgrief.load_data3(1000)
+        df1 = VisualsGrief.load_data1(1000)
+        df2 = VisualsGrief.load_data2(1000)
+        df3 = VisualsGrief.load_data3(1000)
         df1 = df1.groupby(['grief']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2 = df2.groupby(['grief']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df3 = df3.groupby(['grief']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
@@ -166,35 +159,37 @@ class VisualsGrief:
             updatemenus=[
                 dict(
                     active=0,
+                    showactive=True,
+                    font = dict({"color":"black","size":16}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
                             args=[{"visible": [True, True, True]},
-                                {"title": "Frequency of grief Reported 2021-2023"}]),
+                                {"title": "Frequency of Grief Reported 2021-2023"}]),
                         dict(label="2021",
                             method="update",
                             args=[{"visible": [ True, False, False]},
-                                {"title": "Frequency of grief Reported in 2021"}]),
+                                {"title": "Frequency of Grief Reported in 2021"}]),
                         dict(label="2022",
                             method="update",
                             args=[{"visible": [False, True,False]},
-                                {"title": "Frequency of grief Reported in 2022"}]),
+                                {"title": "Frequency of Grief Reported in 2022"}]),
                         dict(label="2023",
                             method="update",
                             args=[{"visible": [False,False,True]},
-                                {"title": "Frequency of grief Reported in 2023"}]),
+                                {"title": "Frequency of Grief Reported in 2023"}]),
                     ]),
                 )
             ])
-        fig.update_layout(title_text="grief Reports")  
+        fig.update_layout(title_text="Grief Reports")  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})   
         return st.plotly_chart(fig, use_container_width=True)
     
 def getGraphs():
-        Visualsgrief.barGraph()
-        Visualsgrief.Scatter()
-        Visualsgrief.lineGraph()
-        Visualsgrief.pieChart()
+        VisualsGrief.barGraph()
+        VisualsGrief.Scatter()
+        VisualsGrief.lineGraph()
+        VisualsGrief.pieChart()
             
 
 if __name__=='__main__':

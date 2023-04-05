@@ -89,29 +89,30 @@ class VisualsAlc:
         fig.update_layout(
             updatemenus=[
                 dict(
-                    bgcolor ='lightgray',
                     active=0,
+                    showactive=True,
+                    font = dict({"color":"black","size":16}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
                             args=[{"visible": [True, True, True]},
-                                {"title": "Frequency of alcohol_use Reported 2021-2023"}]),
+                                {"title": "Frequency of Alcohol Use Reported 2021-2023"}]),
                         dict(label="2021",
                             method="update",
                             args=[{"visible": [True, False, False]},
-                                {"title": "Frequency of alcohol_use Reported in 2021"}]),
+                                {"title": "Frequency of Alcohol Use Reported in 2021"}]),
                         dict(label="2022",
                             method="update",
                             args=[{"visible": [False, True,False]},
-                                {"title": "Frequency of alcohol_use Reported in 2022"}]),
+                                {"title": "Frequency of Alcohol Use Reported in 2022"}]),
                         dict(label="2023",
                             method="update",
                             args=[{"visible": [False,False,True]},
-                                {"title": "Frequency of alcohol_use Reported in 2023"}]),
+                                {"title": "Frequency of Alcohol Use Reported in 2023"}]),
                     ]),
                 )
             ])
-        fig.update_layout(title_text="alcohol_use Reports")  
+        fig.update_layout(title_text="Alcohol Use Reports")  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         st.plotly_chart(fig, use_container_width=True)
     
@@ -169,6 +170,8 @@ class VisualsAlc:
             updatemenus=[
                 dict(
                     active=0,
+                    showactive=True,
+                    font = dict({"color":"black","size":16}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
@@ -189,7 +192,7 @@ class VisualsAlc:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Alcohol Reports")  
+        fig.update_layout(title_text="Alcohol Use Reports")  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})   
         return st.plotly_chart(fig, use_container_width=True)
     
