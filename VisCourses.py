@@ -14,8 +14,6 @@ class VisCourses:
         # df1.info()
         df1['date'] = pd.to_datetime(df1['date'], format='%Y-%m-%d')
         df1['Month'] = pd.to_datetime(df1['date']).dt.month
-        # group by year
-        df1['Year'] = pd.to_datetime(df1['date']).dt.year
         df1['Week'] = pd.to_datetime(df1['date']).dt.isocalendar().week
         return df1
     @st.cache_data
@@ -26,8 +24,6 @@ class VisCourses:
         # df2.info()
         df2['date'] = pd.to_datetime(df2['date'], format='YYYY-mm-dd')
         df2['Month'] = pd.to_datetime(df2['date']).dt.month
-        # group by year
-        df2['Year'] = pd.to_datetime(df2['date']).dt.year
         df2['Week'] = pd.to_datetime(df2['date']).dt.isocalendar().week
         return df2
     @st.cache_data
@@ -38,8 +34,6 @@ class VisCourses:
         # df3.info()
         df3['date'] = pd.to_datetime(df3['date'], format='%Y-%m-%d')
         df3['Month'] = pd.to_datetime(df3['date']).dt.month
-        # ({1:'Jan', 2:'Feb', 3:'Mar', 4:'Apr', 5:'May', 6:'Jun', 7:'Jul', 8:'Aug', 9:'Sep', 10:'Oct', 11:'Nov', 12:'Dec'})
-        # group by year
         df3['Week'] = pd.to_datetime(df3['date']).dt.isocalendar().week
         return df3
     
@@ -163,8 +157,7 @@ class VisCourses:
         plot.update_layout(showlegend = False)
         plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(plot, use_container_width=True)
-    
-   
+
     
 def getGraphs():
         VisCourses.DVLine()
