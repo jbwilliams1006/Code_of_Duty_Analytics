@@ -3,6 +3,7 @@ import pandas as pd
 import datetime as dt
 import plotly.express as px
 import plotly.graph_objects as go
+
 class VisualsPTSD:
        
     @st.cache_data
@@ -119,14 +120,67 @@ class VisualsPTSD:
         st.plotly_chart(fig, use_container_width=True)
     
     def pieChart():
-        data2 = VisualsPTSD.load_data2(1000)
-        # PTSD_data = data2.drop(data2[data2['PTSD'] == "Never"].index, inplace = True)
-        # PTSD_data = data2.drop(data2[data2['PTSD'] == "Yearly"].index, inplace = True)
-        PTSD_data = data2.groupby(['PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        plot = px.pie(PTSD_data, values='count', names='PTSD', hover_data='count', labels = 'PTSD', title = 'Frequency of PTSD Reported in 2022')
-        plot.update_traces(textposition='inside', textinfo='label + percent')
-        plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        return st.plotly_chart(plot, use_container_width=True)
+        df1 = VisualsPTSD.load_data1(1000)
+        df2 = VisualsPTSD.load_data2(1000)
+        df3 = VisualsPTSD.load_data3(1000)
+        df1 = df1.groupby(['PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df2 = df2.groupby(['PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df3 = df3.groupby(['PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+
+        fig = go.Figure()
+
+        for PTSD in df1:
+            fig.add_trace(go.Pie(labels=df1['PTSD'],values = df1['count'], name = PTSD))
+            fig.update_layout(legend_title_text = "PTSD")
+            fig.update_xaxes(title_text="PTSD")
+            fig.update_yaxes(title_text="Count")
+
+        for PTSD in df2:
+            fig.add_trace(go.Pie(labels=df2['PTSD'], values = df2['count'],name=PTSD))
+            fig.update_layout(legend_title_text = "PTSD")
+            fig.update_xaxes(title_text="PTSD")
+            fig.update_yaxes(title_text="Count")
+            
+        for PTSD in df3:
+            fig.add_trace(go.Pie(labels=df3["PTSD"],values = df3['count'], name=PTSD))
+            fig.update_layout(legend_title_text = "PTSD")
+            fig.update_xaxes(title_text="PTSD")
+            fig.update_yaxes(title_text="Count")
+            
+        fig.update_layout(
+            updatemenus=[
+                dict(
+                    active=0,
+                    x = .5,
+                    xanchor = "center",
+                    y = 1,
+                    yanchor = "middle",
+                    showactive=True,
+                    font = dict({"color":"black","size":16}),
+                    buttons=list([
+                        dict(label="2021-2023",
+                            method="update",
+                            args=[{"visible": [True, True, True]},
+                                {"title": "Frequency of PTSD Reported 2021-2023"}]),
+                        dict(label="2021",
+                            method="update",
+                            args=[{"visible": [True, False, False]},
+                                {"title": "Frequency of PTSD Reported in 2021"}]),
+                        dict(label="2022",
+                            method="update",
+                            args=[{"visible": [False, True,False]},
+                                {"title": "Frequency of PTSD Reported in 2022"}]),
+                        dict(label="2023",
+                            method="update",
+                            args=[{"visible": [False,False,True]},
+                                {"title": "Frequency of PTSD Reported in 2023"}]),
+                    ]),
+                )
+            ])
+        fig.update_layout(title_text="Frequency of PTSD Reported 2021-2023")
+        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})    
+
+        st.plotly_chart(fig, use_container_width = True)
     def Scatter():
         data2 = VisualsPTSD.load_data2(1000)
         data2.sort_values(by = 'Month')
