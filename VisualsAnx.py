@@ -170,10 +170,11 @@ class VisualsAnx:
                     ]),
                 )
             ])
+        fig.update_traces(textposition='inside', textinfo='percent+label')
         fig.update_layout(title_text="Frequency of Anxiety Reported 2021-2023")
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})    
-
         st.plotly_chart(fig, use_container_width = True)
+        
     def Scatter():
         data2 = VisualsAnx.load_data2(1000)
         data2.sort_values(by = 'Month')

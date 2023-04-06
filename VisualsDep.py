@@ -169,6 +169,7 @@ class VisualsDep:
                     ]),
                 )
             ])
+        fig.update_traces(textposition='inside', textinfo='percent+label')
         fig.update_layout(title_text="Frequency of Depression Reported 2021-2023")
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})    
 
