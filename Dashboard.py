@@ -140,12 +140,12 @@ if authentication_status:
                                             
     
     # """
-    MentalData = np.random.randn(10, 1)
-    PhysicalData = np.random.randn(10, 1)
-    SpiritualData = np.random.randn(10, 1)
-    CrimeData = np.random.randn(10, 1)
-    heatmap = pd.read_csv('Data/weather.csv', parse_dates=['date'])
-    stocks = pd.read_csv('Data/stocks.csv')
+    # MentalData = np.random.randn(10, 1)
+    # PhysicalData = np.random.randn(10, 1)
+    # SpiritualData = np.random.randn(10, 1)
+    # CrimeData = np.random.randn(10, 1)
+    # heatmap = pd.read_csv('Data/weather.csv', parse_dates=['date'])
+    # stocks = pd.read_csv('Data/stocks.csv')
 
 
 
@@ -213,24 +213,24 @@ if authentication_status:
     # b1, b2, b3, b4 = st.columns([2,2,2,2])
     b1, b2, b3, b4 = st.columns(4, gap = "small")
     with b1:
-        st.image(Image.open('Icons/mind.png'))
+        # st.image(Image.open('Icons/mind.png'))
         VisCourses.stressLine()
         # st.subheader("Mental Health",)
         # st.line_chart(MentalData)
     with b2:
-        st.image(Image.open('Icons/muscle.png'))
+        # st.image(Image.open('Icons/muscle.png'))
         VisCourses.angerLine()
         # st.subheader("Physical Health")
         # st.line_chart(PhysicalData)
     with b3:
-        st.image(Image.open('Icons/spiritual.png'))
+        # st.image(Image.open('Icons/spiritual.png'))
         # st.subheader("Spiritual Health")
         VisCounsel.spritualLine()
         # st.image(Image.open('Icons/spiritual.png'))
         # # st.subheader("Spiritual Health")
         # VisCounsel.spritualLine()
     with b4:
-        st.image(Image.open('Icons/crime.png'))
+        # st.image(Image.open('Icons/crime.png'))
         # st.subheader("Crime")
         VisualsAlc.offenseLine()
         # st.line_chart(CrimeData)
@@ -249,8 +249,8 @@ if authentication_status:
     
     # """
 
-    # Row C
-    c1, c2 = st.columns((7,3))
+ 
+    c1, c2 = st.columns((7,3), gap = "small")
     with c1:
         # st.markdown('### LineGraph')
         VisualsAlc.lineGraph()
@@ -283,7 +283,7 @@ if authentication_status:
     # """
 
     # Row D
-    d1, d2 = st.columns((3,7))
+    d1, d2 = st.columns((3,7), gap = "small")
     with d1:
         # st.markdown('### LineGraph')
         VisualsAnx.pieChart()

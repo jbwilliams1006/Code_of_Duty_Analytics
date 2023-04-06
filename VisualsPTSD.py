@@ -114,7 +114,7 @@ class VisualsPTSD:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="PTSD Reports")  
+        fig.update_layout(title_text="Frequency of PTSD Reported 2021-2023")  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         st.plotly_chart(fig, use_container_width=True)
     
@@ -191,7 +191,7 @@ class VisualsPTSD:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="PTSD Reports")
+        fig.update_layout(title_text="Frequency of PTSD Reported 2021-2023")
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})    
         return st.plotly_chart(fig, use_container_width=True)
     
