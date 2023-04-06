@@ -192,23 +192,24 @@ class VisualsDep:
         df2 = df2.groupby(['depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df3 = df3.groupby(['depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         fig = go.Figure()
-        for depression, group in df1.groupby("depression"):
-            fig.add_trace(go.Bar(x=group["depression"], y=group["count"], name=depression))
-            fig.update_layout(legend_title_text = "depression")
-            fig.update_xaxes(title_text="depression")
+        for Depression, group in df1.groupby('depression'):
+            fig.add_trace(go.Bar(x=group['depression'], y=group["count"],name=Depression,textposition='outside', text = group['count']))
+            fig.update_layout(legend_title_text = "Depression")
+            fig.update_xaxes(title_text="Depression")
             fig.update_yaxes(title_text="Count")
 
-        for depression, group in df2.groupby("depression"):
-            fig.add_trace(go.Bar(x=group["depression"], y=group["count"], name=depression))
-            fig.update_layout(legend_title_text = "depression")
-            fig.update_xaxes(title_text="depression")
+        for Depression, group in df2.groupby('depression'):
+            fig.add_trace(go.Bar(x=group['depression'], y=group["count"],name=Depression,textposition='outside', text = group['count']))
+            fig.update_layout(legend_title_text = "Depression")
+            fig.update_xaxes(title_text="Depression")
             fig.update_yaxes(title_text="Count")
-            
-        for depression, group in df3.groupby("depression"):
-            fig.add_trace(go.Bar(x=group["depression"], y=group["count"], name=depression))
-            fig.update_layout(legend_title_text = "depression")
-            fig.update_xaxes(title_text="depression")
+
+        for Depression, group in df3.groupby('depression'):
+            fig.add_trace(go.Bar(x=group['depression'], y=group["count"],name=Depression,textposition='outside', text = group['count']))
+            fig.update_layout(legend_title_text = "Depression")
+            fig.update_xaxes(title_text="Depression")
             fig.update_yaxes(title_text="Count")
+
             
         fig.update_layout(
             updatemenus=[
@@ -220,25 +221,26 @@ class VisualsDep:
                         dict(label="2021-2023",
                             method="update",
                             args=[{"visible": [True, True, True]},
-                                {"title": "Frequency of depression Reported 2021-2023"}]),
+                                {"title": "Frequency of Depression Reported 2021-2023"}]),
                         dict(label="2021",
                             method="update",
                             args=[{"visible": [ True, False, False]},
-                                {"title": "Frequency of depression Reported in 2021"}]),
+                                {"title": "Frequency of Depression Reported in 2021"}]),
                         dict(label="2022",
                             method="update",
                             args=[{"visible": [False, True,False]},
-                                {"title": "Frequency of depression Reported in 2022"}]),
+                                {"title": "Frequency of Depression Reported in 2022"}]),
                         dict(label="2023",
                             method="update",
                             args=[{"visible": [False,False,True]},
-                                {"title": "Frequency of depression Reported in 2023"}]),
+                                {"title": "Frequency of Depression Reported in 2023"}]),
                     ]),
                 )
             ])
-        fig.update_layout(title_text="depression Reports")  
+
+        fig.update_layout(title_text="Frequency of Depression Reported 2021-2023")  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})   
-        return st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True)
     
 def getGraphs():
         VisualsDep.barGraph()

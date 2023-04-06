@@ -188,27 +188,28 @@ class VisualsAnx:
         df1 = VisualsAnx.load_data1(1000)
         df2 = VisualsAnx.load_data2(1000)
         df3 = VisualsAnx.load_data3(1000)
-        df1 = df1.groupby(['Anxiety']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        df2 = df2.groupby(['Anxiety']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        df3 = df3.groupby(['Anxiety']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df1 = df1.groupby(['anxiety']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df2 = df2.groupby(['anxiety']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df3 = df3.groupby(['anxiety']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         fig = go.Figure()
-        for Anxiety, group in df1.groupby("Anxiety"):
-            fig.add_trace(go.Bar(x=group["Anxiety"], y=group["count"], name=Anxiety))
+        for Anxiety, group in df1.groupby('anxiety'):
+            fig.add_trace(go.Bar(x=group['anxiety'], y=group["count"],name=Anxiety,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "Anxiety")
             fig.update_xaxes(title_text="Anxiety")
             fig.update_yaxes(title_text="Count")
 
-        for Anxiety, group in df2.groupby("Anxiety"):
-            fig.add_trace(go.Bar(x=group["Anxiety"], y=group["count"], name=Anxiety))
+        for Anxiety, group in df2.groupby('anxiety'):
+            fig.add_trace(go.Bar(x=group['anxiety'], y=group["count"],name=Anxiety,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "Anxiety")
             fig.update_xaxes(title_text="Anxiety")
             fig.update_yaxes(title_text="Count")
-            
-        for Anxiety, group in df3.groupby("Anxiety"):
-            fig.add_trace(go.Bar(x=group["Anxiety"], y=group["count"], name=Anxiety))
+
+        for Anxiety, group in df3.groupby('anxiety'):
+            fig.add_trace(go.Bar(x=group['anxiety'], y=group["count"],name=Anxiety,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "Anxiety")
             fig.update_xaxes(title_text="Anxiety")
             fig.update_yaxes(title_text="Count")
+
             
         fig.update_layout(
             updatemenus=[
@@ -236,9 +237,10 @@ class VisualsAnx:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Anxiety Reports")  
+
+        fig.update_layout(title_text="Frequency of Anxiety Reported 2021-2023")  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})   
-        return st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True)
     
 def getGraphs():
         VisualsAnx.barGraph()

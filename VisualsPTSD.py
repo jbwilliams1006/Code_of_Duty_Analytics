@@ -203,19 +203,19 @@ class VisualsPTSD:
         df3 = df3.groupby(['PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         fig = go.Figure()
         for PTSD, group in df1.groupby("PTSD"):
-            fig.add_trace(go.Bar(x=group["PTSD"], y=group["count"], name=PTSD))
+            fig.add_trace(go.Bar(x=group["PTSD"], y=group["count"], name=PTSD,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "PTSD")
             fig.update_xaxes(title_text="PTSD")
             fig.update_yaxes(title_text="Count")
 
         for PTSD, group in df2.groupby("PTSD"):
-            fig.add_trace(go.Bar(x=group["PTSD"], y=group["count"], name=PTSD))
+            fig.add_trace(go.Bar(x=group["PTSD"], y=group["count"], name=PTSD,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "PTSD")
             fig.update_xaxes(title_text="PTSD")
             fig.update_yaxes(title_text="Count")
             
         for PTSD, group in df3.groupby("PTSD"):
-            fig.add_trace(go.Bar(x=group["PTSD"], y=group["count"], name=PTSD))
+            fig.add_trace(go.Bar(x=group["PTSD"], y=group["count"], name=PTSD,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "PTSD")
             fig.update_xaxes(title_text="PTSD")
             fig.update_yaxes(title_text="Count")

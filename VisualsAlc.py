@@ -192,19 +192,19 @@ class VisualsAlc:
         df3 = df3.groupby(['alcohol_use']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         fig = go.Figure()
         for Alcohol, group in df1.groupby("alcohol_use"):
-            fig.add_trace(go.Bar(x=group["alcohol_use"], y=group["count"], name=Alcohol))
+            fig.add_trace(go.Bar(x=group["alcohol_use"], y=group["count"], name=Alcohol,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "Alcohol")
             fig.update_xaxes(title_text="Alcohol")
             fig.update_yaxes(title_text="Count")
 
         for Alcohol, group in df2.groupby("alcohol_use"):
-            fig.add_trace(go.Bar(x=group["alcohol_use"], y=group["count"], name=Alcohol))
+            fig.add_trace(go.Bar(x=group["alcohol_use"], y=group["count"], name=Alcohol,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "Alcohol")
             fig.update_xaxes(title_text="Alcohol")
             fig.update_yaxes(title_text="Count")
             
         for Alcohol, group in df3.groupby("alcohol_use"):
-            fig.add_trace(go.Bar(x=group["alcohol_use"], y=group["count"], name=Alcohol))
+            fig.add_trace(go.Bar(x=group["alcohol_use"], y=group["count"], name=Alcohol,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "Alcohol")
             fig.update_xaxes(title_text="Alcohol")
             fig.update_yaxes(title_text="Count")

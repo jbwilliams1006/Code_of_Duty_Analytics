@@ -194,23 +194,24 @@ class VisualsGrief:
         df2 = df2.groupby(['grief']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df3 = df3.groupby(['grief']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         fig = go.Figure()
-        for grief, group in df1.groupby("grief"):
-            fig.add_trace(go.Bar(x=group["grief"], y=group["count"], name=grief))
-            fig.update_layout(legend_title_text = "grief")
-            fig.update_xaxes(title_text="grief")
+        for Grief, group in df1.groupby('grief'):
+            fig.add_trace(go.Bar(x=group['grief'], y=group["count"],name=Grief,textposition='outside', text = group['count']))
+            fig.update_layout(legend_title_text = "Grief")
+            fig.update_xaxes(title_text="Grief")
             fig.update_yaxes(title_text="Count")
 
-        for grief, group in df2.groupby("grief"):
-            fig.add_trace(go.Bar(x=group["grief"], y=group["count"], name=grief))
-            fig.update_layout(legend_title_text = "grief")
-            fig.update_xaxes(title_text="grief")
+        for Grief, group in df2.groupby('grief'):
+            fig.add_trace(go.Bar(x=group['grief'], y=group["count"],name=Grief,textposition='outside', text = group['count']))
+            fig.update_layout(legend_title_text = "Grief")
+            fig.update_xaxes(title_text="Grief")
             fig.update_yaxes(title_text="Count")
-            
-        for grief, group in df3.groupby("grief"):
-            fig.add_trace(go.Bar(x=group["grief"], y=group["count"], name=grief))
-            fig.update_layout(legend_title_text = "grief")
-            fig.update_xaxes(title_text="grief")
+
+        for Grief, group in df3.groupby('grief'):
+            fig.add_trace(go.Bar(x=group['grief'], y=group["count"],name=Grief,textposition='outside', text = group['count']))
+            fig.update_layout(legend_title_text = "Grief")
+            fig.update_xaxes(title_text="Grief")
             fig.update_yaxes(title_text="Count")
+
             
         fig.update_layout(
             updatemenus=[
@@ -238,10 +239,11 @@ class VisualsGrief:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Grief Reports")  
+
+        fig.update_layout(title_text="Frequency of Grief Reported 2021-2023")  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})   
-        return st.plotly_chart(fig, use_container_width=True)
-    
+        st.plotly_chart(fig, use_container_width=True)
+
 def getGraphs():
         VisualsGrief.barGraph()
         VisualsGrief.Scatter()
