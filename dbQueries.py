@@ -19,9 +19,18 @@ def access_db():
 #   Description:
 #       Get's a dictionary count of the different 'choices' for the different occasional
 #       things inside the database
+#
 #   Params:
 #       type - str : the type of 'occasional query' 
 #                    example: (stress,grief,anxiety,ptsd,depression,alcohol_substance_use)
+#
+#   Returns: 
+#       dictionary - dictionary containting the counts for the different occasions
+#
+#   Example of call:
+#       counts = occasinoal_query_count('stress')
+#       
+#      < output > counts['daily'] -> 115
 @st.cache_resource
 def occasional_query_count(type):
 
@@ -54,6 +63,8 @@ def occasional_query_count(type):
 #   Params:
 #       date - str : needs to be in the format (YYYY-MM-DD)
 #
+#   Returns:
+#       data_list - list(dic) : all the people with data on that day
 def get_date_query(date):
 
     db = access_db()
@@ -79,6 +90,8 @@ def get_date_query(date):
 #       start - str : needs to be in the format (YYYY-MM-DD)
 #       end   - str : needs to be in the format (YYYY-MM-DD)
 #
+#   Returns:
+#       data_list - list(dic) : all the people with data in that date range
 def date_range_query(start, end):
     
     db = access_db()
@@ -91,6 +104,3 @@ def date_range_query(start, end):
         data_list.append(data.to_dict())
     
     return data_list
-
-
-# pprint(date_range_query('2021-12-05', '2022-01-05'))
