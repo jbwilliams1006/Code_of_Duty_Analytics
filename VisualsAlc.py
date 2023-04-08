@@ -91,19 +91,19 @@ class VisualsAlc:
         df3 = df3.groupby(['Alcohol_use']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         fig = go.Figure()
         for Alcohol, group in df1.groupby("Alcohol_use"):
-            fig.add_trace(go.Bar(x=group["Alcohol_use"], y=group["count"], name=Alcohol,visible=True))
+            fig.add_trace(go.Bar(x=group["Alcohol_use"], y=group["count"], name=Alcohol))
             fig.update_layout(legend_title_text = "Alcohol")
             fig.update_xaxes(title_text="Alcohol")
             fig.update_yaxes(title_text="Count")
 
         for Alcohol, group in df2.groupby("Alcohol_use"):
-            fig.add_trace(go.Bar(x=group["Alcohol_use"], y=group["count"], name=Alcohol,visible=False))
+            fig.add_trace(go.Bar(x=group["Alcohol_use"], y=group["count"], name=Alcohol))
             fig.update_layout(legend_title_text = "Alcohol")
             fig.update_xaxes(title_text="Alcohol")
             fig.update_yaxes(title_text="Count")
             
         for Alcohol, group in df3.groupby("Alcohol_use"):
-            fig.add_trace(go.Bar(x=group["Alcohol_use"], y=group["count"], name=Alcohol, visible=False))
+            fig.add_trace(go.Bar(x=group["Alcohol_use"], y=group["count"], name=Alcohol))
             fig.update_layout(legend_title_text = "Alcohol")
             fig.update_xaxes(title_text="Alcohol")
             fig.update_yaxes(title_text="Count")
@@ -115,19 +115,19 @@ class VisualsAlc:
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
-                            args=[{"visible": [True, False, False, False]},
+                            args=[{"visible": [True, True, True]},
                                 {"title": "Frequency of Alcohol Use Reported 2021-2023"}]),
                         dict(label="2021",
                             method="update",
-                            args=[{"visible": [True, True, False, False]},
+                            args=[{"visible": [ True, False, False]},
                                 {"title": "Frequency of Alcohol Use Reported in 2021"}]),
                         dict(label="2022",
                             method="update",
-                            args=[{"visible": [True, False, True,False]},
+                            args=[{"visible": [False, True,False]},
                                 {"title": "Frequency of Alcohol Use Reported in 2022"}]),
                         dict(label="2023",
                             method="update",
-                            args=[{"visible": [True, False,False,True]},
+                            args=[{"visible": [False,False,True]},
                                 {"title": "Frequency of Alcohol Use Reported in 2023"}]),
                     ]),
                 )
