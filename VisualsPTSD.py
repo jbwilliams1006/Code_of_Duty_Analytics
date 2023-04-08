@@ -93,6 +93,10 @@ class VisualsPTSD:
             updatemenus=[
                 dict(
                     active=0,
+                    x = .5,
+                    xanchor = "center",
+                    y = 1.08,
+                    yanchor = "middle",
                     showactive=True,
                     font = dict({"color":"black","size":16}),
                     buttons=list([
@@ -224,6 +228,10 @@ class VisualsPTSD:
             updatemenus=[
                 dict(
                     active=0,
+                    x = .5,
+                    xanchor = "center",
+                    y = 1.08,
+                    yanchor = "middle",
                     showactive=True,
                     font = dict({"color":"black","size":16}),
                     buttons=list([
