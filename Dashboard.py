@@ -44,8 +44,8 @@ users = users_ref.get()
 #                            ( ( __))                                            ( ( __)) 
 
 # """
-Logo = "Icons/CODA_logo.png"
-st.set_page_config(page_title = "Care of Duty Analytics",page_icon=Logo, initial_sidebar_state="collapsed",layout="wide")
+pageIcon = Image.open("Icons/CODA_logo.png")
+st.set_page_config(page_title = "Care of Duty Analytics",page_icon=pageIcon, initial_sidebar_state="collapsed",layout="wide")
 
 
 # """
@@ -155,8 +155,9 @@ if authentication_status:
     #   \______.'[___]'.__.;__]'.__.'|_______/ \'-;__/[___]    
                                                             
     
-    # """
-
+    # ""
+    logo = Image.open('Icons/fullName_logo.png')
+    st.sidebar.image(logo, use_column_width =True)
     st.sidebar.success("Select a page above.")
     #Logout button
     authenticator.logout("Logout", "sidebar")
