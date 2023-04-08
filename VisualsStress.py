@@ -44,36 +44,153 @@ class VisualsStress:
         return df3
 
     def lineGraph():
-        data3 = VisualsStress.load_data3(1000)
-        data3.sort_values(by = 'Month')
-        # data3['Month'] = dict({1:'Jan', 2:'Feb', 3:'Mar', 4:'Apr', 5:'May', 6:'Jun', 7:'Jul', 8:'Aug', 9:'Sep', 10:'Oct', 11:'Nov', 12:'Dec'})
-        # stress_data = data3.drop(data3[data3['stress'] == "Never"].index, inplace = True)
-        # # stress_data = data3.drop(data3[data3['stress'] == "Once"].index, inplace = True,)
-        # stress_data = data3.drop(data3[data3['stress'] == "Yearly"].index, inplace = True)
-        # stress_data = data3.drop(data3[data3['stress'] == "Seldom"].index, inplace = True)
-        stress_data = data3.groupby(['Month','stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        # print(stress_data)
-        plot = px.line(stress_data, x='Month',  y='count', color='stress', hover_data=['count'], labels='stress',title = 'Frequency of Stress Reported per Month in 2023')
-        plot.update_traces(texttemplate="%{y}")
-        plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        return st.plotly_chart(plot, use_container_width=True)
+        df1 = VisualsStress.load_data1(1000)
+        df2 = VisualsStress.load_data2(1000)
+        df3 = VisualsStress.load_data3(1000)
+        df1 = df1.groupby(['date','stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df2 = df2.groupby(['date','stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df3 = df3.groupby(['date','stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        fig = go.Figure()
+
+        for Stress in df1['stress'].unique():
+            yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
+            for val in df1.values:
+                if val[1] == Stress:
+                    yStuff[val[0].month - 1] += val[2]
+                    
+            fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=Stress))
+            fig.update_layout(legend_title_text = "Stress")
+            fig.update_xaxes(title_text="Stress")
+            fig.update_yaxes(title_text="Count")
+
+
+        for Stress in df2['stress'].unique():
+            yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
+            for val in df2.values:
+                if val[1] == Stress:
+                    yStuff[val[0].month - 1] += val[2]
+                    
+            fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=Stress))
+            fig.update_layout(legend_title_text = "Stress")
+            fig.update_xaxes(title_text="Stress")
+            fig.update_yaxes(title_text="Count")
+
+        for Stress in df3['stress'].unique():
+            yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
+            for val in df3.values:
+                if val[1] == Stress:
+                    yStuff[val[0].month - 1] += val[2]
+                    
+            fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=Stress))
+            fig.update_layout(legend_title_text = "Stress")
+            fig.update_xaxes(title_text="Stress")
+            fig.update_yaxes(title_text="Count")
+
+            
+        fig.update_layout(
+            updatemenus=[
+                dict(
+                    active=0,
+                    x = .5,
+                    xanchor = "center",
+                    y = 1.08,
+                    yanchor = "middle",
+                    showactive=True,
+                    font = dict({"color":"black","size":16}),
+                    buttons=list([
+                        dict(label="2021-2023",
+                            method="update",
+                            args=[{"visible": [True, True, True]},
+                                {"title": "Frequency of Stress Reported 2021-2023"}]),
+                        dict(label="2021",
+                            method="update",
+                            args=[{"visible": [True, False, False]},
+                                {"title": "Frequency of Stress Reported in 2021"}]),
+                        dict(label="2022",
+                            method="update",
+                            args=[{"visible": [False, True,False]},
+                                {"title": "Frequency of Stress Reported in 2022"}]),
+                        dict(label="2023",
+                            method="update",
+                            args=[{"visible": [False,False,True]},
+                                {"title": "Frequency of Stress Reported in 2023"}]),
+                    ]),
+                )
+            ])
+        fig.update_layout(title_text="Frequency of Stress Reported 2021-2023")  
+        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
+        st.plotly_chart(fig,use_container_width=True)
     
     def pieChart():
-        data1 = VisualsStress.load_data1(1000)
-        # stress_data = data1.drop(data1[data1['stress'] == "Never"].index, inplace = True)
-        # stress_data = data1.drop(data1[data1['stress'] == "Yearly"].index, inplace = True)
-        stress_data = data1.groupby(['stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        plot = px.pie(stress_data, values='count', names='stress', hover_data='count', labels = 'stress', title = 'Frequency of Stress Reported in 2021')
-        plot.update_traces(textposition='inside', textinfo='label + percent')
-        plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        return st.plotly_chart(plot, use_container_width=True)
+        df1 = VisualsStress.load_data1(1000)
+        df2 = VisualsStress.load_data2(1000)
+        df3 = VisualsStress.load_data3(1000)
+        df1 = df1.groupby(['stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df2 = df2.groupby(['stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df3 = df3.groupby(['stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+
+        fig = go.Figure()
+
+        for Stress in df1:
+            fig.add_trace(go.Pie(labels=df1['stress'],values = df1['count'], name = Stress))
+            fig.update_layout(legend_title_text = "Stress")
+            fig.update_xaxes(title_text="Stress")
+            fig.update_yaxes(title_text="Count")
+
+        for Stress in df2:
+            fig.add_trace(go.Pie(labels=df2['stress'], values = df2['count'],name=Stress))
+            fig.update_layout(legend_title_text = "Stress")
+            fig.update_xaxes(title_text="Stress")
+            fig.update_yaxes(title_text="Count")
+            
+        for Stress in df3:
+            fig.add_trace(go.Pie(labels=df3['stress'],values = df3['count'], name=Stress))
+            fig.update_layout(legend_title_text = "Stress")
+            fig.update_xaxes(title_text="Stress")
+            fig.update_yaxes(title_text="Count")
+            
+        fig.update_layout(
+            updatemenus=[
+                dict(
+                    active=0,
+                    x = .5,
+                    xanchor = "center",
+                    y = 1.08,
+                    yanchor = "middle",
+                    showactive=True,
+                    font = dict({"color":"black","size":16}),
+                    buttons=list([
+                        dict(label="2021-2023",
+                            method="update",
+                            args=[{"visible": [True, True, True]},
+                                {"title": "Frequency of Stress Reported 2021-2023"},
+                                ]),
+                        dict(label="2021",
+                            method="update",
+                            args=[{"visible": [True, False, False]},
+                                {"title": "Frequency of Stress Reported in 2021"},
+                                ]),
+                        dict(label="2022",
+                            method="update",
+                            args=[{"visible": [False, True,False]},
+                                {"title": "Frequency of Stress Reported in 2022"},
+                                ]),
+                        dict(label="2023",
+                            method="update",
+                            args=[{"visible": [False,False,True]},
+                                {"title": "Frequency of Stress Reported in 2023"},
+                                ]),
+                    ]),
+                )
+            ])
+        fig.update_traces(textposition='inside', textinfo='percent+label')
+        fig.update_layout(title_text="Frequency of Stress Reported 2021-2023")
+        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})    
+        st.plotly_chart(fig, use_container_width = True)
     
     def Scatter():
         data2 = VisualsStress.load_data2(1000)
         data2.sort_values(by = 'Month')
-        # stress_data = data2.drop(data2[data2['stress'] == "Never"].index, inplace = True)
-        # stress_data = data2.drop(data2[data2['stress'] == "Yearly"].index, inplace = True)
-        # stress_data = data2.drop(data2[data2['stress'] == "Once"].index, inplace = True)
         stress_data = data2.groupby(['Month','stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         #print(stress_data)
         plot = px.scatter(stress_data, 'Month',  'count', color='stress', size = 'count', hover_data=['count'],title = 'Frequency of Stress Reported per Month in 2022',render_mode = "auto")
@@ -84,32 +201,40 @@ class VisualsStress:
         df1 = VisualsStress.load_data1(1000)
         df2 = VisualsStress.load_data2(1000)
         df3 = VisualsStress.load_data3(1000)
-        df1 = df1.groupby(['Stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        df2 = df2.groupby(['Stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        df3 = df3.groupby(['Stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df1 = df1.groupby(['stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df2 = df2.groupby(['stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df3 = df3.groupby(['stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         fig = go.Figure()
-        for Stress, group in df1.groupby("Stress"):
-            fig.add_trace(go.Bar(x=group["Stress"], y=group["count"], name=Stress))
+        
+        for Stress, group in df1.groupby('stress'):
+            fig.add_trace(go.Bar(x=group['stress'], y=group["count"],name=Stress,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "Stress")
             fig.update_xaxes(title_text="Stress")
             fig.update_yaxes(title_text="Count")
 
-        for Stress, group in df2.groupby("Stress"):
-            fig.add_trace(go.Bar(x=group["Stress"], y=group["count"], name=Stress))
+        for Stress, group in df2.groupby('stress'):
+            fig.add_trace(go.Bar(x=group['stress'], y=group["count"],name=Stress,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "Stress")
             fig.update_xaxes(title_text="Stress")
             fig.update_yaxes(title_text="Count")
-            
-        for Stress, group in df3.groupby("Stress"):
-            fig.add_trace(go.Bar(x=group["Stress"], y=group["count"], name=Stress))
+
+        for Stress, group in df3.groupby('stress'):
+            fig.add_trace(go.Bar(x=group['stress'], y=group["count"],name=Stress,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "Stress")
             fig.update_xaxes(title_text="Stress")
             fig.update_yaxes(title_text="Count")
+
             
         fig.update_layout(
             updatemenus=[
                 dict(
                     active=0,
+                    x = .5,
+                    xanchor = "center",
+                    y = 1.08,
+                    yanchor = "middle",
+                    showactive=True,
+                    font = dict({"color":"black","size":16}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
@@ -130,9 +255,11 @@ class VisualsStress:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Stress Reports")  
+
+        fig.update_layout(title_text="Frequency of Stress Reported 2021-2023")  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})   
-        return st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True)
+
     
 def getGraphs():
         VisualsStress.barGraph()

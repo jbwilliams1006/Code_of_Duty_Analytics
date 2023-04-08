@@ -1,13 +1,8 @@
 #For authentication
 import pickle
 from pathlib import Path
-import altair as alt
-
 import streamlit as st
 import streamlit_authenticator as stauth
-import pandas as pd
-import numpy as np
-import plost
 from PIL import Image
 from google.cloud import firestore
 # import firebase_admin
@@ -49,8 +44,8 @@ users = users_ref.get()
 #                            ( ( __))                                            ( ( __)) 
 
 # """
-Logo = "Icons/CODA_logo.png"
-st.set_page_config(page_title = "Care of Duty",page_icon=Logo, initial_sidebar_state="collapsed",layout="wide")
+pageIcon = Image.open("Icons/CODA_logo.png")
+st.set_page_config(page_title = "Care of Duty Analytics",page_icon=pageIcon, initial_sidebar_state="collapsed",layout="wide")
 
 
 # """
@@ -140,12 +135,12 @@ if authentication_status:
                                             
     
     # """
-    MentalData = np.random.randn(10, 1)
-    PhysicalData = np.random.randn(10, 1)
-    SpiritualData = np.random.randn(10, 1)
-    CrimeData = np.random.randn(10, 1)
-    heatmap = pd.read_csv('Data/weather.csv', parse_dates=['date'])
-    stocks = pd.read_csv('Data/stocks.csv')
+    # MentalData = np.random.randn(10, 1)
+    # PhysicalData = np.random.randn(10, 1)
+    # SpiritualData = np.random.randn(10, 1)
+    # CrimeData = np.random.randn(10, 1)
+    # heatmap = pd.read_csv('Data/weather.csv', parse_dates=['date'])
+    # stocks = pd.read_csv('Data/stocks.csv')
 
 
 
@@ -160,8 +155,9 @@ if authentication_status:
     #   \______.'[___]'.__.;__]'.__.'|_______/ \'-;__/[___]    
                                                             
     
-    # """
-
+    # ""
+    logo = Image.open('Icons/fullName_logo.png')
+    st.sidebar.image(logo, use_column_width =True)
     st.sidebar.success("Select a page above.")
     #Logout button
     authenticator.logout("Logout", "sidebar")
@@ -180,12 +176,16 @@ if authentication_status:
                                                             
     
     # """
-    a1, a2 = st.columns([1,3])
+  
+    img = Image.open('Icons/screenshot1.png')
+    a1, a2 = st.columns([1,3],gap = "small")
     # a1, a2,a3,a4= st.columns([3,1,1,1])
-    a1.image('https://raw.githubusercontent.com/jbwilliams1006/Code_of_Duty_Analytics/e94586754e72914891ca847d313eab72defc092c/Icons/screenshot.png')
+    a1.image(img, use_column_width=True)
     a1.caption(f"Welcome {creds['usernames'][username]['fname']}")
     a1.text(f'Patients are seeing a 52.6% increase in mental health')
-    a2.header(f'Week Overview')
+    a2.header(f'Week Overview') 
+    
+    
     a3,a4,a5 = a2.columns(3
                           )
     with a3:
@@ -213,24 +213,22 @@ if authentication_status:
     # b1, b2, b3, b4 = st.columns([2,2,2,2])
     b1, b2, b3, b4 = st.columns(4, gap = "small")
     with b1:
-        st.image(Image.open('Icons/mind.png'))
+        # st.image(Image.open('Icons/mind.png'))
         VisCourses.stressLine()
         # st.subheader("Mental Health",)
         # st.line_chart(MentalData)
     with b2:
-        st.image(Image.open('Icons/muscle.png'))
+        # st.image(Image.open('Icons/muscle.png'))
         VisCourses.angerLine()
         # st.subheader("Physical Health")
         # st.line_chart(PhysicalData)
     with b3:
-        st.image(Image.open('Icons/spiritual.png'))
+        # st.image(Image.open('Icons/spiritual.png'))
         # st.subheader("Spiritual Health")
         VisCounsel.spritualLine()
-        # st.image(Image.open('Icons/spiritual.png'))
-        # # st.subheader("Spiritual Health")
-        # VisCounsel.spritualLine()
+       
     with b4:
-        st.image(Image.open('Icons/crime.png'))
+        # st.image(Image.open('Icons/crime.png'))
         # st.subheader("Crime")
         VisualsAlc.offenseLine()
         # st.line_chart(CrimeData)
@@ -249,8 +247,8 @@ if authentication_status:
     
     # """
 
-    # Row C
-    c1, c2 = st.columns((7,3))
+ 
+    c1, c2 = st.columns([7,3], gap = "small")
     with c1:
         # st.markdown('### LineGraph')
         VisualsAlc.lineGraph()
@@ -283,7 +281,7 @@ if authentication_status:
     # """
 
     # Row D
-    d1, d2 = st.columns((3,7))
+    d1, d2 = st.columns([3,7], gap = "small")
     with d1:
         # st.markdown('### LineGraph')
         VisualsAnx.pieChart()
