@@ -142,7 +142,7 @@ class VisualsAnx:
                     active=0,
                     x = .5,
                     xanchor = "center",
-                    y = 1,
+                    y = 1.08,
                     yanchor = "middle",
                     showactive=True,
                     font = dict({"color":"black","size":16}),

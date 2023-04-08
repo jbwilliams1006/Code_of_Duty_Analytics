@@ -103,7 +103,7 @@ class VisualsGrief:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Grief Reports")  
+        fig.update_layout(title_text="Frequency of Grief Reported 2021-2023")  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         st.plotly_chart(fig)
     
@@ -141,7 +141,7 @@ class VisualsGrief:
                     active=0,
                     x = .5,
                     xanchor = "center",
-                    y = 1,
+                    y = 1.08,
                     yanchor = "middle",
                     showactive=True,
                     font = dict({"color":"black","size":16}),

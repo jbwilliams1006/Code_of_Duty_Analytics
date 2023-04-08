@@ -1,18 +1,19 @@
 /* Move block container higher */
 
-div.block-container.css-18e3th9.egzxvld2 {
-    margin-top: 1em;
-}
+/* div.block-container.css-18e3th9.egzxvld2 {
+    margin-top: 10em;
+} */
 
 
 /* Adjustments for the logo image*/
 
 img {
-    display: block;
-    margin-top: 1em;
-    height: 70px !important;
-    width: auto;
-    max-width: 70px !important;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: scale-down;
+    height: 35%;
+    width: 50%;
 }
 
 
@@ -45,10 +46,11 @@ div.css-1ht1j8u.e16fv1kl0 {
 
 /* Css for image */
 
-img[src="https://raw.githubusercontent.com/jbwilliams1006/Code_of_Duty_Analytics/e94586754e72914891ca847d313eab72defc092c/Icons/screenshot.png"] {
-    margin-left: 170px;
+/* img[src="https://raw.githubusercontent.com/jbwilliams1006/Code_of_Duty_Analytics/e94586754e72914891ca847d313eab72defc092c/Icons/screenshot.png"] { */
+    /* img[scr="Icons/full_logo.png"]{
+    margin-left: 300px;
     margin-top: 20px;
-}
+} */
 
 
 /* Row 1 text */
@@ -57,10 +59,11 @@ div.css-thv974.e16nr0p34 {
     font-family: 'Inter', Bold;
     font-size: xx-large;
     color: #000000;
-    padding: 3% 3% 3% 20%;
-    border-radius: 1px;
+    padding: 3% 3% 3% 15%;
+    align-content: center;
+    border-radius: 30px;
     height: 40px;
-    margin-left: 0rem;
+    margin-left: 1rem;
 }
 
 
@@ -71,10 +74,12 @@ div.css-183lzff.eyqtai90 {
     font-size: large;
     color: #000000;
     padding: 3% 3% 3% 3%;
-    border-radius: 1px;
+    border-radius: 30px;
     position: relative;
+    align-content: center;
+    align-items: center;
     max-width: 450px !important;
-    margin-left: 0rem;
+    margin-left: 0rem; 
 }
 
 
@@ -82,11 +87,11 @@ div.css-183lzff.eyqtai90 {
 
 div.css-ml2xh6.e1tzin5v2 {
     background-color: #EEEEEE;
-    padding: 3% 3% 3% 3%;
-    border-radius: 1px;
+    padding: 2% 2% 2% 2%;
+    border-radius: 30px;
     width: calc(50% - 1rem);
     flex-basis: calc(50% - 1rem);
-}
+} 
 
 
 /*
@@ -105,10 +110,11 @@ div.css-ml2xh6.e1tzin5v2 {
 /* Box behind charts */
 
 div.css-12w0qpk.e1tzin5v2 {
-    display: block;
+    display: flex;
     background-color: #eeeeee;
-    padding: 3% 3% 3% 3%;
-    border-radius: 1px;
+    padding: 1% 1% 1% 1%;
+    border-radius: 30px;
+    
 }
 
 
@@ -143,8 +149,10 @@ div.css-pmvzy7.e1tzin5v0 {
 
 div.css-1bcsrn5.e1tzin5v2 {
     background-color: #eeeeee;
-    padding: 3% 3% 3% 3%;
-    border-radius: 1px;
+    padding: 1% 1% 1% 1%;
+    border-radius: 30px;
+    width: calc(50% - 1rem);
+    flex-basis: calc(50% - 1rem);
 }
 
 
@@ -152,8 +160,8 @@ div.css-1bcsrn5.e1tzin5v2 {
 
 div.css-1bzkvni.e1tzin5v2 {
     background-color: #eeeeee;
-    padding: 3% 3% 3% 3%;
-    border-radius: 1px;
+    padding: 1% 1% 1% 1%;
+    border-radius: 30px;
 }
 
 

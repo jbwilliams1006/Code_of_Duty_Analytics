@@ -141,7 +141,7 @@ class VisualsAlc:
                     active=0,
                     x = .5,
                     xanchor = "center",
-                    y = 1,
+                    y = 1.1,
                     yanchor = "middle",
                     showactive=True,
                     font = dict({"color":"black","size":16}),
@@ -192,19 +192,19 @@ class VisualsAlc:
         df3 = df3.groupby(['alcohol_use']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         fig = go.Figure()
         for Alcohol, group in df1.groupby("alcohol_use"):
-            fig.add_trace(go.Bar(x=group["alcohol_use"], y=group["count"], name=Alcohol,textposition='outside', text = group['count']))
+            fig.add_trace(go.Bar(x=group["alcohol_use"], y=group["count"], name=Alcohol))
             fig.update_layout(legend_title_text = "Alcohol")
             fig.update_xaxes(title_text="Alcohol")
             fig.update_yaxes(title_text="Count")
 
         for Alcohol, group in df2.groupby("alcohol_use"):
-            fig.add_trace(go.Bar(x=group["alcohol_use"], y=group["count"], name=Alcohol,textposition='outside', text = group['count']))
+            fig.add_trace(go.Bar(x=group["alcohol_use"], y=group["count"], name=Alcohol))
             fig.update_layout(legend_title_text = "Alcohol")
             fig.update_xaxes(title_text="Alcohol")
             fig.update_yaxes(title_text="Count")
             
         for Alcohol, group in df3.groupby("alcohol_use"):
-            fig.add_trace(go.Bar(x=group["alcohol_use"], y=group["count"], name=Alcohol,textposition='outside', text = group['count']))
+            fig.add_trace(go.Bar(x=group["alcohol_use"], y=group["count"], name=Alcohol))
             fig.update_layout(legend_title_text = "Alcohol")
             fig.update_xaxes(title_text="Alcohol")
             fig.update_yaxes(title_text="Count")
@@ -219,7 +219,8 @@ class VisualsAlc:
                         dict(label="2021-2023",
                             method="update",
                             args=[{"visible": [True, True, True]},
-                                {"title": "Frequency of Alcohol Use Reported 2021-2023"}]),
+                                {"title": "Frequency of Alcohol Use Reported 2021-2023"},
+                                {"font":"bold"}]),
                         dict(label="2021",
                             method="update",
                             args=[{"visible": [ True, False, False]},
@@ -285,7 +286,7 @@ class VisualsAlc:
                     active=0,
                     x = .5,
                     xanchor = "center",
-                    y = 1.05,
+                    y = 1.08,
                     yanchor = "middle",
                     showactive=True,
                     font = dict({"color":"black", "size":14}),

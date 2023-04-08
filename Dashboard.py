@@ -50,7 +50,7 @@ users = users_ref.get()
 
 # """
 Logo = "Icons/CODA_logo.png"
-st.set_page_config(page_title = "Care of Duty",page_icon=Logo, initial_sidebar_state="collapsed",layout="wide")
+st.set_page_config(page_title = "Care of Duty Analytics",page_icon=Logo, initial_sidebar_state="collapsed",layout="wide")
 
 
 # """
@@ -180,12 +180,16 @@ if authentication_status:
                                                             
     
     # """
-    a1, a2 = st.columns([1,3])
+  
+    img = Image.open('Icons/screenshot1.png')
+    a1, a2 = st.columns([1,3],gap = "small")
     # a1, a2,a3,a4= st.columns([3,1,1,1])
-    a1.image('https://raw.githubusercontent.com/jbwilliams1006/Code_of_Duty_Analytics/e94586754e72914891ca847d313eab72defc092c/Icons/screenshot.png')
+    a1.image(img, use_column_width=True)
     a1.caption(f"Welcome {creds['usernames'][username]['fname']}")
     a1.text(f'Patients are seeing a 52.6% increase in mental health')
-    a2.header(f'Week Overview')
+    a2.header(f'Week Overview') 
+    
+    
     a3,a4,a5 = a2.columns(3
                     )
     with a3:
@@ -250,7 +254,7 @@ if authentication_status:
     # """
 
  
-    c1, c2 = st.columns((7,3), gap = "small")
+    c1, c2 = st.columns([7,3], gap = "small")
     with c1:
         # st.markdown('### LineGraph')
         VisualsAlc.lineGraph()
@@ -283,7 +287,7 @@ if authentication_status:
     # """
 
     # Row D
-    d1, d2 = st.columns((3,7), gap = "small")
+    d1, d2 = st.columns([3,7], gap = "small")
     with d1:
         # st.markdown('### LineGraph')
         VisualsAnx.pieChart()
