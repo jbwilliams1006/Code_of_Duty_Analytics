@@ -1,13 +1,8 @@
 #For authentication
 import pickle
 from pathlib import Path
-import altair as alt
-
 import streamlit as st
 import streamlit_authenticator as stauth
-import pandas as pd
-import numpy as np
-import plost
 from PIL import Image
 from google.cloud import firestore
 # import firebase_admin
@@ -230,9 +225,7 @@ if authentication_status:
         # st.image(Image.open('Icons/spiritual.png'))
         # st.subheader("Spiritual Health")
         VisCounsel.spritualLine()
-        # st.image(Image.open('Icons/spiritual.png'))
-        # # st.subheader("Spiritual Health")
-        # VisCounsel.spritualLine()
+       
     with b4:
         # st.image(Image.open('Icons/crime.png'))
         # st.subheader("Crime")
