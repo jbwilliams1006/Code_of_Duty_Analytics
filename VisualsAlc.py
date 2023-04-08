@@ -228,7 +228,7 @@ class VisualsAlc:
                             method="update",
                             args=[{"visible": [True, True, True]},
                                 {"title": "Frequency of Alcohol Use Reported 2021-2023"},
-                                {"font":"bold"}]),
+                                {"font":"Arial Black"}]),
                         dict(label="2021",
                             method="update",
                             args=[{"visible": [ True, False, False]},
