@@ -250,7 +250,6 @@ if authentication_status:
  
     c1, c2 = st.columns([7,3], gap = "small")
     with c1:
-        # st.markdown('### LineGraph')
         VisualsAlc.lineGraph()
         # plost.time_hist(
         # data=heatmap,
@@ -261,7 +260,7 @@ if authentication_status:
         # aggregate='median',
         # legend=None)
     with c2:
-        # st.markdown('### Pie chart')
+        # st.markdown('### Stress Reports')
         VisualsStress.pieChart()
         # plost.donut_chart(
         #     data=stocks,
