@@ -1,39 +1,34 @@
 import streamlit as st
 import pandas as pd
-import datetime as dt
-import plotly.express as px
 import plotly.graph_objects as go
+import datetime as dt
 
 class VisualsAlc:
     
-    @st.cache_data(experimental_allow_widgets=True)
+    @st.cache_data(experimental_allow_widgets=True, ttl = dt.timedelta(hours=1))
     def load_data1(nrows):
         df1 = pd.read_csv('Data/MockData/MOCK_DATA.csv',nrows=nrows,parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
         df1 = pd.DataFrame(df1)
         df1['date'] = pd.to_datetime(df1['date'], format='%Y-%m-%d')
-        df1['Month'] = pd.to_datetime(df1['date']).dt.month
         return df1
     
-    @st.cache_data(experimental_allow_widgets=True)
+    @st.cache_data(experimental_allow_widgets=True, ttl = dt.timedelta(hours=1))
     def load_data2(nrows):
         df2 = pd.read_csv('Data/MockData/MOCK_DATA2.csv', nrows=nrows,parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
         df2 = pd.DataFrame(df2)
         df2['date'] = pd.to_datetime(df2['date'], format='YYYY-mm-dd')
-        df2['Month'] = pd.to_datetime(df2['date']).dt.month
         return df2
     
-    @st.cache_data(experimental_allow_widgets=True)
+    @st.cache_data(experimental_allow_widgets=True, ttl = dt.timedelta(hours=1))
     def load_data3(nrows):
         df3 = pd.read_csv('Data/MockData/MOCK_DATA3.csv', nrows=nrows, parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
         df3 = pd.DataFrame(df3)
         df3['date'] = pd.to_datetime(df3['date'], format='%Y-%m-%d')
-        df3['Month'] = pd.to_datetime(df3['date']).dt.month
         return df3
-    
-    @st.cache_data(experimental_allow_widgets=True)
+
     def lineGraph():
         df1 = VisualsAlc.load_data1(1000)
         df2 = VisualsAlc.load_data2(1000)
@@ -111,8 +106,8 @@ class VisualsAlc:
         fig.update_layout(title_text="Frequency of Alcohol Use Reported 2021-2023")  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         st.plotly_chart(fig, use_container_width=True)
-    
-    @st.cache_data(experimental_allow_widgets=True)
+        
+ 
     def pieChart():
         df1 = VisualsAlc.load_data1(1000)
         df2 = VisualsAlc.load_data2(1000)
@@ -178,10 +173,9 @@ class VisualsAlc:
         fig.update_traces(textposition='inside', textinfo='percent+label')
         fig.update_layout(title_text="Frequency of Alcohol Use Reported 2021-2023")
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})    
-
         st.plotly_chart(fig, use_container_width = True)
         
-    @st.cache_data(experimental_allow_widgets=True)
+
     def barGraph():
         df1 = VisualsAlc.load_data1(1000)
         df2 = VisualsAlc.load_data2(1000)
@@ -243,7 +237,7 @@ class VisualsAlc:
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})   
         return st.plotly_chart(fig, use_container_width=True)
     
-    @st.cache_data(experimental_allow_widgets=True)
+
     def offenseLine():
         df1 = VisualsAlc.load_data1(1000)
         df2 = VisualsAlc.load_data2(1000)

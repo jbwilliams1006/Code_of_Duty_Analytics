@@ -1,13 +1,12 @@
 import streamlit as st
 import pandas as pd
-import datetime as dt
-import plotly.express as px
 import plotly.graph_objects as go
+import datetime as dt
 # relation_counseling,grief_counseling,spiritual_counseling
 
 class VisCounsel:
        
-    @st.cache_data(experimental_allow_widgets=True)
+    @st.cache_data(experimental_allow_widgets=True, ttl = dt.timedelta(hours=1))
     def load_data1(nrows):
         df1 = pd.read_csv('Data/MockData/MOCK_DATA.csv',nrows=nrows,parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
@@ -16,7 +15,7 @@ class VisCounsel:
         df1['date'] = pd.to_datetime(df1['date'], format='%Y-%m-%d')
         return df1
     
-    @st.cache_data(experimental_allow_widgets=True)
+    @st.cache_data(experimental_allow_widgets=True, ttl = dt.timedelta(hours=1))
     def load_data2(nrows):
         df2 = pd.read_csv('Data/MockData/MOCK_DATA2.csv', nrows=nrows,parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
@@ -25,7 +24,7 @@ class VisCounsel:
         df2['date'] = pd.to_datetime(df2['date'], format='YYYY-mm-dd')
         return df2
     
-    @st.cache_data(experimental_allow_widgets=True)
+    @st.cache_data(experimental_allow_widgets=True, ttl = dt.timedelta(hours=1))
     def load_data3(nrows):
         df3 = pd.read_csv('Data/MockData/MOCK_DATA3.csv', nrows=nrows, parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
@@ -265,8 +264,6 @@ def getGraphs():
         VisCounsel.spritualLine()
         VisCounsel.relationLine()
         VisCounsel.griefLine()
-        VisCounsel.griefBar()
-      
             
 
 if __name__=='__main__':

@@ -181,7 +181,7 @@ if authentication_status:
     a1, a2 = st.columns([1,3],gap = "small")
     # a1, a2,a3,a4= st.columns([3,1,1,1])
     a1.image(img, use_column_width=True)
-    a1.caption(f"Welcome {creds['usernames'][username]['fname']}")
+    a1.header(f"Welcome {creds['usernames'][username]['fname']}")
     a1.text(f'Patients are seeing a 52.6% increase in mental health')
     a2.header(f'Week Overview') 
     

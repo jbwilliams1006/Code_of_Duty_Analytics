@@ -1,12 +1,11 @@
 import streamlit as st
 import pandas as pd
-import datetime as dt
-import plotly.express as px
 import plotly.graph_objects as go
+import datetime as dt
 # anger_course,alcohol_course,stress_course,SA_course,DV_course
 class VisCourses:
        
-    @st.cache_data(experimental_allow_widgets=True)
+    @st.cache_data(experimental_allow_widgets=True, ttl = dt.timedelta(hours=1))
     def load_data1(nrows):
         data1 = pd.read_csv('Data/MockData/MOCK_DATA.csv',nrows=nrows,parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
@@ -15,7 +14,7 @@ class VisCourses:
         df1['date'] = pd.to_datetime(df1['date'], format='%Y-%m-%d')
         return df1
     
-    @st.cache_data(experimental_allow_widgets=True)
+    @st.cache_data(experimental_allow_widgets=True, ttl = dt.timedelta(hours=1))
     def load_data2(nrows):
         data2 = pd.read_csv('Data/MockData/MOCK_DATA2.csv', nrows=nrows,parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
@@ -24,7 +23,7 @@ class VisCourses:
         df2['date'] = pd.to_datetime(df2['date'], format='YYYY-mm-dd')
         return df2
     
-    @st.cache_data(experimental_allow_widgets=True)
+    @st.cache_data(experimental_allow_widgets=True, ttl = dt.timedelta(hours=1))
     def load_data3(nrows):
         data3 = pd.read_csv('Data/MockData/MOCK_DATA3.csv', nrows=nrows, parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
@@ -415,13 +414,9 @@ class VisCourses:
     
 def getGraphs():
         VisCourses.DVLine()
-      
         VisCourses.SALine()
-       
         VisCourses.angerLine()
- 
         VisCourses.alcLine()
-      
         VisCourses.stressLine()
   
         
