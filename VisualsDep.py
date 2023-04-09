@@ -187,19 +187,19 @@ class VisualsDep:
         for Depression, group in df1.groupby('depression'):
             fig.add_trace(go.Bar(x=group['depression'], y=group["count"],name=Depression,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "Depression")
-            fig.update_xaxes(title_text="Depression")
+            fig.update_xaxes(title_text="Depression",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
             fig.update_yaxes(title_text="Count")
 
         for Depression, group in df2.groupby('depression'):
             fig.add_trace(go.Bar(x=group['depression'], y=group["count"],name=Depression,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "Depression")
-            fig.update_xaxes(title_text="Depression")
+            fig.update_xaxes(title_text="Depression",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
             fig.update_yaxes(title_text="Count")
 
         for Depression, group in df3.groupby('depression'):
             fig.add_trace(go.Bar(x=group['depression'], y=group["count"],name=Depression,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "Depression")
-            fig.update_xaxes(title_text="Depression")
+            fig.update_xaxes(title_text="Depression",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
             fig.update_yaxes(title_text="Count")
 
             

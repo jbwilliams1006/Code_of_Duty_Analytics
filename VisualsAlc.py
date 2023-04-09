@@ -187,19 +187,19 @@ class VisualsAlc:
         for Alcohol, group in df1.groupby("alcohol_use"):
             fig.add_trace(go.Bar(x=group["alcohol_use"], y=group["count"], name=Alcohol))
             fig.update_layout(legend_title_text = "Alcohol")
-            fig.update_xaxes(title_text="Alcohol")
+            fig.update_xaxes(title_text="Alcohol",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
             fig.update_yaxes(title_text="Count")
 
         for Alcohol, group in df2.groupby("alcohol_use"):
             fig.add_trace(go.Bar(x=group["alcohol_use"], y=group["count"], name=Alcohol))
             fig.update_layout(legend_title_text = "Alcohol")
-            fig.update_xaxes(title_text="Alcohol")
+            fig.update_xaxes(title_text="Alcohol",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
             fig.update_yaxes(title_text="Count")
             
         for Alcohol, group in df3.groupby("alcohol_use"):
             fig.add_trace(go.Bar(x=group["alcohol_use"], y=group["count"], name=Alcohol))
             fig.update_layout(legend_title_text = "Alcohol")
-            fig.update_xaxes(title_text="Alcohol")
+            fig.update_xaxes(title_text="Alcohol",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
             fig.update_yaxes(title_text="Count")
             
         fig.update_layout(

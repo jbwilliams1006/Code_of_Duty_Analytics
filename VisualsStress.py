@@ -114,9 +114,9 @@ class VisualsStress:
         df1 = VisualsStress.load_data1(1000)
         df2 = VisualsStress.load_data2(1000)
         df3 = VisualsStress.load_data3(1000)
-        df1 = df1.groupby(['stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        df2 = df2.groupby(['stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        df3 = df3.groupby(['stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df1 = df1.groupby(['stress']).apply(len).reindex(index=['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never']).to_frame('count').reset_index()
+        df2 = df2.groupby(['stress']).apply(len).reindex(index=['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never']).to_frame('count').reset_index()
+        df3 = df3.groupby(['stress']).apply(len).reindex(index=['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never']).to_frame('count').reset_index()
 
         fig = go.Figure()
 
@@ -190,19 +190,19 @@ class VisualsStress:
         for Stress, group in df1.groupby('stress'):
             fig.add_trace(go.Bar(x=group['stress'], y=group["count"],name=Stress,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "Stress")
-            fig.update_xaxes(title_text="Stress")
+            fig.update_xaxes(title_text="Stress",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
             fig.update_yaxes(title_text="Count")
 
         for Stress, group in df2.groupby('stress'):
             fig.add_trace(go.Bar(x=group['stress'], y=group["count"],name=Stress,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "Stress")
-            fig.update_xaxes(title_text="Stress")
+            fig.update_xaxes(title_text="Stress",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
             fig.update_yaxes(title_text="Count")
 
         for Stress, group in df3.groupby('stress'):
             fig.add_trace(go.Bar(x=group['stress'], y=group["count"],name=Stress,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "Stress")
-            fig.update_xaxes(title_text="Stress")
+            fig.update_xaxes(title_text="Stress",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
             fig.update_yaxes(title_text="Count")
 
             

@@ -50,7 +50,7 @@ class VisualsPTSD:
             fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=PTSD))
             fig.update_layout(legend_title_text = "PTSD")
             fig.update_xaxes(title_text="PTSD")
-            fig.update_yaxes(title_text="Count")
+            fig.update_yaxes(title_text="Count",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
 
 
         for PTSD in df2['PTSD'].unique():
@@ -62,7 +62,7 @@ class VisualsPTSD:
             fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=PTSD))
             fig.update_layout(legend_title_text = "PTSD")
             fig.update_xaxes(title_text="PTSD")
-            fig.update_yaxes(title_text="Count")
+            fig.update_yaxes(title_text="Count",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
 
         for PTSD in df3['PTSD'].unique():
             yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
@@ -73,7 +73,7 @@ class VisualsPTSD:
             fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=PTSD))
             fig.update_layout(legend_title_text = "PTSD")
             fig.update_xaxes(title_text="PTSD")
-            fig.update_yaxes(title_text="Count")
+            fig.update_yaxes(title_text="Count",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
 
             
         fig.update_layout(
@@ -185,19 +185,19 @@ class VisualsPTSD:
         for PTSD, group in df1.groupby("PTSD"):
             fig.add_trace(go.Bar(x=group["PTSD"], y=group["count"], name=PTSD,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "PTSD")
-            fig.update_xaxes(title_text="PTSD")
+            fig.update_xaxes(title_text="PTSD",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
             fig.update_yaxes(title_text="Count")
 
         for PTSD, group in df2.groupby("PTSD"):
             fig.add_trace(go.Bar(x=group["PTSD"], y=group["count"], name=PTSD,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "PTSD")
-            fig.update_xaxes(title_text="PTSD")
+            fig.update_xaxes(title_text="PTSD",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
             fig.update_yaxes(title_text="Count")
             
         for PTSD, group in df3.groupby("PTSD"):
             fig.add_trace(go.Bar(x=group["PTSD"], y=group["count"], name=PTSD,textposition='outside', text = group['count']))
             fig.update_layout(legend_title_text = "PTSD")
-            fig.update_xaxes(title_text="PTSD")
+            fig.update_xaxes(title_text="PTSD",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
             fig.update_yaxes(title_text="Count")
             
         fig.update_layout(
