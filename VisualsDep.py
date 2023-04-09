@@ -6,31 +6,28 @@ import plotly.graph_objects as go
 
 class VisualsDep:
        
-    @st.cache_data
+    @st.cache_data(experimental_allow_widgets=True)
     def load_data1(nrows):
-        data1 = pd.read_csv('Data/MockData/MOCK_DATA.csv',nrows=nrows,parse_dates=['date'])
+        df1 = pd.read_csv('Data/MockData/MOCK_DATA.csv',nrows=nrows,parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
-        df1 = pd.DataFrame(data1)
+        df1 = pd.DataFrame(df1)
         df1['date'] = pd.to_datetime(df1['date'], format='%Y-%m-%d')
-        df1['Month'] = pd.to_datetime(df1['date']).dt.month
         return df1
     
-    @st.cache_data
+    @st.cache_data(experimental_allow_widgets=True)
     def load_data2(nrows):
-        data2 = pd.read_csv('Data/MockData/MOCK_DATA2.csv', nrows=nrows,parse_dates=['date'])
+        df2 = pd.read_csv('Data/MockData/MOCK_DATA2.csv', nrows=nrows,parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
-        df2 = pd.DataFrame(data2)
+        df2 = pd.DataFrame(df2)
         df2['date'] = pd.to_datetime(df2['date'], format='YYYY-mm-dd')
-        df2['Month'] = pd.to_datetime(df2['date']).dt.month
         return df2
     
-    @st.cache_data
+    @st.cache_data(experimental_allow_widgets=True)
     def load_data3(nrows):
-        data3 = pd.read_csv('Data/MockData/MOCK_DATA3.csv', nrows=nrows, parse_dates=['date'])
+        df3 = pd.read_csv('Data/MockData/MOCK_DATA3.csv', nrows=nrows, parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
-        df3 = pd.DataFrame(data3)
+        df3 = pd.DataFrame(df3)
         df3['date'] = pd.to_datetime(df3['date'], format='%Y-%m-%d')
-        df3['Month'] = pd.to_datetime(df3['date']).dt.month
         return df3
 
     def lineGraph():
@@ -179,14 +176,6 @@ class VisualsDep:
 
         st.plotly_chart(fig, use_container_width = True)
     
-    def Scatter():
-        data2 = VisualsDep.load_data2(1000)
-        data2.sort_values(by = 'Month')
-        depression_data = data2.groupby(['Month','depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        #print(depression_data)
-        plot = px.scatter(depression_data, 'Month',  'count', color='depression', size = 'count', hover_data=['count'],title = 'Frequency of depression Reported per Month in 2022',render_mode = "auto")
-        plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        return st.plotly_chart(plot, use_container_width=True)
 
     def barGraph():
         df1 = VisualsDep.load_data1(1000)
@@ -252,7 +241,6 @@ class VisualsDep:
     
 def getGraphs():
         VisualsDep.barGraph()
-        VisualsDep.Scatter()
         VisualsDep.lineGraph()
         VisualsDep.pieChart()
             

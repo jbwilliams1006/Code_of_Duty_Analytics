@@ -6,41 +6,31 @@ import plotly.graph_objects as go
 
 class VisualsStress:
        
-    @st.cache_data
+    @st.cache_data(experimental_allow_widgets=True)
     def load_data1(nrows):
-        data1 = pd.read_csv('Data/MockData/MOCK_DATA.csv',nrows=nrows,parse_dates=['date'])
+        df1 = pd.read_csv('Data/MockData/MOCK_DATA.csv',nrows=nrows,parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
-        df1 = pd.DataFrame(data1)
+        df1 = pd.DataFrame(df1)
         # df1.info()
         df1['date'] = pd.to_datetime(df1['date'], format='%Y-%m-%d')
-        df1['Month'] = pd.to_datetime(df1['date']).dt.month
-        # group by year
-        df1['Year'] = pd.to_datetime(df1['date']).dt.year
-        df1['Week'] = pd.to_datetime(df1['date']).dt.isocalendar().week
         return df1
-    @st.cache_data
+    
+    @st.cache_data(experimental_allow_widgets=True)
     def load_data2(nrows):
-        data2 = pd.read_csv('Data/MockData/MOCK_DATA2.csv', nrows=nrows,parse_dates=['date'])
+        df2 = pd.read_csv('Data/MockData/MOCK_DATA2.csv', nrows=nrows,parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
-        df2 = pd.DataFrame(data2)
+        df2 = pd.DataFrame(df2)
         # df2.info()
         df2['date'] = pd.to_datetime(df2['date'], format='YYYY-mm-dd')
-        df2['Month'] = pd.to_datetime(df2['date']).dt.month
-        # group by year
-        df2['Year'] = pd.to_datetime(df2['date']).dt.year
-        df2['Week'] = pd.to_datetime(df2['date']).dt.isocalendar().week
         return df2
-    @st.cache_data
+    
+    @st.cache_data(experimental_allow_widgets=True)
     def load_data3(nrows):
-        data3 = pd.read_csv('Data/MockData/MOCK_DATA3.csv', nrows=nrows, parse_dates=['date'])
+        df3 = pd.read_csv('Data/MockData/MOCK_DATA3.csv', nrows=nrows, parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
-        df3 = pd.DataFrame(data3)
+        df3 = pd.DataFrame(df3)
         # df3.info()
         df3['date'] = pd.to_datetime(df3['date'], format='%Y-%m-%d')
-        df3['Month'] = pd.to_datetime(df3['date']).dt.month
-        # ({1:'Jan', 2:'Feb', 3:'Mar', 4:'Apr', 5:'May', 6:'Jun', 7:'Jul', 8:'Aug', 9:'Sep', 10:'Oct', 11:'Nov', 12:'Dec'})
-        # group by year
-        df3['Week'] = pd.to_datetime(df3['date']).dt.isocalendar().week
         return df3
 
     def lineGraph():
@@ -188,14 +178,6 @@ class VisualsStress:
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})    
         st.plotly_chart(fig, use_container_width = True)
     
-    def Scatter():
-        data2 = VisualsStress.load_data2(1000)
-        data2.sort_values(by = 'Month')
-        stress_data = data2.groupby(['Month','stress']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        #print(stress_data)
-        plot = px.scatter(stress_data, 'Month',  'count', color='stress', size = 'count', hover_data=['count'],title = 'Frequency of Stress Reported per Month in 2022',render_mode = "auto")
-        plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        return st.plotly_chart(plot, use_container_width=True)
 
     def barGraph():
         df1 = VisualsStress.load_data1(1000)
@@ -263,7 +245,6 @@ class VisualsStress:
     
 def getGraphs():
         VisualsStress.barGraph()
-        VisualsStress.Scatter()
         VisualsStress.lineGraph()
         VisualsStress.pieChart()
             

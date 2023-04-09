@@ -5,34 +5,35 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 class VisualsAlc:
-       
-    @st.cache_data
+    
+    @st.cache_data(experimental_allow_widgets=True)
     def load_data1(nrows):
-        data1 = pd.read_csv('Data/MockData/MOCK_DATA.csv',nrows=nrows,parse_dates=['date'])
+        df1 = pd.read_csv('Data/MockData/MOCK_DATA.csv',nrows=nrows,parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
-        df1 = pd.DataFrame(data1)
+        df1 = pd.DataFrame(df1)
         df1['date'] = pd.to_datetime(df1['date'], format='%Y-%m-%d')
         df1['Month'] = pd.to_datetime(df1['date']).dt.month
         return df1
     
-    @st.cache_data
+    @st.cache_data(experimental_allow_widgets=True)
     def load_data2(nrows):
-        data2 = pd.read_csv('Data/MockData/MOCK_DATA2.csv', nrows=nrows,parse_dates=['date'])
+        df2 = pd.read_csv('Data/MockData/MOCK_DATA2.csv', nrows=nrows,parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
-        df2 = pd.DataFrame(data2)
+        df2 = pd.DataFrame(df2)
         df2['date'] = pd.to_datetime(df2['date'], format='YYYY-mm-dd')
         df2['Month'] = pd.to_datetime(df2['date']).dt.month
         return df2
     
-    @st.cache_data
+    @st.cache_data(experimental_allow_widgets=True)
     def load_data3(nrows):
-        data3 = pd.read_csv('Data/MockData/MOCK_DATA3.csv', nrows=nrows, parse_dates=['date'])
+        df3 = pd.read_csv('Data/MockData/MOCK_DATA3.csv', nrows=nrows, parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
-        df3 = pd.DataFrame(data3)
+        df3 = pd.DataFrame(df3)
         df3['date'] = pd.to_datetime(df3['date'], format='%Y-%m-%d')
         df3['Month'] = pd.to_datetime(df3['date']).dt.month
         return df3
-
+    
+    @st.cache_data(experimental_allow_widgets=True)
     def lineGraph():
         df1 = VisualsAlc.load_data1(1000)
         df2 = VisualsAlc.load_data2(1000)
@@ -111,6 +112,7 @@ class VisualsAlc:
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         st.plotly_chart(fig, use_container_width=True)
     
+    @st.cache_data(experimental_allow_widgets=True)
     def pieChart():
         df1 = VisualsAlc.load_data1(1000)
         df2 = VisualsAlc.load_data2(1000)
@@ -178,15 +180,8 @@ class VisualsAlc:
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})    
 
         st.plotly_chart(fig, use_container_width = True)
-    def Scatter():
-        data2 = VisualsAlc.load_data2(1000)
-        data2.sort_values(by = 'Month')
-        alcohol_use_data = data2.groupby(['Month','alcohol_use']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        plot = px.scatter(alcohol_use_data, 'Month',  'count', color='alcohol_use', size = 'count', hover_data=['count'],title = 'Frequency of Alcohol Use Reported per Month in 2022',render_mode = "auto")
-        plot.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-
-        return st.plotly_chart(plot, use_container_width=True)
-
+        
+    @st.cache_data(experimental_allow_widgets=True)
     def barGraph():
         df1 = VisualsAlc.load_data1(1000)
         df2 = VisualsAlc.load_data2(1000)
@@ -248,6 +243,7 @@ class VisualsAlc:
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})   
         return st.plotly_chart(fig, use_container_width=True)
     
+    @st.cache_data(experimental_allow_widgets=True)
     def offenseLine():
         df1 = VisualsAlc.load_data1(1000)
         df2 = VisualsAlc.load_data2(1000)
@@ -325,7 +321,6 @@ class VisualsAlc:
 
 def getGraphs():
         VisualsAlc.barGraph()
-        VisualsAlc.Scatter()
         VisualsAlc.lineGraph()
         VisualsAlc.pieChart()
         VisualsAlc.offenseLine()
