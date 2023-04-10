@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 import datetime as dt
+import plotly.express as px
 
 class VisualsPTSD:
        
@@ -39,74 +40,22 @@ class VisualsPTSD:
         df1 = df1.groupby(['date','PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2 = df2.groupby(['date','PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df3 = df3.groupby(['date','PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        fig = go.Figure()
-
-        for PTSD in df1['PTSD'].unique():
-            yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
-            for val in df1.values:
-                if val[1] == PTSD:
-                    yStuff[val[0].month - 1] += val[2]
-                    
-            fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=PTSD))
-            fig.update_layout(legend_title_text = "PTSD")
-            fig.update_xaxes(title_text="PTSD")
-            fig.update_yaxes(title_text="Count",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
-
-
-        for PTSD in df2['PTSD'].unique():
-            yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
-            for val in df2.values:
-                if val[1] == PTSD:
-                    yStuff[val[0].month - 1] += val[2]
-                    
-            fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=PTSD))
-            fig.update_layout(legend_title_text = "PTSD")
-            fig.update_xaxes(title_text="PTSD")
-            fig.update_yaxes(title_text="Count",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
-
-        for PTSD in df3['PTSD'].unique():
-            yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
-            for val in df3.values:
-                if val[1] == PTSD:
-                    yStuff[val[0].month - 1] += val[2]
-                    
-            fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=PTSD))
-            fig.update_layout(legend_title_text = "PTSD")
-            fig.update_xaxes(title_text="PTSD")
-            fig.update_yaxes(title_text="Count",categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
-
-            
-        fig.update_layout(
-            updatemenus=[
-                dict(
-                    active=0,
-                    x = .5,
-                    xanchor = "center",
-                    y = 1.08,
-                    yanchor = "middle",
-                    showactive=True,
-                    font = dict({"color":"black","size":16}),
-                    buttons=list([
-                        dict(label="2021-2023",
-                            method="update",
-                            args=[{"visible": [True, True, True]},
-                                {"title": "Frequency of PTSD Reported 2021-2023"}]),
-                        dict(label="2021",
-                            method="update",
-                            args=[{"visible": [True, False, False]},
-                                {"title": "Frequency of PTSD Reported in 2021"}]),
-                        dict(label="2022",
-                            method="update",
-                            args=[{"visible": [False, True,False]},
-                                {"title": "Frequency of PTSD Reported in 2022"}]),
-                        dict(label="2023",
-                            method="update",
-                            args=[{"visible": [False,False,True]},
-                                {"title": "Frequency of PTSD Reported in 2023"}]),
-                    ]),
-                )
-            ])
-        fig.update_layout(title_text="Frequency of PTSD Reported 2021-2023")  
+        df1 = df1.groupby(['date','PTSD']).apply(len).reindex().to_frame('count').reset_index()
+        df2 = df2.groupby(['date','PTSD']).apply(len).reindex().to_frame('count').reset_index()
+        df3 = df3.groupby(['date','PTSD']).apply(len).reindex().to_frame('count').reset_index()
+        df = pd.concat([df1,df2,df3])
+        df.drop(df[df['PTSD'] == "Once"].index, inplace = True)
+        df.drop(df[df['PTSD'] == "Yearly"].index, inplace = True)
+        df.drop(df[df['PTSD'] == "Seldom"].index, inplace = True)
+        df.drop(df[df['PTSD'] == "Never"].index, inplace =True)
+                
+        fig=(px.line(df,x=df["date"], y='count', color='PTSD', hover_data=['count'], labels='PTSD', color_discrete_sequence=px.colors.qualitative.G10))
+        fig.update_layout(legend_title_text = "PTSD")
+        
+        fig.update_xaxes(title_text="Date Range Selector")
+        fig.update_yaxes(title_text="Count")
+        fig.update_xaxes(rangeslider_visible=True)
+        fig.update_layout(title_text="High Risk PTSD Reported in 2021-2023")  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         st.plotly_chart(fig, use_container_width=True)
     
