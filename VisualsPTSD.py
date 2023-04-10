@@ -12,7 +12,8 @@ class VisualsPTSD:
         # df = set up the data in pandas Data Frame format
         df1 = pd.DataFrame(df1)
         # df1.info()
-        df1['date'] = pd.to_datetime(df1['date'], format='%Y-%m-%d')
+        df1['date'] = pd.to_datetime(df1['date'].dt.strftime('%B %Y'))
+      
         return df1
     
     @st.cache_data(ttl = dt.timedelta(hours=1))
@@ -21,7 +22,7 @@ class VisualsPTSD:
         # df = set up the data in pandas Data Frame format
         df2 = pd.DataFrame(df2)
         # df2.info()
-        df2['date'] = pd.to_datetime(df2['date'], format='YYYY-mm-dd')
+        df2['date'] = pd.to_datetime(df2['date'].dt.strftime('%B %Y'))
         return df2
     
     @st.cache_data(ttl = dt.timedelta(hours=1))
@@ -30,7 +31,7 @@ class VisualsPTSD:
         # df = set up the data in pandas Data Frame format
         df3 = pd.DataFrame(df3)
         # df3.info()
-        df3['date'] = pd.to_datetime(df3['date'], format='%Y-%m-%d')
+        df3['date'] = pd.to_datetime(df3['date'].dt.strftime('%B %Y'))
         return df3
 
     def lineGraph():
