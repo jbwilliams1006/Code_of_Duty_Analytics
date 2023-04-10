@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 import datetime as dt
+import plotly.express as px
 
 class VisualsDep:
        
@@ -10,7 +11,7 @@ class VisualsDep:
         df1 = pd.read_csv('Data/MockData/MOCK_DATA.csv',nrows=nrows,parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
         df1 = pd.DataFrame(df1)
-        df1['date'] = pd.to_datetime(df1['date'], format='%Y-%m-%d')
+        df1['date'] = pd.to_datetime(df1['date'].dt.strftime('%B %Y'))
         return df1
     
     @st.cache_data(ttl = dt.timedelta(hours=1))
@@ -18,7 +19,7 @@ class VisualsDep:
         df2 = pd.read_csv('Data/MockData/MOCK_DATA2.csv', nrows=nrows,parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
         df2 = pd.DataFrame(df2)
-        df2['date'] = pd.to_datetime(df2['date'], format='YYYY-mm-dd')
+        df2['date'] = pd.to_datetime(df2['date'].dt.strftime('%B %Y'))
         return df2
     
     @st.cache_data(ttl = dt.timedelta(hours=1))
@@ -26,7 +27,7 @@ class VisualsDep:
         df3 = pd.read_csv('Data/MockData/MOCK_DATA3.csv', nrows=nrows, parse_dates=['date'])
         # df = set up the data in pandas Data Frame format
         df3 = pd.DataFrame(df3)
-        df3['date'] = pd.to_datetime(df3['date'], format='%Y-%m-%d')
+        df3['date'] = pd.to_datetime(df3['date'].dt.strftime('%B %Y'))
         return df3
 
     def lineGraph():
@@ -36,76 +37,21 @@ class VisualsDep:
         df1 = df1.groupby(['date','depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2 = df2.groupby(['date','depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df3 = df3.groupby(['date','depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        fig = go.Figure()
-
-        for depression in df1['depression'].unique():
-            yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
-            for val in df1.values:
-                if val[1] == depression:
-                    yStuff[val[0].month - 1] += val[2]
-                    
-            fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=depression))
-            fig.update_layout(legend_title_text = "Depression")
-            fig.update_xaxes(title_text="Depression")
-            fig.update_yaxes(title_text="Count")
-
-
-        for depression in df2['depression'].unique():
-            yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
-            for val in df2.values:
-                if val[1] == depression:
-                    yStuff[val[0].month - 1] += val[2]
-                    
-            fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=depression))
-            fig.update_layout(legend_title_text = "Depression")
-            fig.update_xaxes(title_text="Depression")
-            fig.update_yaxes(title_text="Count")
-
-        for depression in df3['depression'].unique():
-            yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
-            for val in df3.values:
-                if val[1] == depression:
-                    yStuff[val[0].month - 1] += val[2]
-                    
-            fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=depression))
-            fig.update_layout(legend_title_text = "Depression")
-            fig.update_xaxes(title_text="Depression")
-            fig.update_yaxes(title_text="Count")
-
-            
-        fig.update_layout(
-            updatemenus=[
-                dict(
-                    active=0,
-                    x = .5,
-                    xanchor = "center",
-                    y = 1.08,
-                    yanchor = "middle",
-                    showactive=True,
-                    font = dict({"color":"black","size":16}),
-                    buttons=list([
-                        dict(label="2021-2023",
-                            method="update",
-                            args=[{"visible": [True, True, True]},
-                                {"title": "Frequency of Depression Reported 2021-2023"}]),
-                        dict(label="2021",
-                            method="update",
-                            args=[{"visible": [True, False, False]},
-                                {"title": "Frequency of Depression Reported in 2021"}]),
-                        dict(label="2022",
-                            method="update",
-                            args=[{"visible": [False, True,False]},
-                                {"title": "Frequency of Depression Reported in 2022"}]),
-                        dict(label="2023",
-                            method="update",
-                            args=[{"visible": [False,False,True]},
-                                {"title": "Frequency of Depression Reported in 2023"}]),
-                    ]),
-                )
-            ])
-        fig.update_layout(title_text="depression Reports")  
+        df = pd.concat([df1,df2,df3])
+        df.drop(df[df['depression'] == "Once"].index, inplace = True)
+        df.drop(df[df['depression'] == "Yearly"].index, inplace = True)
+        df.drop(df[df['depression'] == "Seldom"].index, inplace = True)
+        df.drop(df[df['depression'] == "Never"].index, inplace =True)
+                
+        fig=(px.line(df,x=df["date"], y='count', color='depression', hover_data=['count'], labels='depression', color_discrete_sequence=px.colors.qualitative.G10))
+        fig.update_layout(legend_title_text = "PTSD")
+        
+        fig.update_xaxes(title_text="Date Range Selector", showline = True)
+        fig.update_yaxes(title_text="Count",showline = True)
+        fig.update_xaxes(rangeslider_visible=True)
+        fig.update_layout(title_text="High Risk Depression Reported in 2021-2023")  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        st.plotly_chart(fig, use_container_width=True)
+        return st.plotly_chart(fig, use_container_width=True)
     
     def pieChart():
         df1 = VisualsDep.load_data1(1000)

@@ -53,12 +53,12 @@ class VisualsPTSD:
         fig=(px.line(df,x=df["date"], y='count', color='PTSD', hover_data=['count'], labels='PTSD', color_discrete_sequence=px.colors.qualitative.G10))
         fig.update_layout(legend_title_text = "PTSD")
         
-        fig.update_xaxes(title_text="Date Range Selector")
-        fig.update_yaxes(title_text="Count")
+        fig.update_xaxes(title_text="Date Range Selector", showline = True)
+        fig.update_yaxes(title_text="Count", showline =True)
         fig.update_xaxes(rangeslider_visible=True)
         fig.update_layout(title_text="High Risk PTSD Reported in 2021-2023")  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        st.plotly_chart(fig, use_container_width=True)
+        return st.plotly_chart(fig, use_container_width=True)
     
     def pieChart():
         df1 = VisualsPTSD.load_data1(1000)
