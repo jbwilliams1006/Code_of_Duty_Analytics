@@ -52,8 +52,8 @@ class VisCounsel:
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True))
         fig.update_layout(legend_title_text = "spiritual_counseling")
-        fig.update_xaxes(title_text="spiritual_counseling")
-        fig.update_yaxes(title_text="Count")
+        fig.update_xaxes(title_text="Spiritual Counseling", showline =True)
+        fig.update_yaxes(title_text="Count", showline =True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
@@ -61,8 +61,8 @@ class VisCounsel:
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True))
         fig.update_layout(legend_title_text = "spiritual_counseling")
-        fig.update_xaxes(title_text="spiritual_counseling")
-        fig.update_yaxes(title_text="Count")
+        fig.update_xaxes(title_text="Spiritual Counseling", showline =True)
+        fig.update_yaxes(title_text="Count", showline =True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
@@ -70,8 +70,8 @@ class VisCounsel:
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True))
         fig.update_layout(legend_title_text = "Spiritual Counseling")
-        fig.update_xaxes(title_text="Spiritual Counseling")
-        fig.update_yaxes(title_text="Count")
+        fig.update_xaxes(title_text="Spiritual Counseling", showline =True)
+        fig.update_yaxes(title_text="Count", showline =True)
 
         fig.update_layout(
             updatemenus=[
@@ -127,8 +127,8 @@ class VisCounsel:
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True))
         fig.update_layout(legend_title_text = "Relationship Counseling")
-        fig.update_xaxes(title_text="Relationship Counseling")
-        fig.update_yaxes(title_text="Count")
+        fig.update_xaxes(title_text="Relationship Counseling", showline =True)
+        fig.update_yaxes(title_text="Count", showline =True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
@@ -136,8 +136,8 @@ class VisCounsel:
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True))
         fig.update_layout(legend_title_text = "Relationship Counseling")
-        fig.update_xaxes(title_text="Relationship Counseling")
-        fig.update_yaxes(title_text="Count")
+        fig.update_xaxes(title_text="Relationship Counseling", showline =True)
+        fig.update_yaxes(title_text="Count", showline =True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
@@ -145,8 +145,8 @@ class VisCounsel:
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True))
         fig.update_layout(legend_title_text = "Relationship Counseling")
-        fig.update_xaxes(title_text="Relationship Counseling")
-        fig.update_yaxes(title_text="Count")
+        fig.update_xaxes(title_text="Relationship Counseling", showline =True)
+        fig.update_yaxes(title_text="Count", showline =True)
 
         fig.update_layout(
             updatemenus=[
@@ -201,18 +201,18 @@ class VisCounsel:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True))
-        fig.update_layout(legend_title_text = "grief_counseling")
-        fig.update_xaxes(title_text="grief_counseling")
-        fig.update_yaxes(title_text="Count")
+        fig.update_layout(legend_title_text = "Grief Counseling")
+        fig.update_xaxes(title_text="Grief Counseling", showline =True)
+        fig.update_yaxes(title_text="Count", showline =True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True))
-        fig.update_layout(legend_title_text = "grief_counseling")
-        fig.update_xaxes(title_text="grief_counseling")
-        fig.update_yaxes(title_text="Count")
+        fig.update_layout(legend_title_text = "Grief Counseling", showline =True)
+        fig.update_xaxes(title_text="Grief Counseling", showline =True)
+        fig.update_yaxes(title_text="Count", showline =True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
@@ -220,8 +220,8 @@ class VisCounsel:
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True))
         fig.update_layout(legend_title_text = "Grief Counseling")
-        fig.update_xaxes(title_text="Grief Counseling")
-        fig.update_yaxes(title_text="Count")
+        fig.update_xaxes(title_text="Grief Counseling", showline =True)
+        fig.update_yaxes(title_text="Count", showline =True)
 
         fig.update_layout(
             updatemenus=[

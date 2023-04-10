@@ -203,8 +203,8 @@ class VisualsAlc:
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True))
         fig.update_layout(legend_title_text = "Alcohol Related Offenses")
-        fig.update_xaxes(title_text="Alcohol Related Offenses")
-        fig.update_yaxes(title_text="Count")
+        fig.update_xaxes(title_text="Alcohol Related Offenses", showline =True)
+        fig.update_yaxes(title_text="Count", showline =True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:

@@ -50,18 +50,18 @@ class VisCourses:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True))
-        fig.update_layout(legend_title_text = "anger_course")
-        fig.update_xaxes(title_text="anger_course")
-        fig.update_yaxes(title_text="Count")
+        fig.update_layout(legend_title_text = "Anger Mangement")
+        fig.update_xaxes(title_text="Anger Mangement Course", showline=True)
+        fig.update_yaxes(title_text="Count", showline =True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True))
-        fig.update_layout(legend_title_text = "anger_course")
-        fig.update_xaxes(title_text="anger_course")
-        fig.update_yaxes(title_text="Count")
+        fig.update_layout(legend_title_text = "Anger Mangement")
+        fig.update_xaxes(title_text="Anger Management Course", showline=True)
+        fig.update_yaxes(title_text="Count", showline=True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
@@ -69,8 +69,8 @@ class VisCourses:
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True))
         fig.update_layout(legend_title_text = "Anger Management")
-        fig.update_xaxes(title_text="Anger Management")
-        fig.update_yaxes(title_text="Count")
+        fig.update_xaxes(title_text="Anger Management Course", showline=True)
+        fig.update_yaxes(title_text="Count", showline=True)
 
         fig.update_layout(
             updatemenus=[
@@ -126,18 +126,18 @@ class VisCourses:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True))
-        fig.update_layout(legend_title_text = "alcohol_course")
-        fig.update_xaxes(title_text="alcohol_course")
-        fig.update_yaxes(title_text="Count")
+        fig.update_layout(legend_title_text = "Alcohol Awareness")
+        fig.update_xaxes(title_text="Alcohol Awareness", showline=True)
+        fig.update_yaxes(title_text="Count", showline=True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True))
-        fig.update_layout(legend_title_text = "alcohol_course")
-        fig.update_xaxes(title_text="alcohol_course")
-        fig.update_yaxes(title_text="Count")
+        fig.update_layout(legend_title_text = "Alcohol Awareness")
+        fig.update_xaxes(title_text="Alcohol Awareness", showline=True)
+        fig.update_yaxes(title_text="Count", showline=True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
@@ -145,8 +145,8 @@ class VisCourses:
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True))
         fig.update_layout(legend_title_text = "Alcohol Awareness")
-        fig.update_xaxes(title_text="Alcohol Awareness")
-        fig.update_yaxes(title_text="Count")
+        fig.update_xaxes(title_text="Alcohol Awareness", showline=True)
+        fig.update_yaxes(title_text="Count", showline=True)
 
         fig.update_layout(
             updatemenus=[
@@ -202,18 +202,18 @@ class VisCourses:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True))
-        fig.update_layout(legend_title_text = "stress_course")
-        fig.update_xaxes(title_text="stress_course")
-        fig.update_yaxes(title_text="Count")
+        fig.update_layout(legend_title_text = "Stress Management")
+        fig.update_xaxes(title_text="Stress Management", showline=True)
+        fig.update_yaxes(title_text="Count", showline=True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True))
-        fig.update_layout(legend_title_text = "stress_course")
-        fig.update_xaxes(title_text="stress_course")
-        fig.update_yaxes(title_text="Count")
+        fig.update_layout(legend_title_text = "Stress Management")
+        fig.update_xaxes(title_text="Stress Management", showline=True)
+        fig.update_yaxes(title_text="Count", showline=True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
@@ -221,8 +221,8 @@ class VisCourses:
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True))
         fig.update_layout(legend_title_text = "Stress Management")
-        fig.update_xaxes(title_text="Stress Management")
-        fig.update_yaxes(title_text="Count")
+        fig.update_xaxes(title_text="Stress Management", showline=True)
+        fig.update_yaxes(title_text="Count", showline=True)
 
         fig.update_layout(
             updatemenus=[
@@ -279,18 +279,18 @@ class VisCourses:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True))
-        fig.update_layout(legend_title_text = "SA_course")
-        fig.update_xaxes(title_text="SA_course")
-        fig.update_yaxes(title_text="Count")
+        fig.update_layout(legend_title_text = "Sexual Assault Preventione")
+        fig.update_xaxes(title_text="Sexual Assault Prevention",showline=True)
+        fig.update_yaxes(title_text="Count",showline=True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True))
-        fig.update_layout(legend_title_text = "SA_course")
-        fig.update_xaxes(title_text="SA_course")
-        fig.update_yaxes(title_text="Count")
+        fig.update_layout(legend_title_text = "Sexual Assault Prevention")
+        fig.update_xaxes(title_text="Sexual Assault Prevention",showline=True)
+        fig.update_yaxes(title_text="Count",showline=True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
@@ -298,8 +298,8 @@ class VisCourses:
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True))
         fig.update_layout(legend_title_text = "Sexual Assault Prevention")
-        fig.update_xaxes(title_text="Sexual Assault Prevention")
-        fig.update_yaxes(title_text="Count")
+        fig.update_xaxes(title_text="Sexual Assault Prevention",showline=True)
+        fig.update_yaxes(title_text="Count",showline=True)
 
         fig.update_layout(
             updatemenus=[
@@ -354,9 +354,9 @@ class VisCourses:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True))
-        fig.update_layout(legend_title_text = "DV_course")
-        fig.update_xaxes(title_text="DV_course")
-        fig.update_yaxes(title_text="Count")
+        fig.update_layout(legend_title_text = "Domestic Violence  Prevention")
+        fig.update_xaxes(title_text="Domestic Violence  Prevention", showline =True)
+        fig.update_yaxes(title_text="Count", showline =True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
@@ -364,8 +364,8 @@ class VisCourses:
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True))
         fig.update_layout(legend_title_text = "DV_course")
-        fig.update_xaxes(title_text="DV_course")
-        fig.update_yaxes(title_text="Count")
+        fig.update_xaxes(title_text="Domestic Violence  Prevention", showline =True)
+        fig.update_yaxes(title_text="Count", showline =True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
@@ -373,8 +373,8 @@ class VisCourses:
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True))
         fig.update_layout(legend_title_text = "Domestic Violence Prevention")
-        fig.update_xaxes(title_text="Domestic Violence  Prevention")
-        fig.update_yaxes(title_text="Count")
+        fig.update_xaxes(title_text="Domestic Violence  Prevention", showline =True)
+        fig.update_yaxes(title_text="Count", showline =True)
 
         fig.update_layout(
             updatemenus=[
