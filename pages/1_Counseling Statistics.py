@@ -13,7 +13,13 @@ st.markdown("""
     font-family: "Source Sans Pro", sans-serif;
     font-weight: bold;
 }
-
+div.css-12w0qpk.e1tzin5v2 {
+    display: flex;
+    background-color: #eeeeee;
+    padding: 1% 1% 1% 1%;
+    border-radius: 30px;
+}
+}
 </style>
 """, unsafe_allow_html=True)
 st.subheader(":green[SAFB Counseling Statistics]")
