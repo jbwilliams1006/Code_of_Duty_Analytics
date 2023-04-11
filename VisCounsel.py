@@ -107,7 +107,7 @@ class VisCounsel:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Spiritual Counseling",showlegend =False, title_x=.2)  
+        fig.update_layout(title_text="Spiritual Counseling Sessions",showlegend =False, title_x=.1)  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         
         st.plotly_chart(fig,use_container_width=True)
