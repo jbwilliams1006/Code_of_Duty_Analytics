@@ -44,7 +44,7 @@ class VisualsAlc:
         df.drop(df[df['alcohol_use'] == "Never"].index, inplace =True)
                 
         fig=(px.line(df,x=df["date"], y='count', color='alcohol_use', hover_data=['count'], labels='alcohol_use', color_discrete_sequence=px.colors.qualitative.G10))
-        fig.update_layout(legend_title_text = "PTSD")
+        fig.update_layout(legend_title_text = "Alcohol Use")
         
         fig.update_xaxes(title_text="Date Range Selector", showline = True)
         fig.update_yaxes(title_text="Count",showline =True)
