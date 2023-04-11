@@ -11,3 +11,4 @@ json
 streamlit-authenticator
 altair
 plotly
+base64
