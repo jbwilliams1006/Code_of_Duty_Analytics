@@ -50,7 +50,7 @@ class VisualsAnx:
         fig.update_xaxes(title_text="Date Range Selector", showline = True)
         fig.update_yaxes(title_text="Count",showline = True)
         fig.update_xaxes(rangeslider_visible=True)
-        fig.update_layout(title_text="High Risk Anxiety Reported in 2021-2023")  
+        fig.update_layout(title_text="High Risk Anxiety Reported in 2021-2023",title_x=0.25)  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         return st.plotly_chart(fig, use_container_width=True)
     
@@ -96,28 +96,28 @@ class VisualsAnx:
                         dict(label="2021-2023",
                             method="update",
                             args=[{"visible": [True, True, True]},
-                                {"title": "Frequency of Anxiety Reported 2021-2023"},
-                                {"titleposition" : "top center"}]),
+                                # {"title": "Frequency of Anxiety Reported 2021-2023"},
+                                ]),
                         dict(label="2021",
                             method="update",
                             args=[{"visible": [True, False, False]},
-                                {"title": "Frequency of Anxiety Reported in 2021"},
-                                {"titleposition" : "top center"}]),
+                                # {"title": "Frequency of Anxiety Reported in 2021"},
+                                ]),
                         dict(label="2022",
                             method="update",
                             args=[{"visible": [False, True,False]},
-                                {"title": "Frequency of Anxiety Reported in 2022"},
-                                {"titleposition" : "top center"}]),
+                                # {"title": "Frequency of Anxiety Reported in 2022"},
+                                ]),
                         dict(label="2023",
                             method="update",
                             args=[{"visible": [False,False,True]},
-                                {"title": "Frequency of Anxiety Reported in 2023"},
-                                {"titleposition" : "top center"}]),
+                                # {"title": "Frequency of Anxiety Reported in 2023"},
+                                ]),
                     ]),
                 )
             ])
         fig.update_traces(textposition='inside', textinfo='percent+label')
-        fig.update_layout(title_text="Frequency of Anxiety Reported 2021-2023")
+        fig.update_layout(title_text="Frequency of Anxiety Reported in 2021-2023",title_x=0.1)
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})    
         st.plotly_chart(fig, use_container_width = True)
 
@@ -163,24 +163,28 @@ class VisualsAnx:
                         dict(label="2021-2023",
                             method="update",
                             args=[{"visible": [True, True, True]},
-                                {"title": "Frequency of Anxiety Reported 2021-2023"}]),
+                                # {"title": "Frequency of Anxiety Reported 2021-2023"}
+                                ]),
                         dict(label="2021",
                             method="update",
                             args=[{"visible": [ True, False, False]},
-                                {"title": "Frequency of Anxiety Reported in 2021"}]),
+                                # {"title": "Frequency of Anxiety Reported in 2021"}
+                                ]),
                         dict(label="2022",
                             method="update",
                             args=[{"visible": [False, True,False]},
-                                {"title": "Frequency of Anxiety Reported in 2022"}]),
+                                # {"title": "Frequency of Anxiety Reported in 2022"}
+                                ]),
                         dict(label="2023",
                             method="update",
                             args=[{"visible": [False,False,True]},
-                                {"title": "Frequency of Anxiety Reported in 2023"}]),
+                                # {"title": "Frequency of Anxiety Reported in 2023"}
+                                ]),
                     ]),
                 )
             ])
 
-        fig.update_layout(title_text="Frequency of Anxiety Reported 2021-2023")  
+        fig.update_layout(title_text="Frequency of Anxiety Reported 2021-2023",title_x=0.25)  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})   
         st.plotly_chart(fig, use_container_width=True)
     

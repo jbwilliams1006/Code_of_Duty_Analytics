@@ -261,7 +261,7 @@ if authentication_status:
         # legend=None)
     with c2:
         # st.markdown('### Stress Reports')
-        VisualsStress.pieChart()
+        VisualsDep.pieChart()
         # plost.donut_chart(
         #     data=stocks,
         #     theta='q2',

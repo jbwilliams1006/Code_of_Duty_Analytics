@@ -49,28 +49,28 @@ class VisCourses:
         for val in df1.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2021"))
         fig.update_layout(legend_title_text = "Anger Mangement")
-        fig.update_xaxes(title_text="Anger Mangement Course", showline=True)
-        fig.update_yaxes(title_text="Count", showline =True)
+        fig.update_xaxes(title_text="Number of Anger Mangement Classes", showline=True)
+        fig.update_yaxes( showline =True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2022"))
         fig.update_layout(legend_title_text = "Anger Mangement")
-        fig.update_xaxes(title_text="Anger Management Course", showline=True)
-        fig.update_yaxes(title_text="Count", showline=True)
+        fig.update_xaxes(title_text="Number of Anger Management Classes", showline=True)
+        fig.update_yaxes( showline=True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2023"))
         fig.update_layout(legend_title_text = "Anger Management")
-        fig.update_xaxes(title_text="Anger Management Course", showline=True)
-        fig.update_yaxes(title_text="Count", showline=True)
+        fig.update_xaxes(title_text="Number of Anger Management Classes", showline=True)
+        fig.update_yaxes( showline=True)
 
         fig.update_layout(
             updatemenus=[
@@ -81,28 +81,32 @@ class VisCourses:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black", "size":14}),
+                    font = dict({"color":"black", "size":16}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
                             args=[{"visible": [True, True, True]},
-                                {"title": "Anger Management Courses Completed in 2021-2023"}]),
+                                # {"title": "Anger Management Courses Completed in 2021-2023"}
+                                ]),
                         dict(label="2021",
                             method="update",
                             args=[{"visible": [True, False, False]},
-                                {"title": "Anger Management Courses Completed in 2021"}]),
+                                # {"title": "Anger Management Courses Completed in 2021"}
+                                ]),
                         dict(label="2022",
                             method="update",
                             args=[{"visible": [False,True,False]},
-                                {"title": "Anger Management Courses Completed in 2022"}]),
+                                # {"title": "Anger Management Courses Completed in 2022"}
+                                ]),
                         dict(label="2023",
                             method="update",
                             args=[{"visible": [False,False,True]},
-                                {"title": "Anger Management Courses Completed in 2023"}]),
+                                # {"title": "Anger Management Courses Completed in 2023"}
+                                ]),
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Anger Management Courses Completed in 2021-2023",showlegend =False)  
+        fig.update_layout(title_text="Anger Management Completed",title_x=.08,showlegend =False)  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         
         st.plotly_chart(fig, use_container_width=True)
@@ -125,28 +129,28 @@ class VisCourses:
         for val in df1.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2021"))
         fig.update_layout(legend_title_text = "Alcohol Awareness")
-        fig.update_xaxes(title_text="Alcohol Awareness", showline=True)
-        fig.update_yaxes(title_text="Count", showline=True)
+        fig.update_xaxes(title_text="Number of Alcohol Awareness Classes", showline=True)
+        fig.update_yaxes( showline=True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2022"))
         fig.update_layout(legend_title_text = "Alcohol Awareness")
-        fig.update_xaxes(title_text="Alcohol Awareness", showline=True)
-        fig.update_yaxes(title_text="Count", showline=True)
+        fig.update_xaxes(title_text="Number of Alcohol Awareness Classes", showline=True)
+        fig.update_yaxes( showline=True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2023"))
         fig.update_layout(legend_title_text = "Alcohol Awareness")
-        fig.update_xaxes(title_text="Alcohol Awareness", showline=True)
-        fig.update_yaxes(title_text="Count", showline=True)
+        fig.update_xaxes(title_text="Number of Alcohol Awareness Classes", showline=True)
+        fig.update_yaxes( showline=True)
 
         fig.update_layout(
             updatemenus=[
@@ -157,24 +161,28 @@ class VisCourses:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black", "size":14}),
+                    font = dict({"color":"black", "size":16}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
                             args=[{"visible": [True, True, True]},
-                                {"title": "Alcohol Awareness Courses Completed in 2021-2023"}]),
+                                # {"title": "Alcohol Awareness Courses Completed in 2021-2023"}
+                                ]),
                         dict(label="2021",
                             method="update",
                             args=[{"visible": [True, False, False]},
-                                {"title": "Alcohol Awareness Courses Completed in 2021"}]),
+                                # {"title": "Alcohol Awareness Courses Completed in 2021"}
+                                ]),
                         dict(label="2022",
                             method="update",
                             args=[{"visible": [False,True,False]},
-                                {"title": "Alcohol Awareness Courses Completed in 2022"}]),
+                                # {"title": "Alcohol Awareness Courses Completed in 2022"}
+                                ]),
                         dict(label="2023",
                             method="update",
                             args=[{"visible": [False,False,True]},
-                                {"title": "Alcohol Awareness Courses Completed in 2023"}]),
+                                # {"title": "Alcohol Awareness Courses Completed in 2023"}
+                                ]),
                     ]),
                 )
             ])
@@ -201,28 +209,28 @@ class VisCourses:
         for val in df1.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2021"))
         fig.update_layout(legend_title_text = "Stress Management")
-        fig.update_xaxes(title_text="Stress Management", showline=True)
-        fig.update_yaxes(title_text="Count", showline=True)
+        fig.update_xaxes(title_text="Number of Stress Management Classes", showline=True)
+        fig.update_yaxes( showline=True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2022"))
         fig.update_layout(legend_title_text = "Stress Management")
-        fig.update_xaxes(title_text="Stress Management", showline=True)
-        fig.update_yaxes(title_text="Count", showline=True)
+        fig.update_xaxes(title_text="Number of Stress Management Classes", showline=True)
+        fig.update_yaxes( showline=True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2023"))
         fig.update_layout(legend_title_text = "Stress Management")
-        fig.update_xaxes(title_text="Stress Management", showline=True)
-        fig.update_yaxes(title_text="Count", showline=True)
+        fig.update_xaxes(title_text="Number of Stress Management Classes", showline=True)
+        fig.update_yaxes( showline=True)
 
         fig.update_layout(
             updatemenus=[
@@ -233,28 +241,32 @@ class VisCourses:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black", "size":14}),
+                    font = dict({"color":"black", "size":16}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
                             args=[{"visible": [True, True, True]},
-                                {"title": "Stress Management Courses Completed in 2021-2023"}]),
+                                # {"title": "Stress Management Courses Completed in 2021-2023"}
+                                ]),
                         dict(label="2021",
                             method="update",
                             args=[{"visible": [True, False, False]},
-                                {"title": "Stress Management Courses Completed in 2021"}]),
+                                # {"title": "Stress Management Courses Completed in 2021"}
+                                ]),
                         dict(label="2022",
                             method="update",
                             args=[{"visible": [False,True,False]},
-                                {"title": "Stress Management Courses Completed in 2022"}]),
+                                # {"title": "Stress Management Courses Completed in 2022"}
+                                ]),
                         dict(label="2023",
                             method="update",
                             args=[{"visible": [False,False,True]},
-                                {"title": "Stress Management Courses Completed in 2023"}]),
+                                # {"title": "Stress Management Courses Completed in 2023"}
+                                ]),
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Stress Management Courses Completed in 2021-2023",showlegend =False)  
+        fig.update_layout(title_text="Stress Management Completed",title_x=.08,showlegend =False)  
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
         
         st.plotly_chart(fig, use_container_width=True)
@@ -278,8 +290,8 @@ class VisCourses:
         for val in df1.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True))
-        fig.update_layout(legend_title_text = "Sexual Assault Preventione")
+        fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2021"))
+        fig.update_layout(legend_title_text = "Sexual Assault Prevention")
         fig.update_xaxes(title_text="Sexual Assault Prevention",showline=True)
         fig.update_yaxes(title_text="Count",showline=True)
 
@@ -287,7 +299,7 @@ class VisCourses:
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2022"))
         fig.update_layout(legend_title_text = "Sexual Assault Prevention")
         fig.update_xaxes(title_text="Sexual Assault Prevention",showline=True)
         fig.update_yaxes(title_text="Count",showline=True)
@@ -296,7 +308,7 @@ class VisCourses:
         for val in df3.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2023"))
         fig.update_layout(legend_title_text = "Sexual Assault Prevention")
         fig.update_xaxes(title_text="Sexual Assault Prevention",showline=True)
         fig.update_yaxes(title_text="Count",showline=True)
@@ -310,24 +322,28 @@ class VisCourses:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black", "size":14}),
+                    font = dict({"color":"black", "size":16}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
                             args=[{"visible": [True, True, True]},
-                                {"title": "Sexual Assault Prevention Courses Completed in 2021-2023"}]),
+                                # {"title": "Sexual Assault Prevention Courses Completed in 2021-2023"}
+                                ]),
                         dict(label="2021",
                             method="update",
                             args=[{"visible": [True, False, False]},
-                                {"title": "Sexual Assault Prevention Courses Completed in 2021"}]),
+                                # {"title": "Sexual Assault Prevention Courses Completed in 2021"}
+                                ]),
                         dict(label="2022",
                             method="update",
                             args=[{"visible": [False,True,False]},
-                                {"title": "Sexual Assault Prevention Courses Completed in 2022"}]),
+                                # {"title": "Sexual Assault Prevention Courses Completed in 2022"}
+                                ]),
                         dict(label="2023",
                             method="update",
                             args=[{"visible": [False,False,True]},
-                                {"title": "Sexual Assault Prevention Courses Completed in 2023"}]),
+                                # {"title": "Sexual Assault Prevention Courses Completed in 2023"}
+                                ]),
                     ]),
                 )
             ])
@@ -353,7 +369,7 @@ class VisCourses:
         for val in df1.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2021"))
         fig.update_layout(legend_title_text = "Domestic Violence  Prevention")
         fig.update_xaxes(title_text="Domestic Violence  Prevention", showline =True)
         fig.update_yaxes(title_text="Count", showline =True)
@@ -362,7 +378,7 @@ class VisCourses:
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2022"))
         fig.update_layout(legend_title_text = "DV_course")
         fig.update_xaxes(title_text="Domestic Violence  Prevention", showline =True)
         fig.update_yaxes(title_text="Count", showline =True)
@@ -371,7 +387,7 @@ class VisCourses:
         for val in df3.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True))
+        fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2023"))
         fig.update_layout(legend_title_text = "Domestic Violence Prevention")
         fig.update_xaxes(title_text="Domestic Violence  Prevention", showline =True)
         fig.update_yaxes(title_text="Count", showline =True)
@@ -385,24 +401,28 @@ class VisCourses:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black", "size":14}),
+                    font = dict({"color":"black", "size":16}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
                             args=[{"visible": [True, True, True]},
-                                {"title": "Domestic Violence Prevention Courses Completed in 2021-2023"}]),
+                                # {"title": "Domestic Violence Prevention Courses Completed in 2021-2023"}
+                                ]),
                         dict(label="2021",
                             method="update",
                             args=[{"visible": [True, False, False]},
-                                {"title": "Domestic Violence Prevention Courses Completed in 2021"}]),
+                                # {"title": "Domestic Violence Prevention Courses Completed in 2021"}
+                                ]),
                         dict(label="2022",
                             method="update",
                             args=[{"visible": [False,True,False]},
-                                {"title": "Domestic Violence Prevention Courses Completed in 2022"}]),
+                                # {"title": "Domestic Violence Prevention Courses Completed in 2022"}
+                                ]),
                         dict(label="2023",
                             method="update",
                             args=[{"visible": [False,False,True]},
-                                {"title": "Domestic Violence Prevention Courses Completed in 2023"}]),
+                                # {"title": "Domestic Violence Prevention Courses Completed in 2023"}
+                                ]),
                     ]),
                 )
             ])

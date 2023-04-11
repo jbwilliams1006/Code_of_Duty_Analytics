@@ -98,28 +98,28 @@ class VisualsStress:
                         dict(label="2021-2023",
                             method="update",
                             args=[{"visible": [True, True, True]},
-                                {"title": "Frequency of Stress Reported 2021-2023"},
+                                # {"title": "Frequency of Stress Reported 2021-2023"},
                                 ]),
                         dict(label="2021",
                             method="update",
                             args=[{"visible": [True, False, False]},
-                                {"title": "Frequency of Stress Reported in 2021"},
+                                # {"title": "Frequency of Stress Reported in 2021"},
                                 ]),
                         dict(label="2022",
                             method="update",
                             args=[{"visible": [False, True,False]},
-                                {"title": "Frequency of Stress Reported in 2022"},
+                                # {"title": "Frequency of Stress Reported in 2022"},
                                 ]),
                         dict(label="2023",
                             method="update",
                             args=[{"visible": [False,False,True]},
-                                {"title": "Frequency of Stress Reported in 2023"},
+                                # {"title": "Frequency of Stress Reported in 2023"},
                                 ]),
                     ]),
                 )
             ])
         fig.update_traces(textposition='inside', textinfo='percent+label')
-        fig.update_layout(title_text="Frequency of Stress Reported 2021-2023")
+        fig.update_layout(title_text="Frequency of Stress Reported in 2021-2023",title_x=0.1)
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})    
         st.plotly_chart(fig, use_container_width = True)
     
@@ -166,19 +166,23 @@ class VisualsStress:
                         dict(label="2021-2023",
                             method="update",
                             args=[{"visible": [True, True, True]},
-                                {"title": "Frequency of Stress Reported 2021-2023"}]),
+                                # {"title": "Frequency of Stress Reported 2021-2023"}
+                                ]),
                         dict(label="2021",
                             method="update",
                             args=[{"visible": [ True, False, False]},
-                                {"title": "Frequency of Stress Reported in 2021"}]),
+                                # {"title": "Frequency of Stress Reported in 2021"}
+                                ]),
                         dict(label="2022",
                             method="update",
                             args=[{"visible": [False, True,False]},
-                                {"title": "Frequency of Stress Reported in 2022"}]),
+                                # {"title": "Frequency of Stress Reported in 2022"}
+                                ]),
                         dict(label="2023",
                             method="update",
                             args=[{"visible": [False,False,True]},
-                                {"title": "Frequency of Stress Reported in 2023"}]),
+                                # {"title": "Frequency of Stress Reported in 2023"}
+                                ]),
                     ]),
                 )
             ])
