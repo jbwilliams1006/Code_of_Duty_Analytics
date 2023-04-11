@@ -14,6 +14,13 @@ st.markdown("""
     font-weight: bold;
 }
 
+.css-1a32fsj.e19lei0e0 {
+    display: flex;
+    background-color: #eeeeee;
+    padding: 1% 1% 1% 1%;
+    border-radius: 30px;
+}
+
 </style>
 """, unsafe_allow_html=True)
 st.subheader(":green[SAFB Support Services Statistics]")

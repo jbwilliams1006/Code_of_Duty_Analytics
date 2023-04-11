@@ -13,7 +13,7 @@ st.markdown("""
     font-family: "Source Sans Pro", sans-serif;
     font-weight: bold;
 }
-div.css-12w0qpk.e1tzin5v2 {
+.css-1a32fsj.e19lei0e0 {
     display: flex;
     background-color: #eeeeee;
     padding: 1% 1% 1% 1%;
