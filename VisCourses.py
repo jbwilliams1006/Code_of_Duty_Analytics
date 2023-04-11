@@ -69,7 +69,7 @@ class VisCourses:
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2023"))
         fig.update_layout(legend_title_text = "Anger Management")
-        fig.update_xaxes(title_text="Number of Peronnel in Anger Management", showline=True)
+        fig.update_xaxes(title_text="Number of Personnel in Anger Management", showline=True)
         fig.update_yaxes( showline=True)
 
         fig.update_layout(
