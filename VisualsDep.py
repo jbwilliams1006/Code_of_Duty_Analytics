@@ -60,26 +60,27 @@ class VisualsDep:
         df1 = df1.groupby(['depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2 = df2.groupby(['depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df3 = df3.groupby(['depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-
+        df = pd.concat([df1,df2,df3])
         fig = go.Figure()
+        
 
         for Depression in df1:
             fig.add_trace(go.Pie(labels=df1['depression'],values = df1['count'], name = Depression))
             fig.update_layout(legend_title_text = "Depression")
             fig.update_xaxes(title_text="Depression")
-            fig.update_yaxes(title_text="Count")
+            
 
         for Depression in df2:
             fig.add_trace(go.Pie(labels=df2['depression'], values = df2['count'],name=Depression))
             fig.update_layout(legend_title_text = "Depression")
             fig.update_xaxes(title_text="Depression")
-            fig.update_yaxes(title_text="Count")
+        
             
         for Depression in df3:
             fig.add_trace(go.Pie(labels=df3['depression'],values = df3['count'], name=Depression))
             fig.update_layout(legend_title_text = "Depression")
             fig.update_xaxes(title_text="Depression")
-            fig.update_yaxes(title_text="Count")
+         
             
         fig.update_layout(
             updatemenus=[
@@ -94,7 +95,7 @@ class VisualsDep:
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
-                            args=[{"visible": [True, True, True]},
+                            args=[{"visible": [True, True,True,True]},
                                 # {"title": "Frequency of Depression Reported 2021-2023"},
                                 ]),
                         dict(label="2021",
@@ -191,6 +192,6 @@ def getGraphs():
             
 
 if __name__=='__main__':
-    st.title("depression Reports")
+    st.title("Depression Reports")
     data_load_state = st.text('Loading data...')
     getGraphs()

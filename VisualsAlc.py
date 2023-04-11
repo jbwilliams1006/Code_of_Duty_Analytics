@@ -61,9 +61,9 @@ class VisualsAlc:
         df1 = df1.groupby(['alcohol_use']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2 = df2.groupby(['alcohol_use']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df3 = df3.groupby(['alcohol_use']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-
+        
         fig = go.Figure()
-
+    
         for Alcohol in df1:
             fig.add_trace(go.Pie(labels=df1['alcohol_use'],values = df1['count'], name = Alcohol))
             fig.update_layout(legend_title_text = "Alcohol Use")
