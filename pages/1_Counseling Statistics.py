@@ -2,10 +2,11 @@ import streamlit as st
 import streamlit_authenticator as stauth
 from Dashboard import authenticator
 from VisCounsel import VisCounsel
+from PIL import Image
 import logo
 
 
-# st.set_page_config(layout="wide")
+st.set_page_config(layout="centered")
 # Chanegs the font size using custom css
 st.markdown("""
 <style>
@@ -24,7 +25,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 st.subheader(":green[SAFB Counseling Statistics]")
-st.text("Personnel seeking counseling services at Shepard Air Force Base.")
+st.text("Airmen seeking counseling services at Shepard Air Force Base.")
 
 VisCounsel.spritualLine()
 VisCounsel.relationLine()

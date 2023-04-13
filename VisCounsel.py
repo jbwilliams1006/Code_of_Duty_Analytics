@@ -101,10 +101,10 @@ class VisCounsel:
                     ]),
                 )
             ])
-        fig.update_xaxes(title_text="No. in Spiritual Counseling", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_xaxes(title_text="No. of Airmen in Spiritual Counseling", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
         fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
         fig.update_layout(title={
-            'text': "Spiritual Counseling Sessions",
+            'text': "Spiritual Counseling",
             'font': {'size': 20}},
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor="rgba(0,0,0,0)",showlegend = False,
@@ -178,10 +178,10 @@ class VisCounsel:
                     ]),
                 )
             ])
-        fig.update_xaxes(title_text="No. in Relationship Counseling", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_xaxes(title_text="No. of Airmen in Relationship Counseling", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
         fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
         fig.update_layout(title={
-            'text': "Relationship Counseling Sessions",
+            'text': "Relationship Counseling ",
             'font': {'size': 20}},
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor="rgba(0,0,0,0)",showlegend = False,
@@ -258,10 +258,10 @@ class VisCounsel:
                     ]),
                 )
             ])
-        fig.update_xaxes(title_text="No. in Grief Counseling", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_xaxes(title_text="No. of Airmen in Grief Counseling", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
         fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
         fig.update_layout(title={
-            'text': "Grief Counseling Sessions",
+            'text': "Grief Counseling ",
             'font': {'size': 20}},
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor="rgba(0,0,0,0)",showlegend = False,

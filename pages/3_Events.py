@@ -2,10 +2,10 @@ import streamlit as st
 from PIL import Image
 import streamlit_authenticator as stauth
 from Dashboard import authenticator
-
+from PIL import Image
 import logo
 
-
+st.set_page_config(layout="centered")
 # Chanegs the font size using custom css
 st.markdown("""
 <style>
@@ -40,7 +40,7 @@ b1.text("Take control of your mind and elevate your well-being! Join these menta
                                                             
     
     # ""
-     # logo above sidebar menu options
+    #  logo above sidebar menu options
 st.sidebar.success("Select a page above.")
 # Logout button
 authenticator.logout("Logout", "sidebar")

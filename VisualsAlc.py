@@ -45,10 +45,11 @@ class VisualsAlc:
                 
         fig=(px.line(df,x=df["date"], y='count', color='alcohol_use', hover_data=['count'], labels='alcohol_use', color_discrete_sequence=px.colors.qualitative.G10))
         
-        fig.update_xaxes(rangeslider_visible=True, title_text="Date Range Selector", showline = True, title_font=dict(size=20 , color = "black"), tickfont=dict(size=16,color = "black"))
+        
+
         fig.update_yaxes(title_text="Count",showline =True, title_font=dict(size=16, color = "black"), tickfont=dict(size=16, color = "black"))
         fig.update_layout(title={
-            'text': "High Risk Alcohol Use Reported in 2021-2023 ",
+            'text': "High Risk Alcohol Use Reported at SAFB",
             'font': {'size': 20}},
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor="rgba(0,0,0,0)",
@@ -261,7 +262,15 @@ class VisualsAlc:
                     ]),
                 )
             ])
-        fig.update_xaxes(title_text="No. of Alc Offenses", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.add_annotation(
+        x=0,
+        y=1.1,
+        xref='paper',
+        yref='paper',
+        text='Select Year:',
+        showarrow=False,
+        font=dict(size=18, color="black"))
+        fig.update_xaxes(title_text="No. of Alc Offenses at SAFB ", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
         fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
         fig.update_layout(title={
             'text': "Alcohol Related Offenses",

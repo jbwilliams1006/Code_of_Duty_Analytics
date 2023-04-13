@@ -122,12 +122,20 @@ class VisualsAnx:
             ]
         )
         fig.update_layout(title={
-            'text': "Frequency of Anxiety Reported in 2021-2023",
+            'text': "Frequency of Reported Anxiety at SAFB",
             'font': {'size': 20}},
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor="rgba(0,0,0,0)",
         hoverlabel=dict(font=dict(size=16, color = "black")))
-        fig.update_xaxes(title_text ="Anxiety reported by SAFB Personnel", title_font=dict(size=18, color = "black"), tickfont=dict(size=16, color = "black"))
+        fig.add_annotation(
+            x=0.5,
+            y=-0.2,
+            xref="paper",
+            yref="paper",
+            showarrow=False,
+            text="Anxiety Survey Data of Airmen",
+            font=dict(size=20, color = "black"),
+        )
         fig.update_traces(hoverinfo='label+value', textfont=dict(family = "Arial Black", size=14))
 
         st.plotly_chart(fig, use_container_width=True)

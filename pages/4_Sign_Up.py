@@ -5,8 +5,9 @@ from google.oauth2 import service_account
 from google.cloud import firestore
 from page_navigation import nav_page
 from register_user import *
-
+from PIL import Image
 import logo
+
 
 ## to hide the sidebar
 st.markdown(
@@ -19,7 +20,8 @@ st.markdown(
     """,
         unsafe_allow_html=True,
     )
-logo.add_logo("Icons/fullName_logo.png")
+
+
 
 
 ########################### GET ACCESS TO THE DATA BASE ###############################
@@ -84,3 +86,4 @@ except Exception as e:
 if st.button("Back"):
     nav_page("") 
     
+logo.add_logo("Icons/fullName_logo.png") 

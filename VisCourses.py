@@ -101,10 +101,10 @@ class VisCourses:
                     ]),
                 )
             ])
-        fig.update_xaxes(title_text="No. in Anger Management", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_xaxes(title_text="No. of Airmen in Anger Management", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
         fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
         fig.update_layout(title={
-            'text': "Anger Management Classes",
+            'text': "Anger Management",
             'font': {'size': 20}},
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor="rgba(0,0,0,0)",showlegend = False,
@@ -177,10 +177,10 @@ class VisCourses:
                     ]),
                 )
             ])
-        fig.update_xaxes(title_text="No. in Alcohol Awareness", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_xaxes(title_text="No. of Airmen in Alcohol Awareness", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
         fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
         fig.update_layout(title={
-            'text': "Alcohol Awareness Classes",
+            'text': "Alcohol Awareness",
             'font': {'size': 20}},
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor="rgba(0,0,0,0)",showlegend = False,
@@ -257,10 +257,10 @@ class VisCourses:
                     ]),
                 )
             ])
-        fig.update_xaxes(title_text="No. in Stess Management", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_xaxes(title_text="No. of Airmen in Stess Management", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
         fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
         fig.update_layout(title={
-            'text': "Stress Management Classes",
+            'text': "Stress Management",
             'font': {'size': 20}},
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor="rgba(0,0,0,0)",showlegend = False,
@@ -335,10 +335,10 @@ class VisCourses:
                     ]),
                 )
             ])
-        fig.update_xaxes(title_text="No. in Sexual Assault Prevention ", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_xaxes(title_text="No. of Airmen in Sexual Assault Prevention ", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
         fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
         fig.update_layout(title={
-            'text': "Sexual Assault Prevention Classes",
+            'text': "Sexual Assault Prevention",
             'font': {'size': 20}},
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor="rgba(0,0,0,0)",showlegend = False,
@@ -414,10 +414,10 @@ class VisCourses:
                     ]),
                 )
             ])
-        fig.update_xaxes(title_text="No. in Domestic Violence Prevention", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_xaxes(title_text="No. of Airmen in Domestic Violence Prevention", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
         fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
         fig.update_layout(title={
-            'text': "Domestic Violence Prevention Classes",
+            'text': "Domestic Violence Prevention",
             'font': {'size': 20}},
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor="rgba(0,0,0,0)",showlegend = False,

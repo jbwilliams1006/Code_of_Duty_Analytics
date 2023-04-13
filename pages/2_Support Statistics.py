@@ -3,10 +3,9 @@ import streamlit_authenticator as stauth
 from Dashboard import authenticator
 from VisCourses import VisCourses
 from PIL import Image
-
 import logo
 
-# st.set_page_config(layout="wide")
+st.set_page_config(layout="centered")
 # Chanegs the font size using custom css
 st.markdown("""
 <style>
@@ -24,7 +23,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 st.subheader(":green[SAFB Support Services Statistics]")
-st.text("Personnel completing additional support classes offered at Shepard Air Force Base.")
+st.text("Airmen taking additional support classes offered at Shepard Air Force Base.")
 
 VisCourses.DVLine()
 VisCourses.SALine()

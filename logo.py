@@ -1,6 +1,6 @@
 import streamlit as st
-import streamlit_authenticator as stauth
-from Dashboard import authenticator
+from PIL import Image
+
 import base64
 
 # logo above dashboard header!
@@ -41,8 +41,8 @@ def add_logo(png_file):
         logo_markup,
         unsafe_allow_html=True,
     )
+   
 
-add_logo("Icons/fullName_logo.png")
+# add_logo("Icons/fullName_logo.png")
 
-# logo = Image.open('Icons/fullName_logo.png')
-# st.sidebar.image(logo, use_column_width=True)
+

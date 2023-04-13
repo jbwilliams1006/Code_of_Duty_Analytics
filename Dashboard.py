@@ -18,9 +18,12 @@ from VisualsGrief import VisualsGrief
 from VisualsAnx import VisualsAnx
 from VisCounsel import VisCounsel
 from VisCourses import VisCourses
-import base64
+
 import logo
 from dbQueries import *
+
+
+
 
 #secure database access
 key_dict = json.loads(st.secrets["textkey"])
@@ -185,6 +188,7 @@ if authentication_status:
     a1.header(f"Welcome {creds['usernames'][username]['fname']}")
     a1.text(f'Patients are seeing a 52.6% increase in mental health')
     a2.header(f'Week Overview') 
+    a2.subheader("Sheppard Air Force Base")
     
     
     a3,a4,a5 = a2.columns(3
