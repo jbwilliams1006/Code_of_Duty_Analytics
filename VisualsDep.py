@@ -127,6 +127,7 @@ class VisualsDep:
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor="rgba(0,0,0,0)",
         hoverlabel=dict(font=dict(size=16, color = "black")))
+        fig.update_xaxes(title_text ="Depression reported by SAFB Personnel", title_font=dict(size=18, color = "black"), tickfont=dict(size=16, color = "black"))
         fig.update_traces(hoverinfo='label+value', textfont=dict(family = "Arial Black", size=14))
         st.plotly_chart(fig, use_container_width=True)
 
