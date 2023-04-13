@@ -46,6 +46,3 @@ add_logo("Icons/fullName_logo.png")
 
 # logo = Image.open('Icons/fullName_logo.png')
 # st.sidebar.image(logo, use_column_width=True)
-st.sidebar.success("Select a page above.")
-# Logout button
-authenticator.logout("Logout", "sidebar")
