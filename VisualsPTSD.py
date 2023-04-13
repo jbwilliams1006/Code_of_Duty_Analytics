@@ -38,9 +38,6 @@ class VisualsPTSD:
         df1 = VisualsPTSD.load_data1(1000)
         df2 = VisualsPTSD.load_data2(1000)
         df3 = VisualsPTSD.load_data3(1000)
-        df1 = df1.groupby(['date','PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        df2 = df2.groupby(['date','PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
-        df3 = df3.groupby(['date','PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df1 = df1.groupby(['date','PTSD']).apply(len).reindex().to_frame('count').reset_index()
         df2 = df2.groupby(['date','PTSD']).apply(len).reindex().to_frame('count').reset_index()
         df3 = df3.groupby(['date','PTSD']).apply(len).reindex().to_frame('count').reset_index()
@@ -97,7 +94,7 @@ class VisualsPTSD:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black","size":16}),
+                    font = dict({"color":"black","size":18}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
@@ -123,6 +120,8 @@ class VisualsPTSD:
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})    
         st.plotly_chart(fig, use_container_width = True)
         
+   
+
 
     def barGraph():
         df1 = VisualsPTSD.load_data1(1000)
@@ -133,23 +132,13 @@ class VisualsPTSD:
         df3 = df3.groupby(['PTSD']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         fig = go.Figure()
         for PTSD, group in df1.groupby("PTSD"):
-            fig.add_trace(go.Bar(x=group["PTSD"], y=group["count"], name=PTSD,textposition='outside', text = group['count']))
-            fig.update_layout(legend_title_text = "PTSD")
-            fig.update_xaxes(title_text="PTSD",showline =True,categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
-            fig.update_yaxes(title_text="Count", showline =True)
-
+            fig.add_trace(go.Bar(x=group["PTSD"], y=group["count"], name=f"2021 - {PTSD}", text=group['count'], textposition='auto',textfont=dict(family ='Arial Black',size=14)))
         for PTSD, group in df2.groupby("PTSD"):
-            fig.add_trace(go.Bar(x=group["PTSD"], y=group["count"], name=PTSD,textposition='outside', text = group['count']))
-            fig.update_layout(legend_title_text = "PTSD")
-            fig.update_xaxes(title_text="PTSD",showline=True,categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
-            fig.update_yaxes(title_text="Count",showline=True)
-            
+            fig.add_trace(go.Bar(x=group["PTSD"], y=group["count"], name=f"2022 - {PTSD}", text=group['count'], textposition='auto',textfont=dict(family ='Arial Black',size=14)))
         for PTSD, group in df3.groupby("PTSD"):
-            fig.add_trace(go.Bar(x=group["PTSD"], y=group["count"], name=PTSD,textposition='outside', text = group['count']))
-            fig.update_layout(legend_title_text = "PTSD")
-            fig.update_xaxes(title_text="PTSD",showline=True,categoryorder='array', categoryarray= ['Daily','Often','Weekly','Monthly','Seldom','Yearly','Never'])
-            fig.update_yaxes(title_text="Count",showline=True)
-            
+            fig.add_trace(go.Bar(x=group["PTSD"], y=group["count"], name=f"2023 - {PTSD}", text=group['count'], textposition='auto',textfont=dict(family ='Arial Black',size=14)))
+
+        # create dropdown menu to toggle through years
         fig.update_layout(
             updatemenus=[
                 dict(
@@ -159,33 +148,45 @@ class VisualsPTSD:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black","size":16}),
+                    font = dict({"color":"black","size":18}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
-                            args=[{"visible": [True, True, True]},
-                                # {"title": "Frequency of PTSD Reported 2021-2023"},
+                            args=[{"visible": [True] * len(df1) + [True] * len(df2) + [True] * len(df3)},
+                                # {"title": "Frequency of PTSD Reported in 2021-2023"}
                                 ]),
                         dict(label="2021",
                             method="update",
-                            args=[{"visible": [True, False, False]},
-                                # {"title": "Frequency of PTSD Reported in 2021"},
+                            args=[{"visible": [True] * len(df1) + [False] * len(df2) + [False] * len(df3)},
+                                # {"title": "Frequency of PTSD Reported in 2021"}
                                 ]),
                         dict(label="2022",
                             method="update",
-                            args=[{"visible": [False, True,False]},
-                                # {"title": "Frequency of PTSD Reported in 2022"},
+                            args=[{"visible": [False] * len(df1) + [True] * len(df2) + [False] * len(df3)},
+                                # {"title": "Frequency of PTSD Reported in 2022"}
                                 ]),
                         dict(label="2023",
                             method="update",
-                            args=[{"visible": [False,False,True]},
-                                # {"title": "Frequency of PTSD Reported in 2023"},
-                                ]),
+                            args=[{"visible": [False] * len(df1) + [False] * len(df2) + [True] * len(df3)},
+                                # {"title": "Frequency of PTSD Reported in 2023"}
+                                ])
                     ]),
                 )
-            ])
-        fig.update_layout(title_text="Frequency of PTSD Reported in 2021-2023",title_x=0.25, showlegend=False)
-        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})    
+            ]
+        )
+
+        # update layout of the chart
+        fig.update_layout(barmode='group',
+        xaxis={'categoryorder':'array', 'categoryarray': ['Daily', 'Often', 'Weekly', 'Monthly', 'Seldom', 'Yearly', 'Never']},
+        xaxis_title="PTSD",
+        title={
+            'text': "Frequency of PTSD Reported in 2021-2023",
+            'font': {'size': 20}},
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor="rgba(0,0,0,0)",
+        hoverlabel=dict(font=dict(size=16, color = "black")))
+        fig.update_yaxes(showline=True,title_font=dict(size=16, color = "black"), tickfont=dict(size=16, color = "black"))
+        fig.update_xaxes(showline=True,title_font=dict(size=16, color = "black"), tickfont=dict(size=16, color = "black"))
         return st.plotly_chart(fig, use_container_width=True)
     
 def getGraphs():

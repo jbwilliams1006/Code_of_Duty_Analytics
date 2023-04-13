@@ -5,6 +5,7 @@ from VisCourses import VisCourses
 from PIL import Image
 import base64 
 
+st.set_page_config(layout="wide")
 # Chanegs the font size using custom css
 st.markdown("""
 <style>
@@ -13,7 +14,12 @@ st.markdown("""
     font-family: "Source Sans Pro", sans-serif;
     font-weight: bold;
 }
-
+.css-1a32fsj.e19lei0e0 {
+    display: flex;
+    background-color: #eeeeee;
+    padding: 1% 1% 1% 1%;
+    border-radius: 30px;
+}
 </style>
 """, unsafe_allow_html=True)
 st.subheader(":green[SAFB Support Services Statistics]")

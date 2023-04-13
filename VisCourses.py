@@ -50,27 +50,22 @@ class VisCourses:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2021"))
-        fig.update_layout(legend_title_text = "Anger Mangement")
-        fig.update_xaxes(title_text="Number of Personnel in Anger Mangement", showline=True)
-        fig.update_yaxes( showline =True)
+        
+        
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2022"))
-        fig.update_layout(legend_title_text = "Anger Mangement")
-        fig.update_xaxes(title_text="Number of Personnel in Anger Management", showline=True)
-        fig.update_yaxes( showline=True)
+        
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2023"))
-        fig.update_layout(legend_title_text = "Anger Management")
-        fig.update_xaxes(title_text="Number of Peronnel in Anger Management", showline=True)
-        fig.update_yaxes( showline=True)
+       
 
         fig.update_layout(
             updatemenus=[
@@ -81,7 +76,7 @@ class VisCourses:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black", "size":16}),
+                    font = dict({"color":"black","size":18}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
@@ -106,9 +101,14 @@ class VisCourses:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Anger Management Completed",title_x=.08,showlegend =False)  
-        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        
+        fig.update_xaxes(title_text="No. in Anger Management", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
+        fig.update_layout(title={
+            'text': "Anger Management Classes",
+            'font': {'size': 20}},
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor="rgba(0,0,0,0)",showlegend = False,
+        hoverlabel=dict(font=dict(size=16, color = "black")))
         st.plotly_chart(fig, use_container_width=True)
 
     
@@ -130,27 +130,18 @@ class VisCourses:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2021"))
-        fig.update_layout(legend_title_text = "Alcohol Awareness")
-        fig.update_xaxes(title_text="Number of Personnel in Alcohol Awareness", showline=True)
-        fig.update_yaxes( showline=True)
-
+        
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2022"))
-        fig.update_layout(legend_title_text = "Alcohol Awareness")
-        fig.update_xaxes(title_text="Number of Personnel in Alcohol Awareness", showline=True)
-        fig.update_yaxes( showline=True)
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2023"))
-        fig.update_layout(legend_title_text = "Alcohol Awareness")
-        fig.update_xaxes(title_text="Number of Personnel in Alcohol Awareness", showline=True)
-        fig.update_yaxes( showline=True)
 
         fig.update_layout(
             updatemenus=[
@@ -161,7 +152,7 @@ class VisCourses:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black", "size":16}),
+                    font = dict({"color":"black","size":18}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
@@ -186,9 +177,16 @@ class VisCourses:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Alcohol Awareness Courses Completed in 2021-2023",showlegend =False)  
-        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        st.plotly_chart(fig, use_container_width=True)
+        fig.update_xaxes(title_text="No. in Alcohol Awareness", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
+        fig.update_layout(title={
+            'text': "Alcohol Awareness Classes",
+            'font': {'size': 20}},
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor="rgba(0,0,0,0)",showlegend = False,
+        hoverlabel=dict(font=dict(size=16, color = "black")))
+        st.plotly_chart(fig,use_container_width=True)
+
     
  
     
@@ -210,28 +208,21 @@ class VisCourses:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2021"))
-        fig.update_layout(legend_title_text = "Stress Management")
-        fig.update_xaxes(title_text="Number of Personnel in Stress Mangement", showline=True)
-        fig.update_yaxes( showline=True)
+        
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2022"))
-        fig.update_layout(legend_title_text = "Stress Management")
-        fig.update_xaxes(title_text="Number of Personnel in Stress Mangement", showline=True)
-        fig.update_yaxes( showline=True)
+        
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2023"))
-        fig.update_layout(legend_title_text = "Stress Management")
-        fig.update_xaxes(title_text="Number of Personnel in Stress Mangement", showline=True)
-        fig.update_yaxes( showline=True)
-
+        
         fig.update_layout(
             updatemenus=[
                 dict(
@@ -241,7 +232,7 @@ class VisCourses:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black", "size":16}),
+                    font = dict({"color":"black","size":18}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
@@ -266,9 +257,14 @@ class VisCourses:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Stress Management Completed",title_x=.08,showlegend =False)  
-        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        
+        fig.update_xaxes(title_text="No. in Stess Management", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
+        fig.update_layout(title={
+            'text': "Stress Management Classes",
+            'font': {'size': 20}},
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor="rgba(0,0,0,0)",showlegend = False,
+        hoverlabel=dict(font=dict(size=16, color = "black")))
         st.plotly_chart(fig, use_container_width=True)
     
     
@@ -291,28 +287,20 @@ class VisCourses:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2021"))
-        fig.update_layout(legend_title_text = "Sexual Assault Prevention")
-        fig.update_xaxes(title_text="Number of Personnel in Sexual Assault Prevention Classes",showline=True)
-        fig.update_yaxes(showline=True)
-
+      
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2022"))
-        fig.update_layout(legend_title_text = "Sexual Assault Prevention")
-        fig.update_xaxes(title_text="Number of Personnel in Sexual Assault Prevention Classes",showline=True)
-        fig.update_yaxes(showline=True)
+      
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2023"))
-        fig.update_layout(legend_title_text = "Sexual Assault Prevention")
-        fig.update_xaxes(title_text="Number of Personnel in Sexual Assault Prevention Classes",showline=True)
-        fig.update_yaxes(showline=True)
-
+     
         fig.update_layout(
             updatemenus=[
                 dict(
@@ -322,7 +310,7 @@ class VisCourses:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black", "size":16}),
+                    font = dict({"color":"black","size":18}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
@@ -347,9 +335,16 @@ class VisCourses:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Sexual Assault Prevention Classes Completed in 2021-2023",showlegend =False)  
-        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        st.plotly_chart(fig, use_container_width=True)
+        fig.update_xaxes(title_text="No. in Sexual Assault Prevention ", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
+        fig.update_layout(title={
+            'text': "Sexual Assault Prevention Classes",
+            'font': {'size': 20}},
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor="rgba(0,0,0,0)",showlegend = False,
+        hoverlabel=dict(font=dict(size=16, color = "black")))
+        st.plotly_chart(fig,use_container_width=True)
+       
     
     
     def DVLine():
@@ -370,27 +365,20 @@ class VisCourses:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2021"))
-        fig.update_layout(legend_title_text = "Domestic Violence  Prevention")
-        fig.update_xaxes(title_text="Number of Personne in Domestic Violence Prevention Classes", showline =True)
-        fig.update_yaxes(showline =True)
-
+        
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2022"))
-        fig.update_layout(legend_title_text = "DV_course")
-        fig.update_xaxes(title_text="Number of Personnel in Domestic Violence Prevention Classes", showline =True)
-        fig.update_yaxes(showline =True)
+
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2023"))
-        fig.update_layout(legend_title_text = "Domestic Violence Prevention")
-        fig.update_xaxes(title_text="Number of Personnel in Domestic Violence Prevention Classes", showline =True)
-        fig.update_yaxes( showline =True)
+     
 
         fig.update_layout(
             updatemenus=[
@@ -401,7 +389,7 @@ class VisCourses:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black", "size":16}),
+                    font = dict({"color":"black","size":18}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
@@ -426,9 +414,16 @@ class VisCourses:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Domestic Violence Prevention Classes Completed in 2021-2023",showlegend =False)  
-        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        st.plotly_chart(fig, use_container_width=True)
+        fig.update_xaxes(title_text="No. in Domestic Violence Prevention", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
+        fig.update_layout(title={
+            'text': "Domestic Violence Prevention Classes",
+            'font': {'size': 20}},
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor="rgba(0,0,0,0)",showlegend = False,
+        hoverlabel=dict(font=dict(size=16, color = "black")))
+        st.plotly_chart(fig,use_container_width=True)
+     
     
 
     

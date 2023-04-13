@@ -89,7 +89,7 @@ name, authentication_status, username = authenticator.login("Login", "main")
 # authenticator.register_user("main")
 
 
-if authentication_status == False or authentication_status == None:
+if authentication_status == False:
     st.error("Username/password  is incorrect")
     if st.button('Sign Up'):
         nav_page("Sign_Up")
@@ -105,21 +105,21 @@ if authentication_status == False or authentication_status == None:
         unsafe_allow_html=True,
     )
     
-# if authentication_status == None:
-#     st.warning("Please enter your username and password")
-#     if st.button('Sign Up'):
-#         nav_page("Sign_Up")
-#         #Hides sidebar on Login Page
-#     st.markdown(
-#         """
-#     <style>
-#         [data-testid="collapsedControl"] {
-#             display: none
-#         }
-#     </style>
-#     """,
-#         unsafe_allow_html=True,
-#     )
+if authentication_status == None:
+    st.warning("Please enter your username and password")
+    if st.button('Sign Up'):
+        nav_page("Sign_Up")
+        #Hides sidebar on Login Page
+    st.markdown(
+        """
+    <style>
+        [data-testid="collapsedControl"] {
+            display: none
+        }
+    </style>
+    """,
+        unsafe_allow_html=True,
+    )
 
 if authentication_status:
     with open('style.css') as f:
@@ -156,7 +156,7 @@ if authentication_status:
                                                             
     
     # ""
-   # logo above dashboard header!
+   # logo above sidebar menu options
     @st.cache_data()
     def get_base64_of_bin_file(png_file):
         with open(png_file, "rb") as f:

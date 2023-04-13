@@ -93,7 +93,7 @@ class VisualsStress:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black","size":16}),
+                    font = dict({"color":"black","size":18}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
@@ -161,7 +161,7 @@ class VisualsStress:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black","size":16}),
+                    font = dict({"color":"black","size":18}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",

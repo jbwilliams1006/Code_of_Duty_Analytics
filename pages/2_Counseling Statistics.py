@@ -6,7 +6,8 @@ from PIL import Image
 import base64
 
 
-# Changes the font size using custom css
+st.set_page_config(layout="wide")
+# Chanegs the font size using custom css
 st.markdown("""
 <style>
 .big-font {
@@ -14,28 +15,20 @@ st.markdown("""
     font-family: "Source Sans Pro", sans-serif;
     font-weight: bold;
 }
-
-.white-box {
-    background-color: white;
-    padding: 10px;
+.css-1a32fsj.e19lei0e0 {
+    display: flex;
+    background-color: #eeeeee;
+    padding: 1% 1% 1% 1%;
     border-radius: 30px;
-    width: 100%;
-    height: 100%;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
 }
 </style>
 """, unsafe_allow_html=True)
-
 st.subheader(":green[SAFB Counseling Statistics]")
 st.text("Personnel seeking counseling services at Shepard Air Force Base.")
 
-
 VisCounsel.spritualLine()
-
 VisCounsel.relationLine()
-
-
-
 VisCounsel.griefLine()
 
 

@@ -44,13 +44,15 @@ class VisualsAlc:
         df.drop(df[df['alcohol_use'] == "Never"].index, inplace =True)
                 
         fig=(px.line(df,x=df["date"], y='count', color='alcohol_use', hover_data=['count'], labels='alcohol_use', color_discrete_sequence=px.colors.qualitative.G10))
-        fig.update_layout(legend_title_text = "Alcohol Use")
         
-        fig.update_xaxes(title_text="Date Range Selector", showline = True)
-        fig.update_yaxes(title_text="Count",showline =True)
-        fig.update_xaxes(rangeslider_visible=True, showline = True)
-        fig.update_layout(title_text="High Risk Alcohol Use Reported in 2021-2023",title_x=0.25)  
-        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
+        fig.update_xaxes(rangeslider_visible=True, title_text="Date Range Selector", showline = True, title_font=dict(size=20 , color = "black"), tickfont=dict(size=16,color = "black"))
+        fig.update_yaxes(title_text="Count",showline =True, title_font=dict(size=16, color = "black"), tickfont=dict(size=16, color = "black"))
+        fig.update_layout(title={
+            'text': "High Risk Alcohol Use Reported in 2021-2023 ",
+            'font': {'size': 20}},
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor="rgba(0,0,0,0)",
+        hoverlabel=dict(font=dict(size=16, color = "black")))
         return st.plotly_chart(fig, use_container_width=True)
         
  
@@ -206,8 +208,7 @@ class VisualsAlc:
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2021"))
         # fig.update_layout(legend ="2021")
-        fig.update_xaxes(title_text="Number of Alcohol Related Offenses", showline=True)
-        fig.update_yaxes(showline =True)
+        
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
@@ -215,8 +216,7 @@ class VisualsAlc:
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2022"))
         # fig.update_layout(legend = "2022")
-        fig.update_xaxes(title_text="Number of Alcohol Related Offenses", showline=True)
-        fig.update_yaxes(showline =True)
+     
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
@@ -224,8 +224,7 @@ class VisualsAlc:
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True, hovertext="2023"))
         # fig.update_layout(legend ="2023")
-        fig.update_xaxes(title_text="Number of Alcohol Related Offenses", showline=True)
-        fig.update_yaxes(showline = True)
+       
 
         fig.update_layout(
             updatemenus=[
@@ -236,7 +235,7 @@ class VisualsAlc:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black", "size":16}),
+                    font = dict({"color":"black","size":18}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
@@ -261,8 +260,14 @@ class VisualsAlc:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Alcohol Related Offenses",title_x = .1,showlegend =False)  
-        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
+        fig.update_xaxes(title_text="No. of Alc Offenses", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
+        fig.update_layout(title={
+            'text': "Alcohol Related Offenses",
+            'font': {'size': 20}},
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor="rgba(0,0,0,0)",showlegend = False,
+        hoverlabel=dict(font=dict(size=16, color = "black")))
         st.plotly_chart(fig,use_container_width=True)
     
 

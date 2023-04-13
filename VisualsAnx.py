@@ -61,27 +61,31 @@ class VisualsAnx:
         df1 = df1.groupby(['anxiety']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2 = df2.groupby(['anxiety']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df3 = df3.groupby(['anxiety']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
+        df_merge1 = pd.merge(df1, df2, on='anxiety', how='outer', suffixes=('_df1', '_df2'))
+        df_merge2 = pd.merge(df_merge1, df3, on='anxiety', how='outer')
+        df_merged = df_merge2.fillna(0)
+        df_merged['count'] = df_merge2['count_df1'] + df_merge2['count_df2'] + df_merge2['count']
+        df_merged = df_merged[['anxiety', 'count']]
 
+        # print(df_merged)
+       
         fig = go.Figure()
+        fig.add_trace(go.Pie(labels=df_merged['anxiety'], values=df_merged['count'], name="2021-2023", textinfo='label+percent', visible=True,
+                        hoverinfo='label+value', hovertemplate='<b>%{label}</b><br>Count: %{value}<extra></extra>', 
+                        textfont=dict(size=18)))
+        # create pie chart with all data visible
+        
+        fig.add_trace(go.Pie(labels=df1['anxiety'], values=df1['count'], name="2021", textinfo='label+percent', visible = False,
+                            hoverinfo='label+value', hovertemplate='<b>%{label}</b><br>Count: %{value}<extra></extra>',
+                            textfont=dict(size=18)))
+        fig.add_trace(go.Pie(labels=df2['anxiety'], values=df2['count'], name="2022", textinfo='label+percent', visible = False,
+                            hoverinfo='label+value', hovertemplate='<b>%{label}</b><br>Count: %{value}<extra></extra>', 
+                            textfont=dict(size=18)))
+        fig.add_trace(go.Pie(labels=df3['anxiety'], values=df3['count'], name="2023", textinfo='label+percent', visible = False,
+                            hoverinfo='label+value', hovertemplate='<b>%{label}</b><br>Count: %{value}<extra></extra>', 
+                            textfont=dict(size=18)))
 
-        for Anxiety in df1:
-            fig.add_trace(go.Pie(labels=df1['anxiety'],values = df1['count'], name = Anxiety))
-            fig.update_layout(legend_title_text = "Anxiety")
-            fig.update_xaxes(title_text="Anxiety")
-            fig.update_yaxes(title_text="Count")
-
-        for Anxiety in df2:
-            fig.add_trace(go.Pie(labels=df2['anxiety'], values = df2['count'],name=Anxiety))
-            fig.update_layout(legend_title_text = "Anxiety")
-            fig.update_xaxes(title_text="Anxiety")
-            fig.update_yaxes(title_text="Count")
-            
-        for Anxiety in df3:
-            fig.add_trace(go.Pie(labels=df3['anxiety'],values = df3['count'], name=Anxiety))
-            fig.update_layout(legend_title_text = "Anxiety")
-            fig.update_xaxes(title_text="Anxiety")
-            fig.update_yaxes(title_text="Count")
-            
+        # create dropdown menu to toggle through years
         fig.update_layout(
             updatemenus=[
                 dict(
@@ -91,35 +95,41 @@ class VisualsAnx:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black","size":16}),
+                    font = dict({"color":"black","size":18}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
-                            args=[{"visible": [True, True, True]},
-                                # {"title": "Frequency of Anxiety Reported 2021-2023"},
-                                ]),
-                        dict(label="2021",
-                            method="update",
-                            args=[{"visible": [True, False, False]},
-                                # {"title": "Frequency of Anxiety Reported in 2021"},
-                                ]),
-                        dict(label="2022",
-                            method="update",
-                            args=[{"visible": [False, True,False]},
-                                # {"title": "Frequency of Anxiety Reported in 2022"},
+                            args=[{"visible": [True, False, False, False] + [False] * (len(df_merged)-1) },
+                            # {"title": "Frequency of Depression Reported in 2021-2023"}
+                            ]),
+                    dict(label="2021",
+                        method="update",
+                        args=[{"visible": [False, True, False, False] + [False] * (len(df_merged)-1) },
+                            # {"title": "Frequency of Depression Reported in 2021"}
+                            ]),
+                    dict(label="2022",
+                        method="update",
+                        args=[{"visible": [False, False, True, False] + [False] * (len(df_merged)-1) },
+                                # {"title": "Frequency of Depression Reported in 2022"}
                                 ]),
                         dict(label="2023",
                             method="update",
-                            args=[{"visible": [False,False,True]},
-                                # {"title": "Frequency of Anxiety Reported in 2023"},
+                            args=[{"visible": [False, False, False, True] + [False] * (len(df_merged)-1)},
+                                # {"title": "Frequency of Depression Reported in 2023"}
                                 ]),
-                    ]),
+                        ]),
                 )
-            ])
-        fig.update_traces(textposition='inside', textinfo='percent+label')
-        fig.update_layout(title_text="Frequency of Anxiety Reported in 2021-2023",title_x=0.1)
-        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})    
-        st.plotly_chart(fig, use_container_width = True)
+            ]
+        )
+        fig.update_layout(title={
+            'text': "Frequency of Anxiety Reported in 2021-2023",
+            'font': {'size': 20}},
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor="rgba(0,0,0,0)",
+        hoverlabel=dict(font=dict(size=16, color = "black")))
+        fig.update_traces(hoverinfo='label+value', textfont=dict(family = "Arial Black", size=14))
+
+        st.plotly_chart(fig, use_container_width=True)
 
 
     def barGraph():
@@ -158,7 +168,7 @@ class VisualsAnx:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black","size":16}),
+                    font = dict({"color":"black","size":18}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",

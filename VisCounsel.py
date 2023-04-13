@@ -51,27 +51,21 @@ class VisCounsel:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2021"))
-        fig.update_layout(legend_title_text = "spiritual_counseling")
-        fig.update_xaxes(title_text="Number of Spiritual Counseling Sessions", showline =True)
-        fig.update_yaxes(showline =True)
+       
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2022"))
-        fig.update_layout(legend_title_text = "spiritual_counseling")
-        fig.update_xaxes(title_text="Number of Spiritual Counseling Sessions", showline =True)
-        fig.update_yaxes(showline =True)
+       
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2023"))
-        fig.update_layout(legend_title_text = "Spiritual Counseling")
-        fig.update_xaxes(title_text="Number of Spiritual Counseling Sessions", showline =True)
-        fig.update_yaxes( showline =True)
+        
 
         fig.update_layout(
             updatemenus=[
@@ -82,7 +76,7 @@ class VisCounsel:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black", "size":16}),
+                    font = dict({"color":"black","size":18}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
@@ -107,9 +101,14 @@ class VisCounsel:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Spiritual Counseling Sessions",showlegend =False, title_x=.1)  
-        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        
+        fig.update_xaxes(title_text="No. in Spiritual Counseling", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
+        fig.update_layout(title={
+            'text': "Spiritual Counseling Sessions",
+            'font': {'size': 20}},
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor="rgba(0,0,0,0)",showlegend = False,
+        hoverlabel=dict(font=dict(size=16, color = "black")))
         st.plotly_chart(fig,use_container_width=True)
     
     def relationLine():
@@ -130,28 +129,21 @@ class VisCounsel:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2021"))
-        fig.update_layout(legend_title_text = "Relationship Counseling")
-        fig.update_xaxes(title_text="Number of Relationship Counseling Sessions", showline =True)
-        fig.update_yaxes( showline =True)
+        
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2022"))
-        fig.update_layout(legend_title_text = "Relationship Counseling")
-        fig.update_xaxes(title_text="Number of Relationship Counseling Sessions", showline =True)
-        fig.update_yaxes( showline =True)
+        
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2023"))
-        fig.update_layout(legend_title_text = "Relationship Counseling")
-        fig.update_xaxes(title="Number of Relationship Counseling Sessions", showline =True)
-        fig.update_yaxes( showline =True)
-
+        
         fig.update_layout(
             updatemenus=[
                 dict(
@@ -161,7 +153,7 @@ class VisCounsel:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black", "size":16}),
+                    font = dict({"color":"black","size":18}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
@@ -186,10 +178,17 @@ class VisCounsel:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Relationship Counseling in 2021-2023",showlegend =False)  
-        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        
+        fig.update_xaxes(title_text="No. in Relationship Counseling", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
+        fig.update_layout(title={
+            'text': "Relationship Counseling Sessions",
+            'font': {'size': 20}},
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor="rgba(0,0,0,0)",showlegend = False,
+        hoverlabel=dict(font=dict(size=16, color = "black")))
         st.plotly_chart(fig,use_container_width=True)
+        
+      
     
     def griefLine():
         df1 = VisCounsel.load_data1(1000)
@@ -209,27 +208,21 @@ class VisCounsel:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2021"))
-        fig.update_layout(legend_title_text = "Grief Counseling")
-        fig.update_xaxes(title_text="Number of Grief Counseling Sessions", showline =True)
-        fig.update_yaxes( showline =True)
+        
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2022"))
-        fig.update_layout(legend_title_text = "Grief Counseling")
-        fig.update_xaxes(title_text="Number of Grief Counseling Sessions", showline =True)
-        fig.update_yaxes( showline =True)
+        
 
         yStuff = [0,0,0,0,0,0,0,0,0,0,0,0]
         for val in df3.values:
             yStuff[val[0].month - 1] += val[2]
                 
         fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2023"))
-        fig.update_layout(legend_title_text = "Grief Counseling")
-        fig.update_xaxes(title_text="Number of Grief Counseling Sessions", showline =True)
-        fig.update_yaxes( showline =True)
+        
 
         fig.update_layout(
             updatemenus=[
@@ -240,7 +233,7 @@ class VisCounsel:
                     y = 1.08,
                     yanchor = "middle",
                     showactive=True,
-                    font = dict({"color":"black", "size":16}),
+                    font = dict({"color":"black", "size":18}),
                     buttons=list([
                         dict(label="2021-2023",
                             method="update",
@@ -265,10 +258,16 @@ class VisCounsel:
                     ]),
                 )
             ])
-        fig.update_layout(title_text="Grief Counseling in 2021-2023",showlegend =False)  
-        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)','paper_bgcolor': 'rgba(0,0,0,0)'})
-        
+        fig.update_xaxes(title_text="No. in Grief Counseling", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
+        fig.update_layout(title={
+            'text': "Grief Counseling Sessions",
+            'font': {'size': 20}},
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor="rgba(0,0,0,0)",showlegend = False,
+        hoverlabel=dict(font=dict(size=16, color = "black")))
         st.plotly_chart(fig,use_container_width=True)
+      
     
 
     
