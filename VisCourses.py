@@ -186,8 +186,6 @@ class VisCourses:
         paper_bgcolor="rgba(0,0,0,0)",showlegend = False,
         hoverlabel=dict(font=dict(size=16, color = "black")))
         st.plotly_chart(fig,use_container_width=True)
-
-    
  
     
     def stressLine():
