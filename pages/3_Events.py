@@ -41,5 +41,8 @@ b1.text("Take control of your mind and elevate your well-being! Join these menta
     
     # ""
      # logo above sidebar menu options
+st.sidebar.success("Select a page above.")
+# Logout button
+authenticator.logout("Logout", "sidebar")
 logo.add_logo("Icons/fullName_logo.png")    
 

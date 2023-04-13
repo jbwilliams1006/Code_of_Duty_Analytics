@@ -157,6 +157,9 @@ if authentication_status:
                                                             
     
     # ""
+    st.sidebar.success("Select a page above.")
+    # Logout button
+    authenticator.logout("Logout", "sidebar")
    # logo above sidebar menu options
     logo.add_logo("Icons/fullName_logo.png")
     
