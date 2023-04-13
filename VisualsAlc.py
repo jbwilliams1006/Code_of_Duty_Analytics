@@ -45,7 +45,19 @@ class VisualsAlc:
                 
         fig=(px.line(df,x=df["date"], y='count', color='alcohol_use', hover_data=['count'], labels='alcohol_use', color_discrete_sequence=px.colors.qualitative.G10))
         
-        
+        fig.update_layout(
+    xaxis={
+        'rangeslider_visible': True,
+        'rangeslider_thickness': 0.2, 
+        'title': {
+            'text': 'Date Range Selector',
+            'font': {'size': 20, 'color': 'black'}
+        },
+        'showline': True,
+        'title_font': {'size': 20, 'color': 'black'},
+        'tickfont': {'size': 16, 'color': 'black'},
+    }
+)
 
         fig.update_yaxes(title_text="Count",showline =True, title_font=dict(size=16, color = "black"), tickfont=dict(size=16, color = "black"))
         fig.update_layout(title={
