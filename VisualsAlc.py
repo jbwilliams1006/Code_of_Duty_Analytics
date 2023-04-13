@@ -262,14 +262,7 @@ class VisualsAlc:
                     ]),
                 )
             ])
-        fig.add_annotation(
-        x=0,
-        y=1.1,
-        xref='paper',
-        yref='paper',
-        text='Select Year:',
-        showarrow=False,
-        font=dict(size=18, color="black"))
+       
         fig.update_xaxes(title_text="No. of Alc Offenses at SAFB ", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
         fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
         fig.update_layout(title={
