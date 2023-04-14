@@ -133,7 +133,7 @@ class VisualsDep:
             xref="paper",
             yref="paper",
             showarrow=False,
-            text="Depression Survey Data of Airmen",
+            text="Air Force Depression Survey Data",
             font=dict(size=20, color = "black"),
         )
 

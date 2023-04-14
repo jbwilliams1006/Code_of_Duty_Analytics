@@ -133,7 +133,7 @@ class VisualsAnx:
             xref="paper",
             yref="paper",
             showarrow=False,
-            text="Anxiety Survey Data of Airmen",
+            text="Air Force Anxiety Survey Data",
             font=dict(size=20, color = "black"),
         )
         fig.update_traces(hoverinfo='label+value', textfont=dict(family = "Arial Black", size=14))

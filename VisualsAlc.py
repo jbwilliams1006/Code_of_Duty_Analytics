@@ -47,18 +47,57 @@ class VisualsAlc:
         
         fig.update_layout(
     xaxis={
-        'rangeslider_visible': True,
-        'rangeslider_thickness': 0.2, 
         'title': {
             'text': 'Date Range Selector',
-            'font': {'size': 20, 'color': 'black'}
+            'font': {'size': 20, 'color': 'black'},
         },
         'showline': True,
         'title_font': {'size': 20, 'color': 'black'},
-        'tickfont': {'size': 16, 'color': 'black'},
+        'tickfont': {'size': 14, 'color': 'black'},
     }
 )
-
+        
+        fig.update_layout(
+        xaxis=dict(
+        rangeselector=dict(
+            font = dict({"color":"black","size":16}),
+            x = 1,
+            xanchor = "right",
+            buttons=list([
+                dict(count=1,
+                     label="1m",
+                     step="month",
+                     stepmode="backward"),
+                dict(count=6,
+                     label="6m",
+                     step="month",
+                     stepmode="backward"),
+                dict(count=1,
+                     label="YTD",
+                     step="year",
+                     stepmode="todate"),
+                dict(count=1,
+                     label="1y",
+                     step="year",
+                     stepmode="backward"),
+                dict(step="all")
+            ])
+        ),
+        rangeslider=dict(
+            visible=True
+        ),
+        type="date"
+    )
+)
+        fig.add_annotation(
+            x=0.5,
+            y=-0.3,
+            xref="paper",
+            yref="paper",
+            showarrow=False,
+            text="Air Force Alcohol Use Survey Data",
+            font=dict(size=20, color = "black"),
+        )
         fig.update_yaxes(title_text="Count",showline =True, title_font=dict(size=16, color = "black"), tickfont=dict(size=16, color = "black"))
         fig.update_layout(title={
             'text': "High Risk Alcohol Use Reported at SAFB",

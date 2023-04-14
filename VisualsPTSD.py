@@ -174,11 +174,9 @@ class VisualsPTSD:
                 )
             ]
         )
-
         # update layout of the chart
         fig.update_layout(barmode='group',
         xaxis={'categoryorder':'array', 'categoryarray': ['Daily', 'Often', 'Weekly', 'Monthly', 'Seldom', 'Yearly', 'Never']},
-        
         title={
             'text': "Frequency of Reported PTSD at SAFB",
             'font': {'size': 20}},
@@ -186,7 +184,7 @@ class VisualsPTSD:
         paper_bgcolor="rgba(0,0,0,0)",
         hoverlabel=dict(font=dict(size=16, color = "black")))
         fig.update_yaxes(showline=True,title_font=dict(size=16, color = "black"), tickfont=dict(size=16, color = "black"))
-        fig.update_xaxes(showline=True,title_text ="PTSD Survey Data of Airmen", title_font=dict(size=20, color = "black"), tickfont=dict(size=16, color = "black"))
+        fig.update_xaxes(showline=True,title_text ="Air Force PTSD Survey Data", title_font=dict(size=20, color = "black"), tickfont=dict(size=16, color = "black"))
         return st.plotly_chart(fig, use_container_width=True)
     
 def getGraphs():
