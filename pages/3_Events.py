@@ -5,7 +5,7 @@ from Dashboard import authenticator
 from PIL import Image
 import logo
 
-st.set_page_config(layout="centered")
+st.set_page_config(layout="wide")
 # Chanegs the font size using custom css
 st.markdown("""
 <style>
