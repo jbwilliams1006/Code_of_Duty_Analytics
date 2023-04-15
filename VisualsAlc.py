@@ -43,7 +43,7 @@ class VisualsAlc:
         df.drop(df[df['alcohol_use'] == "Seldom"].index, inplace = True)
         df.drop(df[df['alcohol_use'] == "Never"].index, inplace =True)
                 
-        fig=(px.line(df,x=df["date"], y='count', color='alcohol_use', hover_data=['count'], labels='alcohol_use', color_discrete_sequence=px.colors.qualitative.G10))
+        fig=(px.line(df,x=df["date"], y='count', color='alcohol_use', hover_data=['count'], labels=dict(alcohol_use =""), color_discrete_sequence=px.colors.qualitative.G10))
         
         fig.update_layout(
     xaxis={
