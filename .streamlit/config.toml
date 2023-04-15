@@ -1,3 +1,18 @@
+[global]
+disableWatchdogWarning = true
+showWarningOnDirectExecution = false
+dataFrameSerialization = "arrow"
+[client]
+caching = true
+displayEnabled = true
+[runner]
+fixMatplotlib = true
+fastReruns = true
+[server]
+fileWatcherType = "none"
+[deprecation]
+showfileUploaderEncoding = false
+showPyplotGlobalUse = false
 [theme]
 primaryColor="#F63366"
 backgroundColor="#CACFD2"

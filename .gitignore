@@ -3,7 +3,3 @@ firestore-key.json
 __pycache__
 *.cpython-311
 *.pyc
-VisualsDep.cpython-311.pyc
-VisualsStress.cpython-311.pyc
-VisualsPTSD.cpython-311.pyc
-VisualsAlc.cpython-311.pyc
