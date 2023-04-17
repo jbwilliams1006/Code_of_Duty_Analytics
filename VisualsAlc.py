@@ -259,7 +259,9 @@ class VisualsAlc:
         for val in df1.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2021"))
+        fig.add_trace(go.Scatter(x=df1["date"].dt.month_name().unique(), y=yStuff, name="2021", 
+                        hoverinfo='x + y', hovertemplate='<b>%{x} 2021</b><br>Count: %{y}<extra></extra>', 
+                         textfont=dict(size=16)))
         # fig.update_layout(legend ="2021")
         
 
@@ -267,7 +269,9 @@ class VisualsAlc:
         for val in df2.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name=True,hovertext="2022"))
+        fig.add_trace(go.Scatter(x=df2["date"].dt.month_name().unique(), y=yStuff, name="2022", 
+                        hoverinfo='x + y', hovertemplate='<b>%{x} 2022</b><br>Count: %{y}<extra></extra>', 
+                         textfont=dict(size=16)))
         # fig.update_layout(legend = "2022")
      
 
@@ -275,7 +279,9 @@ class VisualsAlc:
         for val in df3.values:
             yStuff[val[0].month - 1] += val[2]
                 
-        fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff, name=True, hovertext="2023"))
+        fig.add_trace(go.Scatter(x=df3["date"].dt.month_name().unique(), y=yStuff,name="2023", 
+                        hoverinfo='x + y', hovertemplate='<b>%{x} 2023</b><br>Count: %{y}<extra></extra>', 
+                         textfont=dict(size=16)))
         # fig.update_layout(legend ="2023")
        
 
@@ -314,7 +320,7 @@ class VisualsAlc:
                 )
             ])
        
-        fig.update_xaxes(title_text="No. of Alc Offenses at SAFB ", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
+        fig.update_xaxes(title_text="No. of Alcohol Offenses at SAFB ", showline = True, title_font=dict(size=16 , color = "black"), tickfont=dict(size=13,color = "black"))
         fig.update_yaxes(showline =True, tickfont=dict(size=16, color = "black"))
         fig.update_layout(title={
             'text': "Alcohol Related Offenses",

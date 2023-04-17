@@ -17,7 +17,7 @@ st.markdown("""
 .css-1a32fsj.e19lei0e0 {
     display: flex;
     background-color: #eeeeee;
-    padding: 1% 1% 1% 1%;
+    padding: 1px 25px 1px 2px;
     border-radius: 30px;
 }
 </style>
