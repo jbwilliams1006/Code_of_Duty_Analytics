@@ -8,6 +8,18 @@ from register_user import *
 from PIL import Image
 import logo
 
+# sets the page icon 
+pageIcon = Image.open("Icons/CODA_logo.png")
+st.set_page_config(page_title = "Care of Duty Analytics",page_icon=pageIcon,initial_sidebar_state="collapsed", layout="centered")
+
+# adds logo to the top of registration page
+logo_image = Image.open('Icons/fullName_logo.png')
+col1, col2, col3 = st.columns([2, 4, 2])
+with col2:
+    st.image(logo_image, output_format="png", use_column_width=True)
+
+
+
 
 ## to hide the sidebar
 st.markdown(
@@ -44,7 +56,7 @@ pre_auth = pre_auth_ref.get()
 
 # Creation of preauthorized emails
 auth_emails = {"emails": pre_auth.to_dict()}
-print(auth_emails)
+# print(auth_emails)
 
 # ## reference to the users collection ID
 # users_ref = db.collection("users")

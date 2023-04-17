@@ -5,7 +5,8 @@ from VisCourses import VisCourses
 from PIL import Image
 import logo
 
-st.set_page_config(layout="centered")
+pageIcon = Image.open("Icons/CODA_logo.png")
+st.set_page_config(page_title = "Care of Duty Analytics",page_icon=pageIcon,initial_sidebar_state="collapsed",layout="centered")
 # Chanegs the font size using custom css
 st.markdown("""
 <style>

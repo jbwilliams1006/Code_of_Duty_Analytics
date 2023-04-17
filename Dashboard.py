@@ -70,19 +70,6 @@ st.set_page_config(page_title = "Care of Duty Analytics",page_icon=pageIcon, ini
 creds = {"usernames":users.to_dict()}
 
 
-# creds = {"usernames":{}}
-
-# # get data from database into lists
-# usernames = [user.id for user in users_ref.stream()]
-# passwords = [user.to_dict()['hash_password'] for user in users_ref.stream()]
-# names = [user.to_dict()['name'] for user in users_ref.stream()]
-
-# # turn lists into database
-# for username, password, name in zip(usernames, passwords, names):
-#     user_dict = {"name":name,"password":password}
-#     creds["usernames"].update({username:user_dict})
-
-# print(creds)
 
 #Creation of authentication object
 authenticator = stauth.Authenticate(creds,
@@ -166,7 +153,7 @@ if authentication_status:
    # logo above sidebar menu options
     logo.add_logo("Icons/fullName_logo.png")
     
-
+    
 
 
     # """
@@ -191,8 +178,7 @@ if authentication_status:
     a2.subheader("Sheppard Air Force Base")
     
     
-    a3,a4,a5 = a2.columns(3
-                          )
+    a3,a4,a5 = a2.columns(3)
     with a3:
         st.metric(f"Patient Return", "72 out of 93", "+72%")
     with a4:
