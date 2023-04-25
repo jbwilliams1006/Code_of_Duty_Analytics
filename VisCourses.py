@@ -2,40 +2,14 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 import datetime as dt
+from getData import getData
 # anger_course,alcohol_course,stress_course,SA_course,DV_course
 class VisCourses:
-       
-    @st.cache_data(ttl = dt.timedelta(hours=1))
-    def load_data1(nrows):
-        data1 = pd.read_csv('Data/MockData/MOCK_DATA.csv',nrows=nrows,parse_dates=['date'])
-        # df = set up the data in pandas Data Frame format
-        df1 = pd.DataFrame(data1)
-        # df1.info()
-        df1['date'] = pd.to_datetime(df1['date'], format='%Y-%m-%d')
-        return df1
-    
-    @st.cache_data(ttl = dt.timedelta(hours=1))
-    def load_data2(nrows):
-        data2 = pd.read_csv('Data/MockData/MOCK_DATA2.csv', nrows=nrows,parse_dates=['date'])
-        # df = set up the data in pandas Data Frame format
-        df2 = pd.DataFrame(data2)
-        # df2.info()
-        df2['date'] = pd.to_datetime(df2['date'], format='YYYY-mm-dd')
-        return df2
-    
-    @st.cache_data(ttl = dt.timedelta(hours=1))
-    def load_data3(nrows):
-        data3 = pd.read_csv('Data/MockData/MOCK_DATA3.csv', nrows=nrows, parse_dates=['date'])
-        # df = set up the data in pandas Data Frame format
-        df3 = pd.DataFrame(data3)
-        # df3.info()
-        df3['date'] = pd.to_datetime(df3['date'], format='%Y-%m-%d')
-        return df3
-    
+
     def angerLine():
-        df1 = VisCourses.load_data1(1000)
-        df2 = VisCourses.load_data2(1000)
-        df3 = VisCourses.load_data3(1000)
+        df1 = getData.GetDF1()
+        df2 = getData.GetDF2()
+        df3 = getData.GetDF3()
         df1.drop(df1[df1['anger_course'] == False].index, inplace=True)
         df1 = df1.groupby(['date','anger_course']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2.drop(df2[df2['anger_course'] == False].index, inplace=True)
@@ -119,9 +93,9 @@ class VisCourses:
 
     
     def alcLine():
-        df1 = VisCourses.load_data1(1000)
-        df2 = VisCourses.load_data2(1000)
-        df3 = VisCourses.load_data3(1000)
+        df1 = getData.GetDF1()
+        df2 = getData.GetDF2()
+        df3 = getData.GetDF3()
         df1.drop(df1[df1['alcohol_course'] == False].index, inplace=True)
         df1 = df1.groupby(['date','alcohol_course']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2.drop(df2[df2['alcohol_course'] == False].index, inplace=True)
@@ -201,11 +175,10 @@ class VisCourses:
 
     
  
-    
     def stressLine():
-        df1 = VisCourses.load_data1(1000)
-        df2 = VisCourses.load_data2(1000)
-        df3 = VisCourses.load_data3(1000)
+        df1 = getData.GetDF1()
+        df2 = getData.GetDF2()
+        df3 = getData.GetDF3()
         df1.drop(df1[df1['stress_course'] == False].index, inplace=True)
         df1 = df1.groupby(['date','stress_course']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2.drop(df2[df2['stress_course'] == False].index, inplace=True)
@@ -288,9 +261,9 @@ class VisCourses:
     
     
     def SALine():
-        df1 = VisCourses.load_data1(1000)
-        df2 = VisCourses.load_data2(1000)
-        df3 = VisCourses.load_data3(1000)
+        df1 = getData.GetDF1()
+        df2 = getData.GetDF2()
+        df3 = getData.GetDF3()
         df1.drop(df1[df1['SA_course'] == False].index, inplace=True)
         df1 = df1.groupby(['date','SA_course']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2.drop(df2[df2['SA_course'] == False].index, inplace=True)
@@ -372,9 +345,9 @@ class VisCourses:
     
     
     def DVLine():
-        df1 = VisCourses.load_data1(1000)
-        df2 = VisCourses.load_data2(1000)
-        df3 = VisCourses.load_data3(1000)
+        df1 = getData.GetDF1()
+        df2 = getData.GetDF2()
+        df3 = getData.GetDF3()
         df1.drop(df1[df1['DV_course'] == False].index, inplace=True)
         df1 = df1.groupby(['date','DV_course']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2.drop(df2[df2['DV_course'] == False].index, inplace=True)

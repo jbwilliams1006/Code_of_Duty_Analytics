@@ -2,41 +2,15 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 import datetime as dt
+from getData import getData
 # relation_counseling,grief_counseling,spiritual_counseling
 
 class VisCounsel:
-       
-    @st.cache_data(ttl = dt.timedelta(hours=1))
-    def load_data1(nrows):
-        df1 = pd.read_csv('Data/MockData/MOCK_DATA.csv',nrows=nrows,parse_dates=['date'])
-        # df = set up the data in pandas Data Frame format
-        df1 = pd.DataFrame(df1)
-        # df1.info()
-        df1['date'] = pd.to_datetime(df1['date'], format='%Y-%m-%d')
-        return df1
-    
-    @st.cache_data(ttl = dt.timedelta(hours=1))
-    def load_data2(nrows):
-        df2 = pd.read_csv('Data/MockData/MOCK_DATA2.csv', nrows=nrows,parse_dates=['date'])
-        # df = set up the data in pandas Data Frame format
-        df2 = pd.DataFrame(df2)
-        # df2.info()
-        df2['date'] = pd.to_datetime(df2['date'], format='YYYY-mm-dd')
-        return df2
-    
-    @st.cache_data(ttl = dt.timedelta(hours=1))
-    def load_data3(nrows):
-        df3 = pd.read_csv('Data/MockData/MOCK_DATA3.csv', nrows=nrows, parse_dates=['date'])
-        # df = set up the data in pandas Data Frame format
-        df3 = pd.DataFrame(df3)
-        # df3.info()
-        df3['date'] = pd.to_datetime(df3['date'], format='%Y-%m-%d')
-        return df3
 
     def spritualLine():
-        df1 = VisCounsel.load_data1(1000)
-        df2 = VisCounsel.load_data2(1000)
-        df3 = VisCounsel.load_data3(1000)
+        df1 = getData.GetDF1()
+        df2 = getData.GetDF2()
+        df3 = getData.GetDF3()
         df1.drop(df1[df1['spiritual_counseling'] == False].index, inplace=True)
         df1 = df1.groupby(['date','spiritual_counseling']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2.drop(df2[df2['spiritual_counseling'] == False].index, inplace=True)
@@ -118,9 +92,9 @@ class VisCounsel:
         st.plotly_chart(fig,use_container_width=True)
     
     def relationLine():
-        df1 = VisCounsel.load_data1(1000)
-        df2 = VisCounsel.load_data2(1000)
-        df3 = VisCounsel.load_data3(1000)
+        df1 = getData.GetDF1()
+        df2 = getData.GetDF2()
+        df3 = getData.GetDF3()
         df1.drop(df1[df1['relation_counseling'] == False].index, inplace=True)
         df1 = df1.groupby(['date','relation_counseling']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2.drop(df2[df2['relation_counseling'] == False].index, inplace=True)
@@ -203,9 +177,9 @@ class VisCounsel:
       
     
     def griefLine():
-        df1 = VisCounsel.load_data1(1000)
-        df2 = VisCounsel.load_data2(1000)
-        df3 = VisCounsel.load_data3(1000)
+        df1 = getData.GetDF1()
+        df2 = getData.GetDF2()
+        df3 = getData.GetDF3()
         df1.drop(df1[df1['grief_counseling'] == False].index, inplace=True)
         df1 = df1.groupby(['date','grief_counseling']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2.drop(df2[df2['grief_counseling'] == False].index, inplace=True)

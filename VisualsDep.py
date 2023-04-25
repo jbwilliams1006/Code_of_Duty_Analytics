@@ -3,37 +3,14 @@ import pandas as pd
 import plotly.graph_objects as go
 import datetime as dt
 import plotly.express as px
+from getData import getData
 
 class VisualsDep:
-       
-    @st.cache_data(ttl = dt.timedelta(hours=1))
-    def load_data1(nrows):
-        df1 = pd.read_csv('Data/MockData/MOCK_DATA.csv',nrows=nrows,parse_dates=['date'])
-        # df = set up the data in pandas Data Frame format
-        df1 = pd.DataFrame(df1)
-        df1['date'] = pd.to_datetime(df1['date'].dt.strftime('%B %Y'))
-        return df1
-    
-    @st.cache_data(ttl = dt.timedelta(hours=1))
-    def load_data2(nrows):
-        df2 = pd.read_csv('Data/MockData/MOCK_DATA2.csv', nrows=nrows,parse_dates=['date'])
-        # df = set up the data in pandas Data Frame format
-        df2 = pd.DataFrame(df2)
-        df2['date'] = pd.to_datetime(df2['date'].dt.strftime('%B %Y'))
-        return df2
-    
-    @st.cache_data(ttl = dt.timedelta(hours=1))
-    def load_data3(nrows):
-        df3 = pd.read_csv('Data/MockData/MOCK_DATA3.csv', nrows=nrows, parse_dates=['date'])
-        # df = set up the data in pandas Data Frame format
-        df3 = pd.DataFrame(df3)
-        df3['date'] = pd.to_datetime(df3['date'].dt.strftime('%B %Y'))
-        return df3
 
     def lineGraph():
-        df1 = VisualsDep.load_data1(1000)
-        df2 = VisualsDep.load_data2(1000)
-        df3 = VisualsDep.load_data3(1000)
+        df1 = getData.GetDF1()
+        df2 = getData.GetDF2()
+        df3 = getData.GetDF3()
         df1 = df1.groupby(['date','depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2 = df2.groupby(['date','depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df3 = df3.groupby(['date','depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
@@ -54,9 +31,9 @@ class VisualsDep:
         return st.plotly_chart(fig, use_container_width=True)
     
     def pieChart():
-        df1 = VisualsDep.load_data1(1000)
-        df2 = VisualsDep.load_data2(1000)
-        df3 = VisualsDep.load_data3(1000)
+        df1 = getData.GetDF1()
+        df2 = getData.GetDF2()
+        df3 = getData.GetDF3()
         df1 = df1.groupby(['depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2 = df2.groupby(['depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df3 = df3.groupby(['depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
@@ -141,9 +118,9 @@ class VisualsDep:
         st.plotly_chart(fig, use_container_width=True)
 
     def barGraph():
-        df1 = VisualsDep.load_data1(1000)
-        df2 = VisualsDep.load_data2(1000)
-        df3 = VisualsDep.load_data3(1000)
+        df1 = getData.GetDF1()
+        df2 = getData.GetDF2()
+        df3 = getData.GetDF3()
         df1 = df1.groupby(['depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df2 = df2.groupby(['depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
         df3 = df3.groupby(['depression']).apply(len).reindex(fill_value=0).to_frame('count').reset_index()
