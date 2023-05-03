@@ -178,6 +178,16 @@ div.css-1bzkvni.e1tzin5v1 {
 }
 
 
+/* Boxes behind the long charts */
+
+div.css-1a32fsj.e19lei0e0 {
+    background-color: #eeeeee;
+    padding: 1% 1% 1% 1%;
+    border-radius: 30px;
+    flex-basis: calc(50% - 1rem);
+}
+
+
 /* Hide hamburger menu and footer */
 
 div.css-r698ls.e8zbici2 {
