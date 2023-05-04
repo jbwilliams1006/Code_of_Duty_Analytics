@@ -14,6 +14,7 @@ def access_db():
     return db
 
 
+
 #------------------------------------------------------------------------------
 #
 #   Description:
@@ -74,6 +75,7 @@ def get_date_query(date):
     data_list = []
 
     for data in data_ref:
+        # add dictionary of paients data to the list
         data_list.append(data.to_dict())
 
     return data_list
