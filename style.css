@@ -98,7 +98,7 @@ div.css-183lzff.eyqtai90 {
 
 /* Row 1 Right Side*/
 
-div.css-ml2xh6.e1tzin5v2 {
+div.css-ml2xh6.e1tzin5v1 {
     font-family: "Source Sans Pro", sans-serif;
     background-color: #EEEEEE;
     padding: 2% 2% 2% 2%;
@@ -123,7 +123,7 @@ div.css-ml2xh6.e1tzin5v2 {
 
 /* Box behind charts */
 
-div.css-12w0qpk.e1tzin5v2 {
+div.css-12w0qpk.e1tzin5v1 {
     display: flex;
     background-color: #eeeeee;
     padding: 1% 1% 1% 1%;
@@ -161,21 +161,30 @@ div.css-pmvzy7.e1tzin5v0 {
 
 /* Box behind first chart */
 
-div.css-1bcsrn5.e1tzin5v2 {
+div.css-q5g29x.e1tzin5v2 {
     background-color: #eeeeee;
     padding: 1% 1% 1% 1%;
     border-radius: 30px;
-    width: calc(50% - 1rem);
     flex-basis: calc(50% - 1rem);
 }
 
 
-/* Box pie chart */
+/* Box behind second chart */
 
-div.css-1bzkvni.e1tzin5v2 {
+div.css-1bzkvni.e1tzin5v1 {
     background-color: #eeeeee;
     padding: 1% 1% 1% 1%;
     border-radius: 30px;
+}
+
+
+/* Boxes behind the long charts */
+
+div.css-1a32fsj.e19lei0e0 {
+    background-color: #eeeeee;
+    padding: 1% 1% 1% 1%;
+    border-radius: 30px;
+    flex-basis: calc(50% - 1rem);
 }
 
 
