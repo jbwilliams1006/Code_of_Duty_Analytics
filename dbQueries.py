@@ -28,7 +28,7 @@ def access_db():
 #       dictionary - dictionary containting the counts for the different occasions
 #
 #   Example of call:
-#       counts = occasinoal_query_count('stress')
+#       counts = occasional_query_count('stress')
 #       
 #      < output > counts['daily'] -> 115
 @st.cache_resource
